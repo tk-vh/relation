@@ -1,0 +1,716 @@
+[
+  {
+    "source": "anaximander",
+    "target": "thales",
+    "kind": "influences",
+    "reason": "继承泰勒斯寻求单一本原解释万物的进路，改以“无定”取代水。"
+  },
+  {
+    "source": "anaximenes",
+    "target": "anaximander",
+    "kind": "influences",
+    "reason": "以气的稀薄与凝聚回应阿那克西曼德的“无定”，为变化提供机制。"
+  },
+  {
+    "source": "anaximenes",
+    "target": "thales",
+    "kind": "influences",
+    "reason": "承泰勒斯单一基质的水说，改以气为本原并补充稀薄凝聚的变化机制。"
+  },
+  {
+    "source": "pythagoras",
+    "target": "thales",
+    "kind": "influences",
+    "reason": "传统称毕达哥拉斯曾问学于泰勒斯，后以“数是本原”另立体系。"
+  },
+  {
+    "source": "xenophanes",
+    "target": "pythagoras",
+    "kind": "refutes",
+    "reason": "嘲讽毕达哥拉斯的灵魂转世说，讥其从犬吠声中认出亡友的灵魂。"
+  },
+  {
+    "source": "parmenides",
+    "target": "xenophanes",
+    "kind": "influences",
+    "reason": "传统以巴门尼德为色诺芬尼弟子，承其一神与不变者之说走向“存在者存在”。"
+  },
+  {
+    "source": "heraclitus",
+    "target": "xenophanes",
+    "kind": "refutes",
+    "reason": "批评色诺芬尼等“博学”却无智慧，坚持唯逻各斯能教人理解。"
+  },
+  {
+    "source": "sextus",
+    "target": "xenophanes",
+    "kind": "refutes",
+    "reason": "在《皮浪主义纲要》中把色诺芬尼列为独断论者，批评其以一神与“一”断言真理。"
+  },
+  {
+    "source": "heraclitus",
+    "target": "pythagoras",
+    "kind": "refutes",
+    "reason": "斥毕达哥拉斯的博学与转世说，谓其“博学”并不带来理解。"
+  },
+  {
+    "source": "plato",
+    "target": "heraclitus",
+    "kind": "influences",
+    "reason": "视可感世界为流变，承赫拉克利特“万物皆流”，故相必须不变。"
+  },
+  {
+    "source": "aristotle",
+    "target": "heraclitus",
+    "kind": "refutes",
+    "reason": "反驳赫拉克利特“万物皆流”与对立统一，捍卫不矛盾律与实体的稳定。"
+  },
+  {
+    "source": "zeno",
+    "target": "heraclitus",
+    "kind": "influences",
+    "reason": "斯多亚以火与逻各斯贯穿宇宙，直接继承赫拉克利特的本原论。"
+  },
+  {
+    "source": "chrysippus",
+    "target": "heraclitus",
+    "kind": "influences",
+    "reason": "承赫拉克利特的火与逻各斯，融入斯多亚的命运与宇宙循环论。"
+  },
+  {
+    "source": "marcus",
+    "target": "heraclitus",
+    "kind": "influences",
+    "reason": "《沉思录》屡引赫拉克利特论流变与宇宙理性，借以劝勉接受变化。"
+  },
+  {
+    "source": "zenoelea",
+    "target": "parmenides",
+    "kind": "presupposes",
+    "reason": "以二分法、飞矢等悖论为巴门尼德辩护，证明运动与众多会引出矛盾。"
+  },
+  {
+    "source": "empedocles",
+    "target": "parmenides",
+    "kind": "presupposes",
+    "reason": "承巴门尼德“无不能生有”，以四根不生不灭说明变化仅为混合与分离。"
+  },
+  {
+    "source": "anaxagoras",
+    "target": "parmenides",
+    "kind": "presupposes",
+    "reason": "同受“无中不能生有”约束，故谓万物皆含万有之部分，生成只是分离。"
+  },
+  {
+    "source": "democritus",
+    "target": "parmenides",
+    "kind": "presupposes",
+    "reason": "以不可分原子为“存在者”、虚空为“不存在者”，回应巴门尼德的存在论。"
+  },
+  {
+    "source": "plato",
+    "target": "parmenides",
+    "kind": "synthesizes",
+    "reason": "综合巴门尼德不变的存在与苏格拉底求定义，设定可知的相为实在。"
+  },
+  {
+    "source": "aristotle",
+    "target": "parmenides",
+    "kind": "refutes",
+    "reason": "以潜能与现实及范畴歧义破解巴门尼德“非存在不可说”，使生成得以成立。"
+  },
+  {
+    "source": "aristotle",
+    "target": "zenoelea",
+    "kind": "refutes",
+    "reason": "在《物理学》借潜能无限与连续统的划分，反驳芝诺的二分法与飞矢悖论。"
+  },
+  {
+    "source": "empedocles",
+    "target": "pythagoras",
+    "kind": "influences",
+    "reason": "承毕达哥拉斯派的灵魂转世与净化仪轨，在《净化》中论灵魂流放。"
+  },
+  {
+    "source": "aristotle",
+    "target": "empedocles",
+    "kind": "refutes",
+    "reason": "采用其四元素说，却批评“爱与争”作为运动原因过于外在而欠缺目的性。"
+  },
+  {
+    "source": "lucretius",
+    "target": "empedocles",
+    "kind": "influences",
+    "reason": "在《物性论》中盛赞恩培多克勒，却以原子与虚空取代四根，仅保留其诗性声望。"
+  },
+  {
+    "source": "socrates",
+    "target": "anaxagoras",
+    "kind": "refutes",
+    "reason": "在《斐多》中自述对阿那克萨戈拉的努斯目的论寄望落空，批评其未能说明善。"
+  },
+  {
+    "source": "democritus",
+    "target": "anaxagoras",
+    "kind": "refutes",
+    "reason": "反对以外在“努斯”安排宇宙，主张原子依必然性机械运动。"
+  },
+  {
+    "source": "aristotle",
+    "target": "anaxagoras",
+    "kind": "refutes",
+    "reason": "称其“努斯”为清醒的原因，却批评其未贯彻目的论、仅作机械启动。"
+  },
+  {
+    "source": "epicurus",
+    "target": "democritus",
+    "kind": "influences",
+    "reason": "承德谟克利特的原子与虚空，另加原子“偏斜”以保留自由与偶然。"
+  },
+  {
+    "source": "aristotle",
+    "target": "democritus",
+    "kind": "refutes",
+    "reason": "反驳原子与虚空说，认为虚空非运动原因、原子论无法说明实体生成。"
+  },
+  {
+    "source": "lucretius",
+    "target": "democritus",
+    "kind": "influences",
+    "reason": "承德谟克利特—伊壁鸠鲁的原子论，以《物性论》反驳神意创世。"
+  },
+  {
+    "source": "protagoras",
+    "target": "heraclitus",
+    "kind": "influences",
+    "reason": "相传其相对主义承赫拉克利特流变说，柏拉图《泰阿泰德》亦作此解释。"
+  },
+  {
+    "source": "plato",
+    "target": "protagoras",
+    "kind": "refutes",
+    "reason": "在《泰阿泰德》中驳“人是万物的尺度”，指出相对主义使一切判断同真而自反。"
+  },
+  {
+    "source": "plato",
+    "target": "socrates",
+    "kind": "influences",
+    "reason": "继承苏格拉底诘问法与“德性即知识”之求，进而建立相论与回忆说。"
+  },
+  {
+    "source": "aristotle",
+    "target": "socrates",
+    "kind": "influences",
+    "reason": "归功于苏格拉底的归纳论证与普遍定义，同时指出他未将普遍者分离为相。"
+  },
+  {
+    "source": "diogenes",
+    "target": "socrates",
+    "kind": "influences",
+    "reason": "犬儒派承苏格拉底的自足与关心灵魂，推向蔑视习俗的极端禁欲。"
+  },
+  {
+    "source": "epictetus",
+    "target": "socrates",
+    "kind": "influences",
+    "reason": "以苏格拉底为哲人典范，承其“无人自愿作恶”与内在自由。"
+  },
+  {
+    "source": "zeno",
+    "target": "diogenes",
+    "kind": "influences",
+    "reason": "经由克拉特斯承接犬儒的自足与蔑视习俗，而非直接师从第欧根尼。"
+  },
+  {
+    "source": "plato",
+    "target": "pythagoras",
+    "kind": "influences",
+    "reason": "承毕达哥拉斯的数、灵魂不朽与转世，在《蒂迈欧》《斐多》中发展。"
+  },
+  {
+    "source": "aristotle",
+    "target": "plato",
+    "kind": "refutes",
+    "reason": "以形式内在于个别事物反对分离的相，并以四因与实体论取代分有说。"
+  },
+  {
+    "source": "plotinus",
+    "target": "plato",
+    "kind": "influences",
+    "reason": "以柏拉图相论与《巴门尼德篇》的“一”为据，建构太一、理智、灵魂之流溢。"
+  },
+  {
+    "source": "augustine",
+    "target": "plato",
+    "kind": "influences",
+    "reason": "承柏拉图的相论与灵魂不朽，经普罗提诺中介融入基督教教义。"
+  },
+  {
+    "source": "cicero",
+    "target": "plato",
+    "kind": "influences",
+    "reason": "其《论共和国》《论法律》以柏拉图《理想国》《法律篇》为范本。"
+  },
+  {
+    "source": "alfarabi",
+    "target": "plato",
+    "kind": "influences",
+    "reason": "其《德性之城》以柏拉图《理想国》为范本，借哲学家—君王说规划政教。"
+  },
+  {
+    "source": "hypatia",
+    "target": "plato",
+    "kind": "influences",
+    "reason": "在亚历山大里亚讲授柏拉图主义，属于新柏拉图学园传统，而非注释柏拉图文本。"
+  },
+  {
+    "source": "boethius",
+    "target": "plato",
+    "kind": "influences",
+    "reason": "计划翻译柏拉图与亚里士多德全部著作，《哲学的慰藉》融合柏拉图式天命观。"
+  },
+  {
+    "source": "bonaventure",
+    "target": "plato",
+    "kind": "influences",
+    "reason": "承柏拉图—奥古斯丁的光照说，主张知识必赖神圣光照。"
+  },
+  {
+    "source": "aquinas",
+    "target": "plato",
+    "kind": "influences",
+    "reason": "借柏拉图经伪狄奥尼修斯的分有论，说明受造物对上帝存在的分有。"
+  },
+  {
+    "source": "averroes",
+    "target": "plato",
+    "kind": "influences",
+    "reason": "因缺《政治学》，作柏拉图《理想国》注疏，发展其政治哲学。"
+  },
+  {
+    "source": "aristotle",
+    "target": "pythagoras",
+    "kind": "refutes",
+    "reason": "在《形而上学》第一、十三、十四卷批判毕达哥拉斯派以数为分离本原，只保留其对立表的讨论价值。"
+  },
+  {
+    "source": "alfarabi",
+    "target": "aristotle",
+    "kind": "influences",
+    "reason": "被称为“第二导师”，以亚里士多德逻辑学为工具构建哲学体系。"
+  },
+  {
+    "source": "avicenna",
+    "target": "aristotle",
+    "kind": "influences",
+    "reason": "承亚里士多德《形而上学》的实体与范畴，发展本质与存在的区分。"
+  },
+  {
+    "source": "averroes",
+    "target": "aristotle",
+    "kind": "influences",
+    "reason": "以“注释者”身份逐篇注疏亚里士多德，主张恢复其纯粹学说。"
+  },
+  {
+    "source": "maimonides",
+    "target": "aristotle",
+    "kind": "influences",
+    "reason": "在《迷途指津》中调和托拉与亚里士多德的物理学与形而上学。"
+  },
+  {
+    "source": "aquinas",
+    "target": "aristotle",
+    "kind": "synthesizes",
+    "reason": "将亚里士多德的实体、四因与自然法融入基督教神学，主张恩典成全自然。"
+  },
+  {
+    "source": "boethius",
+    "target": "aristotle",
+    "kind": "influences",
+    "reason": "翻译亚里士多德逻辑学著作，为中世纪奠定经院术语。"
+  },
+  {
+    "source": "cicero",
+    "target": "aristotle",
+    "kind": "influences",
+    "reason": "在《论目的》与《论友谊》中采用亚里士多德的德性与友谊论。"
+  },
+  {
+    "source": "alkindi",
+    "target": "aristotle",
+    "kind": "influences",
+    "reason": "承亚里士多德《形而上学》与范畴，建“第一哲学”以服务伊斯兰一神论。"
+  },
+  {
+    "source": "abelard",
+    "target": "aristotle",
+    "kind": "influences",
+    "reason": "承亚里士多德《范畴篇》《解释篇》的词项逻辑，为共相的概念论奠基。"
+  },
+  {
+    "source": "mullasadra",
+    "target": "aristotle",
+    "kind": "refutes",
+    "reason": "反对亚里士多德否认实体变化之说，提出贯穿存在等级的“实体性运动”。"
+  },
+  {
+    "source": "ockham",
+    "target": "aristotle",
+    "kind": "influences",
+    "reason": "承亚里士多德的逻辑与范畴，却以唯名论拒斥实体形式的实在。"
+  },
+  {
+    "source": "scotus",
+    "target": "aristotle",
+    "kind": "influences",
+    "reason": "承亚里士多德的范畴与形而上学，以单义存在改造其类比传统。"
+  },
+  {
+    "source": "halevi",
+    "target": "aristotle",
+    "kind": "refutes",
+    "reason": "借库萨里之口反驳亚里士多德派哲学，主张启示与历史高于理性证明。"
+  },
+  {
+    "source": "saadia",
+    "target": "aristotle",
+    "kind": "refutes",
+    "reason": "反驳亚里士多德派的宇宙永恒论，论证世界在时间中从无创造。"
+  },
+  {
+    "source": "lucretius",
+    "target": "epicurus",
+    "kind": "influences",
+    "reason": "以《物性论》用拉丁韵文系统阐述伊壁鸠鲁的原子论与伦理学。"
+  },
+  {
+    "source": "cicero",
+    "target": "epicurus",
+    "kind": "refutes",
+    "reason": "在《论目的》中批评伊壁鸠鲁以快乐为至善，主张德性高于感官快乐。"
+  },
+  {
+    "source": "pyrrho",
+    "target": "democritus",
+    "kind": "influences",
+    "reason": "经德谟克利特派阿那克萨库斯，承其感觉相对性之说而走向悬置判断。"
+  },
+  {
+    "source": "sextus",
+    "target": "pyrrho",
+    "kind": "influences",
+    "reason": "系统化皮浪的悬置判断，编成《皮浪主义纲要》与诸怀疑论模式。"
+  },
+  {
+    "source": "zeno",
+    "target": "socrates",
+    "kind": "influences",
+    "reason": "承苏格拉底“德性即知识”与自足伦理，主张德性是唯一的善。"
+  },
+  {
+    "source": "chrysippus",
+    "target": "zeno",
+    "kind": "influences",
+    "reason": "继承并体系化芝诺的斯多亚教义，发展命题逻辑与命运论。"
+  },
+  {
+    "source": "cicero",
+    "target": "chrysippus",
+    "kind": "influences",
+    "reason": "其斯多亚伦理学与逻辑学主要取自克律西波斯，借以传达给拉丁世界。"
+  },
+  {
+    "source": "seneca",
+    "target": "zeno",
+    "kind": "influences",
+    "reason": "承芝诺的斯多亚伦理，化为论愤怒、悲伤与生命之短暂的实践劝诫。"
+  },
+  {
+    "source": "seneca",
+    "target": "chrysippus",
+    "kind": "influences",
+    "reason": "承克律西波斯的情感理论，化为书信中的自我修炼。"
+  },
+  {
+    "source": "epictetus",
+    "target": "zeno",
+    "kind": "influences",
+    "reason": "承芝诺“德性是唯一善”与依自然而生活，化为“控制的二分”。"
+  },
+  {
+    "source": "epictetus",
+    "target": "chrysippus",
+    "kind": "influences",
+    "reason": "以克律西波斯的伦理学为教材，强调运用印象与判断的工夫。"
+  },
+  {
+    "source": "marcus",
+    "target": "epictetus",
+    "kind": "influences",
+    "reason": "承爱比克泰德“控制二分”之教，在《沉思录》中实践自我劝勉。"
+  },
+  {
+    "source": "plotinus",
+    "target": "chrysippus",
+    "kind": "refutes",
+    "reason": "反驳斯多亚的物体主义与“神即物质”，坚持太一超越一切形体。"
+  },
+  {
+    "source": "plotinus",
+    "target": "aristotle",
+    "kind": "influences",
+    "reason": "采纳亚里士多德的努斯与潜能现实，却在《九章集》第六卷批判其范畴表。"
+  },
+  {
+    "source": "augustine",
+    "target": "plotinus",
+    "kind": "synthesizes",
+    "reason": "借普罗提诺的太一与灵魂光照诠释三位一体，以“恶是善的缺失”化解摩尼教难题。"
+  },
+  {
+    "source": "hypatia",
+    "target": "plotinus",
+    "kind": "influences",
+    "reason": "作为新柏拉图主义教师，在亚历山大里亚传授普罗提诺的太一、流溢与回归学说。"
+  },
+  {
+    "source": "boethius",
+    "target": "plotinus",
+    "kind": "influences",
+    "reason": "承普罗提诺的新柏拉图主义框架，在《哲学的慰藉》中论太一与天命。"
+  },
+  {
+    "source": "eriugena",
+    "target": "plotinus",
+    "kind": "influences",
+    "reason": "经伪狄奥尼修斯的否定神学，承新柏拉图主义的流溢与复归框架。"
+  },
+  {
+    "source": "alkindi",
+    "target": "plotinus",
+    "kind": "influences",
+    "reason": "借伪亚里士多德《神学》即普罗提诺的太一流溢说，阐释时间中的创造。"
+  },
+  {
+    "source": "eckhart",
+    "target": "plotinus",
+    "kind": "influences",
+    "reason": "承普罗提诺经伪狄奥尼修斯的太一与否定神学，谈灵魂中的“火花”。"
+  },
+  {
+    "source": "alfarabi",
+    "target": "plotinus",
+    "kind": "influences",
+    "reason": "承新柏拉图主义的流溢层级，描绘从第一存在到理智与灵魂的下降。"
+  },
+  {
+    "source": "bonaventure",
+    "target": "plotinus",
+    "kind": "influences",
+    "reason": "承新柏拉图主义的上升论，在《心灵迈向上帝的旅程》中描绘六阶段上升。"
+  },
+  {
+    "source": "augustine",
+    "target": "cicero",
+    "kind": "influences",
+    "reason": "早年读西塞罗《霍尔滕西乌斯》转向哲学，后以自然法融入神律。"
+  },
+  {
+    "source": "avicenna",
+    "target": "alfarabi",
+    "kind": "influences",
+    "reason": "阿维森纳自称借法拉比解《形而上学》而开悟，承其流溢与必然存在者思路。"
+  },
+  {
+    "source": "alghazali",
+    "target": "avicenna",
+    "kind": "refutes",
+    "reason": "在《哲学家的矛盾》中抨击阿维森纳派的宇宙永恒、神不知殊相与复活之否定。"
+  },
+  {
+    "source": "averroes",
+    "target": "alghazali",
+    "kind": "refutes",
+    "reason": "在《矛盾的矛盾》中逐条回应安萨里，为哲学与教法的相容辩护。"
+  },
+  {
+    "source": "averroes",
+    "target": "avicenna",
+    "kind": "refutes",
+    "reason": "批评阿维森纳以流溢与“存在偶性”偏离亚里士多德，主张恢复纯粹逍遥学说。"
+  },
+  {
+    "source": "ibnarabi",
+    "target": "alghazali",
+    "kind": "influences",
+    "reason": "受安萨里将苏菲经验纳入正统神学的庇护，但其谱系主要经安达卢西亚苏菲导师。"
+  },
+  {
+    "source": "mullasadra",
+    "target": "ibnarabi",
+    "kind": "synthesizes",
+    "reason": "综合伊本·阿拉比的“存在统一”与阿维森纳形而上学，提出存在在先。"
+  },
+  {
+    "source": "mullasadra",
+    "target": "avicenna",
+    "kind": "refutes",
+    "reason": "反对阿维森纳以存在为本质之偶性，主张存在先于本质。"
+  },
+  {
+    "source": "maimonides",
+    "target": "alfarabi",
+    "kind": "influences",
+    "reason": "推崇法拉比的逻辑学与政治哲学，引为理性与启示调和的先导。"
+  },
+  {
+    "source": "maimonides",
+    "target": "avicenna",
+    "kind": "influences",
+    "reason": "承阿维森纳的必然存在者与否定神学，论证上帝的存在与不可言说。"
+  },
+  {
+    "source": "ibnkhaldun",
+    "target": "alfarabi",
+    "kind": "refutes",
+    "reason": "《历史绪论》批评法拉比式德性城邦为思辨构造，以阿萨比亚与王朝循环取而代之。"
+  },
+  {
+    "source": "maimonides",
+    "target": "saadia",
+    "kind": "influences",
+    "reason": "承萨阿迪亚开创的犹太理性传统与“理性—启示一致”，加以深化。"
+  },
+  {
+    "source": "halevi",
+    "target": "saadia",
+    "kind": "refutes",
+    "reason": "反对萨阿迪亚“理性与启示一致”的进路，主张启示与历史经验高于哲学。"
+  },
+  {
+    "source": "aquinas",
+    "target": "maimonides",
+    "kind": "influences",
+    "reason": "大量采用迈蒙尼德《迷途指津》的否定神学与存在论证，融入《神学大全》。"
+  },
+  {
+    "source": "eckhart",
+    "target": "maimonides",
+    "kind": "influences",
+    "reason": "征引迈蒙尼德《迷途指津》的否定神学，发展“神性超越上帝”。"
+  },
+  {
+    "source": "boethius",
+    "target": "augustine",
+    "kind": "influences",
+    "reason": "承奥古斯丁的天意与自由意志之辨，续其融合希腊哲学与基督教的事业。"
+  },
+  {
+    "source": "eriugena",
+    "target": "augustine",
+    "kind": "influences",
+    "reason": "承奥古斯丁的神圣光照与创世论，融入其自然的四重区分。"
+  },
+  {
+    "source": "anselm",
+    "target": "augustine",
+    "kind": "presupposes",
+    "reason": "其本体论论证预设奥古斯丁“上帝即无与伦比之伟大者”的观念。"
+  },
+  {
+    "source": "bonaventure",
+    "target": "augustine",
+    "kind": "influences",
+    "reason": "坚持奥古斯丁的光照说与心灵上升，反对激进亚里士多德主义。"
+  },
+  {
+    "source": "aquinas",
+    "target": "augustine",
+    "kind": "influences",
+    "reason": "大量征引奥古斯丁论恩典、恶与灵魂，同时以亚里士多德补其不足。"
+  },
+  {
+    "source": "eckhart",
+    "target": "augustine",
+    "kind": "influences",
+    "reason": "承奥古斯丁的心灵内居与恩典论，谈上帝在灵魂中的诞生。"
+  },
+  {
+    "source": "hildegard",
+    "target": "augustine",
+    "kind": "influences",
+    "reason": "承奥古斯丁神学传统，以异象表达创造、救赎与灵魂的秩序。"
+  },
+  {
+    "source": "hildegard",
+    "target": "plato",
+    "kind": "influences",
+    "reason": "经拉丁基督教百科全书传统间接承接《蒂迈欧》的宇宙即生命体母题，非直接阅读。"
+  },
+  {
+    "source": "abelard",
+    "target": "boethius",
+    "kind": "influences",
+    "reason": "承波爱修斯对波菲利的注释与共相问题，提出共相为概念的概念论。"
+  },
+  {
+    "source": "aquinas",
+    "target": "boethius",
+    "kind": "influences",
+    "reason": "注释波爱修斯的《七周论》与《论三位一体》，承其善与存在的形而上学。"
+  },
+  {
+    "source": "aquinas",
+    "target": "anselm",
+    "kind": "refutes",
+    "reason": "在《神学大全》中反对安瑟伦本体论论证，主张须从结果后天地证明上帝。"
+  },
+  {
+    "source": "scotus",
+    "target": "anselm",
+    "kind": "influences",
+    "reason": "承安瑟伦本体论论证，据单义存在加以“着色”并补强。"
+  },
+  {
+    "source": "bonaventure",
+    "target": "averroes",
+    "kind": "refutes",
+    "reason": "反对阿威罗伊派的世界永恒与单一理智，坚持时间中的创造。"
+  },
+  {
+    "source": "aquinas",
+    "target": "averroes",
+    "kind": "refutes",
+    "reason": "作《论理智的统一》反驳阿威罗伊的单一理智说，坚持个体灵魂不朽。"
+  },
+  {
+    "source": "scotus",
+    "target": "aquinas",
+    "kind": "refutes",
+    "reason": "以存在的单义性反对阿奎那的类比说，主张“存在”对神与受造物意义相同。"
+  },
+  {
+    "source": "ockham",
+    "target": "aquinas",
+    "kind": "refutes",
+    "reason": "以唯名论反对阿奎那的共相实在与实体形式，主张只有个别事物存在。"
+  },
+  {
+    "source": "scotus",
+    "target": "augustine",
+    "kind": "influences",
+    "reason": "承奥古斯丁的意志优先论，发展意志主义的自由观。"
+  },
+  {
+    "source": "ockham",
+    "target": "scotus",
+    "kind": "refutes",
+    "reason": "虽师承司各脱，却以剃刀拒斥“此性”与共同本性，坚持唯名论。"
+  },
+  {
+    "source": "eckhart",
+    "target": "aquinas",
+    "kind": "influences",
+    "reason": "承阿奎那的形而上学与圣言神学，却以神秘合一超越其概念框架。"
+  }
+]

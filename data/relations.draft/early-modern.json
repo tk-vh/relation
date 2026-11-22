@@ -1,0 +1,668 @@
+[
+  {
+    "source": "cusanus",
+    "target": "plato",
+    "kind": "influences",
+    "reason": "采用《巴门尼德篇》对“一”超越存在与多的思辨，以否定神学言说不可名状的上帝。"
+  },
+  {
+    "source": "cusanus",
+    "target": "anselm",
+    "kind": "influences",
+    "reason": "延续安瑟伦“不能设想更大者”的论证，把上帝界定为对立面在其中吻合的极大者。"
+  },
+  {
+    "source": "ficino",
+    "target": "plato",
+    "kind": "influences",
+    "reason": "主持翻译柏拉图全集，在《柏拉图神学》中复兴理念论并论证灵魂不朽。"
+  },
+  {
+    "source": "ficino",
+    "target": "plotinus",
+    "kind": "influences",
+    "reason": "将《九章集》译成拉丁文，承袭太一流溢与灵魂回归的等级宇宙图景。"
+  },
+  {
+    "source": "ficino",
+    "target": "augustine",
+    "kind": "influences",
+    "reason": "以奥古斯丁的基督教柏拉图主义为范本，把柏拉图哲学融入基督教神学。"
+  },
+  {
+    "source": "pico",
+    "target": "ficino",
+    "kind": "influences",
+    "reason": "受费奇诺“古代神学”启发，主张柏拉图、亚里士多德与卡巴拉诸传统本是一致。"
+  },
+  {
+    "source": "pico",
+    "target": "aristotle",
+    "kind": "synthesizes",
+    "reason": "在九百论题中调和亚里士多德实体论与柏拉图理念论，化解两家的表面对立。"
+  },
+  {
+    "source": "erasmus",
+    "target": "luther",
+    "kind": "refutes",
+    "reason": "《论自由意志》反驳路德的意志捆绑说，援引圣经证明人仍有择善的自由。"
+  },
+  {
+    "source": "luther",
+    "target": "augustine",
+    "kind": "influences",
+    "reason": "承奥古斯丁原罪与恩典论，主张堕落意志完全受缚，唯靠恩典因信称义。"
+  },
+  {
+    "source": "luther",
+    "target": "erasmus",
+    "kind": "refutes",
+    "reason": "《论意志的捆绑》驳斥伊拉斯谟《论自由意志》，坚称意志在救恩上毫无自由。"
+  },
+  {
+    "source": "more",
+    "target": "plato",
+    "kind": "influences",
+    "reason": "《乌托邦》以《理想国》为蓝本，构想财产共有与哲人治理的理想城邦。"
+  },
+  {
+    "source": "more",
+    "target": "erasmus",
+    "kind": "influences",
+    "reason": "与伊拉斯谟共享基督教人文主义，将源典批判转化为对社会的乌托邦式讽刺。"
+  },
+  {
+    "source": "montaigne",
+    "target": "sextus",
+    "kind": "influences",
+    "reason": "借助塞克斯都的皮浪主义诸模式，以“我知道什么”悬置一切独断的确定性。"
+  },
+  {
+    "source": "montaigne",
+    "target": "seneca",
+    "kind": "influences",
+    "reason": "效法塞涅卡的道德随笔，以自我省察直面必死与人事的无常与脆弱。"
+  },
+  {
+    "source": "montaigne",
+    "target": "lucretius",
+    "kind": "influences",
+    "reason": "采纳卢克莱修对死亡恐惧的原子论消解，以自然主义舒缓对死亡的焦虑。"
+  },
+  {
+    "source": "bruno",
+    "target": "cusanus",
+    "kind": "influences",
+    "reason": "承库萨“对立面吻合”与无界宇宙，进而主张宇宙无限且诸世界繁多。"
+  },
+  {
+    "source": "bruno",
+    "target": "lucretius",
+    "kind": "influences",
+    "reason": "汲取卢克莱修无限虚空与原子观念，论证无限宇宙中存在着众多世界。"
+  },
+  {
+    "source": "suarez",
+    "target": "aquinas",
+    "kind": "refutes",
+    "reason": "保留托马斯主义语汇，却把本质与存在的实在区分化为理性区分，拒绝阿奎那的核心主张。"
+  },
+  {
+    "source": "suarez",
+    "target": "scotus",
+    "kind": "influences",
+    "reason": "承司各脱的存在单义说，以单义的存在概念作为形而上学研究的统一对象。"
+  },
+  {
+    "source": "suarez",
+    "target": "aristotle",
+    "kind": "influences",
+    "reason": "以亚里士多德范畴与潜能现实为框架，却不依评注而独立重建形而上学体系。"
+  },
+  {
+    "source": "bacon",
+    "target": "aristotle",
+    "kind": "refutes",
+    "reason": "《新工具》针对亚里士多德《工具论》，以归纳取代三段论演绎作为求知方法。"
+  },
+  {
+    "source": "hobbes",
+    "target": "machiavelli",
+    "kind": "influences",
+    "reason": "承马基雅维利对权力的现实主义分析，将恐惧与自我保存置于德性之上。"
+  },
+  {
+    "source": "hobbes",
+    "target": "aristotle",
+    "kind": "refutes",
+    "reason": "反对“人是政治动物”与目的因学说，以机械运动与欲望解释人性与国家。"
+  },
+  {
+    "source": "hobbes",
+    "target": "descartes",
+    "kind": "refutes",
+    "reason": "在《第一哲学》反驳中质疑“我思”推不出非物质实体，坚持彻底唯物论。"
+  },
+  {
+    "source": "hobbes",
+    "target": "grotius",
+    "kind": "influences",
+    "reason": "承格劳秀斯自然法进路，却把人的社会性改写成自然状态中一切人反对一切人的战争。"
+  },
+  {
+    "source": "grotius",
+    "target": "suarez",
+    "kind": "influences",
+    "reason": "承苏亚雷斯对自然法与万民法的系统论述，发展出世俗化的国际法体系。"
+  },
+  {
+    "source": "grotius",
+    "target": "cicero",
+    "kind": "influences",
+    "reason": "承西塞罗“正确理性的命令”的自然法观念，论证即使上帝不存在自然法亦有效。"
+  },
+  {
+    "source": "descartes",
+    "target": "augustine",
+    "kind": "influences",
+    "reason": "“我若受骗则我存在”承自奥古斯丁的内在确定性，由此确立我思的不可怀疑。"
+  },
+  {
+    "source": "descartes",
+    "target": "anselm",
+    "kind": "influences",
+    "reason": "采用并改造安瑟伦本体论论证，由完善的上帝观念推出上帝必然存在。"
+  },
+  {
+    "source": "descartes",
+    "target": "suarez",
+    "kind": "influences",
+    "reason": "拉弗莱什的耶稣会课程包含苏亚雷斯的形而上学，笛卡尔未直接称引。"
+  },
+  {
+    "source": "descartes",
+    "target": "aristotle",
+    "kind": "refutes",
+    "reason": "以机械哲学拒斥亚里士多德的形式与目的因，自然仅由广延与运动来解释。"
+  },
+  {
+    "source": "descartes",
+    "target": "montaigne",
+    "kind": "influences",
+    "reason": "把蒙田式怀疑系统化为方法论怀疑，以求为知识找到不可动摇的确定性基础。"
+  },
+  {
+    "source": "pascal",
+    "target": "montaigne",
+    "kind": "influences",
+    "reason": "承蒙田对人性无常与自爱的剖析，转化为“人的悲惨与伟大”的悖论结构。"
+  },
+  {
+    "source": "pascal",
+    "target": "descartes",
+    "kind": "refutes",
+    "reason": "反对以清楚分明观念与几何证明建立信仰，主张“心有它的理性，理性对此无知”。"
+  },
+  {
+    "source": "spinoza",
+    "target": "descartes",
+    "kind": "presupposes",
+    "reason": "以笛卡尔对实体、属性与观念的定义为前提，方能论证唯一实体与无限属性。"
+  },
+  {
+    "source": "spinoza",
+    "target": "hobbes",
+    "kind": "influences",
+    "reason": "承霍布斯的机械论与对激情、权力的自然主义分析，用于情感与政治哲学。"
+  },
+  {
+    "source": "spinoza",
+    "target": "maimonides",
+    "kind": "refutes",
+    "reason": "《神学政治论》第七章批评迈蒙尼德以寓意解经调和理性与启示，转而主张按历史与语言读经。"
+  },
+  {
+    "source": "locke",
+    "target": "hobbes",
+    "kind": "influences",
+    "reason": "承霍布斯社会契约与自然状态进路，却以自然权利与同意改写为有限政府。"
+  },
+  {
+    "source": "locke",
+    "target": "descartes",
+    "kind": "refutes",
+    "reason": "《人类理解论》开篇驳斥笛卡尔天赋观念，主张一切观念皆源于感觉与反省。"
+  },
+  {
+    "source": "locke",
+    "target": "grotius",
+    "kind": "influences",
+    "reason": "承格劳秀斯自然法与财产理论，为生命、自由与财产的自然权利奠基。"
+  },
+  {
+    "source": "leibniz",
+    "target": "descartes",
+    "kind": "refutes",
+    "reason": "反驳笛卡尔以广延为实体与运动量守恒，代之以单子的力与知觉。"
+  },
+  {
+    "source": "leibniz",
+    "target": "spinoza",
+    "kind": "refutes",
+    "reason": "反对斯宾诺莎唯一实体与严格必然论，以无限多单子保全个体与偶然性。"
+  },
+  {
+    "source": "leibniz",
+    "target": "locke",
+    "kind": "refutes",
+    "reason": "《人类理智新论》逐段反驳洛克白板说，主张灵魂具有潜能的固有观念。"
+  },
+  {
+    "source": "leibniz",
+    "target": "hobbes",
+    "kind": "refutes",
+    "reason": "反对霍布斯机械唯物论，主张实在由能知觉的精神性单子而非物质微粒构成。"
+  },
+  {
+    "source": "malebranche",
+    "target": "descartes",
+    "kind": "influences",
+    "reason": "承笛卡尔心物二元与观念论，发展出偶因论与“在上帝中看见万物”的学说。"
+  },
+  {
+    "source": "malebranche",
+    "target": "augustine",
+    "kind": "influences",
+    "reason": "承奥古斯丁光照说，主张理智是在上帝之中看见永恒真理与观念。"
+  },
+  {
+    "source": "vico",
+    "target": "descartes",
+    "kind": "refutes",
+    "reason": "以“真理即创造”反驳笛卡尔清楚分明的观念，主张历史比自然更可确知。"
+  },
+  {
+    "source": "berkeley",
+    "target": "locke",
+    "kind": "influences",
+    "reason": "承洛克观念论与第一、第二性质区分，推向“存在即被感知”的非物质主义。"
+  },
+  {
+    "source": "berkeley",
+    "target": "malebranche",
+    "kind": "influences",
+    "reason": "承马勒伯朗士偶因论与在上帝中观看万物，以神的感知维系观念的持续存在。"
+  },
+  {
+    "source": "montesquieu",
+    "target": "locke",
+    "kind": "influences",
+    "reason": "在洛克分权论上增设独立的司法权，形成三权分立。"
+  },
+  {
+    "source": "montesquieu",
+    "target": "aristotle",
+    "kind": "influences",
+    "reason": "借亚里士多德的政体类型学，但以德性、荣誉、恐惧重新解释三种政体。"
+  },
+  {
+    "source": "voltaire",
+    "target": "locke",
+    "kind": "influences",
+    "reason": "借洛克经验主义引入英国哲学，批判天赋观念与法国体系的形而上学。"
+  },
+  {
+    "source": "voltaire",
+    "target": "leibniz",
+    "kind": "refutes",
+    "reason": "《老实人》借里斯本地震讽刺莱布尼茨“最好世界”神正论，驳斥盲目乐观。"
+  },
+  {
+    "source": "hume",
+    "target": "locke",
+    "kind": "influences",
+    "reason": "承洛克经验主义与观念起源论，推向对因果、实体与自我的更彻底怀疑。"
+  },
+  {
+    "source": "hume",
+    "target": "berkeley",
+    "kind": "influences",
+    "reason": "采纳贝克莱对抽象观念的批判，用于拆解普遍观念与几何学的抽象基础。"
+  },
+  {
+    "source": "hume",
+    "target": "hobbes",
+    "kind": "influences",
+    "reason": "承霍布斯对激情的自然主义分析，却以“理性是激情的奴隶”给出更彻底的情感主义。"
+  },
+  {
+    "source": "rousseau",
+    "target": "hobbes",
+    "kind": "refutes",
+    "reason": "反驳霍布斯自然状态即战争，主张自然人是自足而怜悯的，罪恶源于社会建制。"
+  },
+  {
+    "source": "rousseau",
+    "target": "locke",
+    "kind": "influences",
+    "reason": "承洛克社会契约与自然权利，却以公意与不可转让的主权改写契约论。"
+  },
+  {
+    "source": "rousseau",
+    "target": "machiavelli",
+    "kind": "influences",
+    "reason": "视《君主论》为共和主义的隐微之作，借以阐发公意与立法者的角色。"
+  },
+  {
+    "source": "diderot",
+    "target": "spinoza",
+    "kind": "influences",
+    "reason": "汲取斯宾诺莎自然主义与反目的因，发展出自己的一元论唯物主义。"
+  },
+  {
+    "source": "smith",
+    "target": "hume",
+    "kind": "influences",
+    "reason": "与休谟为友，承其情感主义道德哲学，以同情与公正旁观者解释道德判断。"
+  },
+  {
+    "source": "smith",
+    "target": "rousseau",
+    "kind": "influences",
+    "reason": "在关于文明与商业的争论中回应卢梭，以分工与市场为商业社会辩护。"
+  },
+  {
+    "source": "kant",
+    "target": "hume",
+    "kind": "synthesizes",
+    "reason": "接受休谟对因果必然性的怀疑，却以先验范畴与统觉重建经验的客观必然性。"
+  },
+  {
+    "source": "kant",
+    "target": "rousseau",
+    "kind": "influences",
+    "reason": "受卢梭启发，肯定普通人的道德尊严，使实践理性高于思辨并尊重人性。"
+  },
+  {
+    "source": "kant",
+    "target": "wolff",
+    "kind": "influences",
+    "reason": "受沃尔夫系统理性主义训练，后以其独断论形而上学为批判哲学的主要对象。"
+  },
+  {
+    "source": "kant",
+    "target": "leibniz",
+    "kind": "refutes",
+    "reason": "反驳莱布尼茨预定和谐与理性心理学，代之以先验范畴与现象物自体的区分。"
+  },
+  {
+    "source": "burke",
+    "target": "rousseau",
+    "kind": "refutes",
+    "reason": "《法国革命论》抨击卢梭式抽象人权与公意，主张传统、偏见与审慎优于理性设计。"
+  },
+  {
+    "source": "burke",
+    "target": "locke",
+    "kind": "influences",
+    "reason": "承洛克自然权利与同意传统，却以世代契约与传统智慧改写抽象权利。"
+  },
+  {
+    "source": "burke",
+    "target": "aristotle",
+    "kind": "influences",
+    "reason": "承亚里士多德以实践智慧与审慎为政治德性，反对几何式的政治设计。"
+  },
+  {
+    "source": "wollstonecraft",
+    "target": "rousseau",
+    "kind": "refutes",
+    "reason": "反驳卢梭在《爱弥儿》中把女性限于情感与家庭，主张两性同具理性与德性。"
+  },
+  {
+    "source": "wollstonecraft",
+    "target": "burke",
+    "kind": "refutes",
+    "reason": "《为男人权利辩护》率先回应柏克《法国革命论》，捍卫自然权利与共和原则。"
+  },
+  {
+    "source": "wollstonecraft",
+    "target": "locke",
+    "kind": "influences",
+    "reason": "承洛克自然权利与教育经验论，论证女性应平等受教并培养理性与德性。"
+  },
+  {
+    "source": "herder",
+    "target": "kant",
+    "kind": "refutes",
+    "reason": "反对康德以纯粹理性为普遍标准，主张理性内在于语言与各民族的具体文化。"
+  },
+  {
+    "source": "herder",
+    "target": "hamann",
+    "kind": "influences",
+    "reason": "承哈曼“语言即理性”，发展出语言塑造思想与文化的历史主义进路。"
+  },
+  {
+    "source": "hamann",
+    "target": "kant",
+    "kind": "refutes",
+    "reason": "以“纯粹理性之纯粹性的批判”攻击康德的先验批判，主张语言与信仰先于理性。"
+  },
+  {
+    "source": "hamann",
+    "target": "hume",
+    "kind": "influences",
+    "reason": "从休谟对因果与信念的分析中，得出信仰而非理性才是知识与行动的根据。"
+  },
+  {
+    "source": "wolff",
+    "target": "leibniz",
+    "kind": "influences",
+    "reason": "把莱布尼茨哲学系统化为教科书体系，奠定德国理性主义与本体论学科。"
+  },
+  {
+    "source": "fichte",
+    "target": "kant",
+    "kind": "presupposes",
+    "reason": "以康德先验统觉与物自体的区分为前提，取消物自体而把自我设定推向极致。"
+  },
+  {
+    "source": "schelling",
+    "target": "fichte",
+    "kind": "influences",
+    "reason": "承费希特知识学与自我设定，转向自然哲学以补足其纯粹主观的唯心主义。"
+  },
+  {
+    "source": "schelling",
+    "target": "spinoza",
+    "kind": "influences",
+    "reason": "承斯宾诺莎实体与自然的统一，提出自然即可见精神、精神即不可见自然。"
+  },
+  {
+    "source": "schelling",
+    "target": "kant",
+    "kind": "influences",
+    "reason": "承康德《判断力批判》的合目的性，以自然与艺术的合目的性展开自然哲学。"
+  },
+  {
+    "source": "hegel",
+    "target": "kant",
+    "kind": "influences",
+    "reason": "承康德先验哲学与自律，却以辩证法和绝对精神克服其物自体与形式主义。"
+  },
+  {
+    "source": "hegel",
+    "target": "fichte",
+    "kind": "influences",
+    "reason": "承费希特的自我设定活动，转化为绝对精神自我展开、自我认识的辩证过程。"
+  },
+  {
+    "source": "hegel",
+    "target": "schelling",
+    "kind": "refutes",
+    "reason": "《精神现象学》序言批评谢林同一哲学把绝对等同于“无差别的黑夜”，缺乏中介。"
+  },
+  {
+    "source": "hegel",
+    "target": "spinoza",
+    "kind": "influences",
+    "reason": "以斯宾诺莎实体为出发点，主张实体必须同时被理解为主体与自由。"
+  },
+  {
+    "source": "hegel",
+    "target": "aristotle",
+    "kind": "influences",
+    "reason": "承亚里士多德实体、潜能与现实、目的论，用于精神与伦理生活的自我实现。"
+  },
+  {
+    "source": "hegel",
+    "target": "rousseau",
+    "kind": "influences",
+    "reason": "承卢梭公意与自由观念，发展为伦理生活中国家实现具体自由的普遍意志。"
+  },
+  {
+    "source": "hegel",
+    "target": "holderlin",
+    "kind": "influences",
+    "reason": "与荷尔德林“判断与存在”的合一观念，共同酝酿绝对唯心主义的开端。"
+  },
+  {
+    "source": "holderlin",
+    "target": "fichte",
+    "kind": "influences",
+    "reason": "在耶拿受费希特讲学影响，由自我设定转向先于主客分裂的“存在”统一。"
+  },
+  {
+    "source": "holderlin",
+    "target": "spinoza",
+    "kind": "influences",
+    "reason": "以斯宾诺莎“一与全”的泛神论，启发其存在先于判断与自我意识的合一思想。"
+  },
+  {
+    "source": "schleiermacher",
+    "target": "spinoza",
+    "kind": "influences",
+    "reason": "将绝对依赖感与斯宾诺莎式无限相联系，把宗教界定为对无限的直观与情感。"
+  },
+  {
+    "source": "schleiermacher",
+    "target": "kant",
+    "kind": "influences",
+    "reason": "承康德对宗教在实践理性中的定位，却以情感与直观重新界定宗教的本质。"
+  },
+  {
+    "source": "schleiermacher",
+    "target": "plato",
+    "kind": "influences",
+    "reason": "作为柏拉图译者，以辩证法和爱欲观念塑造其神学与普遍解释学。"
+  },
+  {
+    "source": "schleiermacher",
+    "target": "herder",
+    "kind": "influences",
+    "reason": "承赫尔德关于语言与解释的思想，创立普遍解释学并强调移情的理解。"
+  },
+  {
+    "source": "erasmus",
+    "target": "plato",
+    "kind": "influences",
+    "reason": "以柏拉图德性教化观念改造基督教人文主义，主张学习古典以净化信仰。"
+  },
+  {
+    "source": "bruno",
+    "target": "plotinus",
+    "kind": "influences",
+    "reason": "承新柏拉图主义太一流溢与宇宙灵魂，发展为无限宇宙中的泛神论统一。"
+  },
+  {
+    "source": "hobbes",
+    "target": "lucretius",
+    "kind": "influences",
+    "reason": "承伊壁鸠鲁—卢克莱修原子唯物论，把心灵与欲望还原为物质的机械运动。"
+  },
+  {
+    "source": "pascal",
+    "target": "epictetus",
+    "kind": "influences",
+    "reason": "在《与萨西先生谈话》中借爱比克泰德论人的伟大与义务，对照蒙田暴露人的卑弱。"
+  },
+  {
+    "source": "vico",
+    "target": "grotius",
+    "kind": "influences",
+    "reason": "把格劳秀斯列为四种主要依凭之一，却将其理性自然法历史化，置于各民族共通感之中。"
+  },
+  {
+    "source": "voltaire",
+    "target": "rousseau",
+    "kind": "refutes",
+    "reason": "反驳卢梭对文明与科学的抨击，主张文明带来进步、自由与宽容。"
+  },
+  {
+    "source": "hume",
+    "target": "cicero",
+    "kind": "influences",
+    "reason": "效法西塞罗《论神性》的对话体，批判设计论论证并讨论自然宗教问题。"
+  },
+  {
+    "source": "rousseau",
+    "target": "plato",
+    "kind": "influences",
+    "reason": "承柏拉图《理想国》的立法与教化观念，以公意与立法者塑造道德的公民。"
+  },
+  {
+    "source": "diderot",
+    "target": "locke",
+    "kind": "influences",
+    "reason": "承洛克感觉论与经验主义，推动《百科全书》的经验知识纲领。"
+  },
+  {
+    "source": "herder",
+    "target": "rousseau",
+    "kind": "influences",
+    "reason": "承卢梭对自然与情感的推崇，发展为民族文化与历史的有机观念。"
+  },
+  {
+    "source": "fichte",
+    "target": "rousseau",
+    "kind": "influences",
+    "reason": "承卢梭的自由与教育思想，以国民教育与道德自律实现民族的复兴。"
+  },
+  {
+    "source": "schelling",
+    "target": "holderlin",
+    "kind": "influences",
+    "reason": "与荷尔德林在“存在”统一问题上的交流，共同塑造其自然与同一哲学。"
+  },
+  {
+    "source": "luther",
+    "target": "ockham",
+    "kind": "influences",
+    "reason": "受奥卡姆唯名论与上帝绝对意志影响，强调恩典的主权与唯独圣经权威。"
+  },
+  {
+    "source": "montesquieu",
+    "target": "hobbes",
+    "kind": "refutes",
+    "reason": "反驳霍布斯自然状态即战争的设定，主张人的自然状态首先是和平与相互交往。"
+  },
+  {
+    "source": "erasmus",
+    "target": "augustine",
+    "kind": "influences",
+    "reason": "援引奥古斯丁论自由意志与恩典协作，以反驳路德对意志自由的否定。"
+  },
+  {
+    "source": "leibniz",
+    "target": "suarez",
+    "kind": "influences",
+    "reason": "经德意志经院哲学课程间接承接苏亚雷斯的本质与存在学说，非直接称引。"
+  },
+  {
+    "source": "rousseau",
+    "target": "montesquieu",
+    "kind": "influences",
+    "reason": "承孟德斯鸠对法律与风土的关联分析，发展对社会不平等的历史批判。"
+  }
+]

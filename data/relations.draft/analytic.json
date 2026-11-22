@@ -1,0 +1,626 @@
+[
+  {
+    "source": "frege",
+    "target": "kant",
+    "kind": "refutes",
+    "reason": "以逻辑主义主张算术是分析的，反驳康德\"算术为先天综合判断\"之说。"
+  },
+  {
+    "source": "frege",
+    "target": "mill",
+    "kind": "refutes",
+    "reason": "在《算术基础》中驳斥密尔以经验抽象解释数，主张数由逻辑而非心理给出。"
+  },
+  {
+    "source": "russell",
+    "target": "frege",
+    "kind": "influences",
+    "reason": "承弗雷格的谓词逻辑，却以罗素悖论摧毁其逻辑主义体系。"
+  },
+  {
+    "source": "russell",
+    "target": "moore",
+    "kind": "influences",
+    "reason": "受摩尔反唯心论影响，共同领导对英国观念论的反叛。"
+  },
+  {
+    "source": "russell",
+    "target": "hume",
+    "kind": "influences",
+    "reason": "逻辑原子主义以亲知与感觉材料为知识基础，延续休谟的经验主义。"
+  },
+  {
+    "source": "moore",
+    "target": "mill",
+    "kind": "refutes",
+    "reason": "以\"自然主义谬误\"批评密尔把善混同于快乐，主张善是单纯不可定义的属性。"
+  },
+  {
+    "source": "whitehead",
+    "target": "plato",
+    "kind": "influences",
+    "reason": "称西方哲学皆柏拉图注脚，过程哲学承柏拉图的永恒对象与生成之分。"
+  },
+  {
+    "source": "wittgenstein",
+    "target": "frege",
+    "kind": "influences",
+    "reason": "早期《逻辑哲学论》承弗雷格涵义与指称及逻辑记法，构建图像理论。"
+  },
+  {
+    "source": "wittgenstein",
+    "target": "russell",
+    "kind": "influences",
+    "reason": "以罗素的逻辑原子主义为背景，图像理论为维特根斯坦自创。"
+  },
+  {
+    "source": "wittgenstein",
+    "target": "moore",
+    "kind": "influences",
+    "reason": "晚期《论确实性》以摩尔的常识命题为对象，改造为枢纽命题。"
+  },
+  {
+    "source": "ramsey",
+    "target": "wittgenstein",
+    "kind": "influences",
+    "reason": "协助翻译《逻辑哲学论》并劝维特根斯坦重返哲学，承其早期思路。"
+  },
+  {
+    "source": "ramsey",
+    "target": "peirce",
+    "kind": "influences",
+    "reason": "主观概率与真理冗余论承皮尔士的实用主义与可错论。"
+  },
+  {
+    "source": "ramsey",
+    "target": "russell",
+    "kind": "influences",
+    "reason": "简化并批评罗素的类型论与可归约公理，推进逻辑主义。"
+  },
+  {
+    "source": "carnap",
+    "target": "frege",
+    "kind": "influences",
+    "reason": "曾师从弗雷格，逻辑构造与形式句法承其逻辑主义理想。"
+  },
+  {
+    "source": "carnap",
+    "target": "wittgenstein",
+    "kind": "synthesizes",
+    "reason": "综合《逻辑哲学论》\"形而上学无意义\"之说与逻辑构造，形成逻辑实证主义。"
+  },
+  {
+    "source": "carnap",
+    "target": "russell",
+    "kind": "influences",
+    "reason": "承罗素的逻辑原子主义与理想语言构想，进行世界的逻辑构造。"
+  },
+  {
+    "source": "carnap",
+    "target": "kant",
+    "kind": "influences",
+    "reason": "把康德的分析/综合框架语言化，以框架相对的 analyticity 取代先天综合。"
+  },
+  {
+    "source": "ayer",
+    "target": "carnap",
+    "kind": "influences",
+    "reason": "将卡尔纳普与维也纳学派的证实原则引入英语世界。"
+  },
+  {
+    "source": "ayer",
+    "target": "hume",
+    "kind": "influences",
+    "reason": "情感主义与意义标准延续休谟\"是与应当\"及观念/事实二分。"
+  },
+  {
+    "source": "ayer",
+    "target": "wittgenstein",
+    "kind": "influences",
+    "reason": "把维特根斯坦\"可说/不可说\"界限改造为可证实性意义标准。"
+  },
+  {
+    "source": "ayer",
+    "target": "moore",
+    "kind": "influences",
+    "reason": "感觉材料论承摩尔与罗素的分析，但与证实原则分属不同论证层次。"
+  },
+  {
+    "source": "popper",
+    "target": "hume",
+    "kind": "presupposes",
+    "reason": "以休谟的归纳问题为前提，主张科学靠可证伪与猜想反驳而非归纳确证。"
+  },
+  {
+    "source": "popper",
+    "target": "carnap",
+    "kind": "refutes",
+    "reason": "以可证伪性反对卡尔纳普的归纳确证与证实原则，主张科学靠反驳。"
+  },
+  {
+    "source": "popper",
+    "target": "wittgenstein",
+    "kind": "refutes",
+    "reason": "批评维特根斯坦式日常语言哲学，并以可证伪性界定科学与非科学的分界，而非意义标准。"
+  },
+  {
+    "source": "popper",
+    "target": "plato",
+    "kind": "refutes",
+    "reason": "《开放社会》抨击柏拉图的理想国为极权主义的思想源头。"
+  },
+  {
+    "source": "ryle",
+    "target": "wittgenstein",
+    "kind": "influences",
+    "reason": "范畴错误分析承后期维特根斯坦的语言游戏与治疗式哲学。"
+  },
+  {
+    "source": "ryle",
+    "target": "descartes",
+    "kind": "refutes",
+    "reason": "以\"机器中的幽灵\"批判笛卡尔的心身二元论，斥为范畴错误。"
+  },
+  {
+    "source": "austin",
+    "target": "ayer",
+    "kind": "refutes",
+    "reason": "《感觉与可感物》逐条批驳艾耶尔的感觉材料理论。"
+  },
+  {
+    "source": "anscombe",
+    "target": "wittgenstein",
+    "kind": "influences",
+    "reason": "身为维特根斯坦学生与遗嘱执行人，《意向》承其后期哲学方法。"
+  },
+  {
+    "source": "anscombe",
+    "target": "aristotle",
+    "kind": "influences",
+    "reason": "《现代道德哲学》呼吁复兴亚里士多德的德性伦理。"
+  },
+  {
+    "source": "anscombe",
+    "target": "hume",
+    "kind": "presupposes",
+    "reason": "以休谟的是/应当区分为出发点，指出现代“应当”仍残留神命伦理的痕迹。"
+  },
+  {
+    "source": "quine",
+    "target": "carnap",
+    "kind": "refutes",
+    "reason": "以整体主义知识观取消分析命题与综合命题的二分，动摇逻辑实证主义的语言框架。"
+  },
+  {
+    "source": "quine",
+    "target": "hume",
+    "kind": "influences",
+    "reason": "自然化认识论承休谟的经验主义，把认识论归入心理学。"
+  },
+  {
+    "source": "quine",
+    "target": "kant",
+    "kind": "refutes",
+    "reason": "\"两个教条\"亦否定康德式的分析/综合与先天/经验界限。"
+  },
+  {
+    "source": "quine",
+    "target": "russell",
+    "kind": "influences",
+    "reason": "承罗素的谓词逻辑与摹状词方法，但本体论承诺是蒯因自己的量化判准。"
+  },
+  {
+    "source": "sellars",
+    "target": "carnap",
+    "kind": "refutes",
+    "reason": "以\"所与之神话\"批评卡尔纳普以观察所与为知识基础的还原论。"
+  },
+  {
+    "source": "sellars",
+    "target": "kant",
+    "kind": "influences",
+    "reason": "\"理由的空间\"与显见/科学图像承康德的规范性构想。"
+  },
+  {
+    "source": "davidson",
+    "target": "quine",
+    "kind": "influences",
+    "reason": "承蒯因的整体论与语义上行，发展真值条件意义理论与彻底解释。"
+  },
+  {
+    "source": "davidson",
+    "target": "kant",
+    "kind": "influences",
+    "reason": "以宽容原则与真理论述承康德式的先验论证进路。"
+  },
+  {
+    "source": "kuhn",
+    "target": "popper",
+    "kind": "refutes",
+    "reason": "以常规科学说明科学家通常不追求证伪，反驳波普尔的证伪主义。"
+  },
+  {
+    "source": "kuhn",
+    "target": "quine",
+    "kind": "influences",
+    "reason": "承蒯因的整体论，以范式整体与不可通约性说明理论选择。"
+  },
+  {
+    "source": "feyerabend",
+    "target": "popper",
+    "kind": "refutes",
+    "reason": "曾任波普尔学生，后以\"怎么都行\"反对其证伪主义的普遍方法。"
+  },
+  {
+    "source": "feyerabend",
+    "target": "kuhn",
+    "kind": "influences",
+    "reason": "承库恩的不可通约性与范式多元，推向认识论的无政府主义。"
+  },
+  {
+    "source": "feyerabend",
+    "target": "mill",
+    "kind": "influences",
+    "reason": "引密尔《论自由》为多元主义与自由辩护，反对方法的一元权威。"
+  },
+  {
+    "source": "rawls",
+    "target": "kant",
+    "kind": "synthesizes",
+    "reason": "把康德式自律与契约传统综合为无知之幕背后的建构主义正义论。"
+  },
+  {
+    "source": "rawls",
+    "target": "mill",
+    "kind": "refutes",
+    "reason": "以差别原则反对功利主义，强调功利主义忽视个人的分离性。"
+  },
+  {
+    "source": "rawls",
+    "target": "hume",
+    "kind": "presupposes",
+    "reason": "正义的环境（适度匮乏与相互冷淡）以休谟对正义客观条件的分析为前提。"
+  },
+  {
+    "source": "nozick",
+    "target": "rawls",
+    "kind": "refutes",
+    "reason": "以资格理论反对罗尔斯的差别原则，主张再分配侵犯个人权利。"
+  },
+  {
+    "source": "nozick",
+    "target": "locke",
+    "kind": "influences",
+    "reason": "资格理论继承洛克的劳动财产论与自然权利，捍卫最低限度国家。"
+  },
+  {
+    "source": "nozick",
+    "target": "kant",
+    "kind": "influences",
+    "reason": "以\"人是目的\"的康德式边界约束反对功利主义的牺牲。"
+  },
+  {
+    "source": "nozick",
+    "target": "mill",
+    "kind": "refutes",
+    "reason": "以\"效用怪物\"反对功利主义，主张权利优先于总体幸福。"
+  },
+  {
+    "source": "kripke",
+    "target": "wittgenstein",
+    "kind": "presupposes",
+    "reason": "以维特根斯坦的遵守规则悖论为前提，重构出怀疑论式悖论与怀疑论式解答。"
+  },
+  {
+    "source": "kripke",
+    "target": "frege",
+    "kind": "refutes",
+    "reason": "以严格指示词与因果指称论反驳弗雷格式描述主义的意义理论。"
+  },
+  {
+    "source": "kripke",
+    "target": "russell",
+    "kind": "refutes",
+    "reason": "反对罗素摹状词理论的描述主义，主张名称是严格指示词。"
+  },
+  {
+    "source": "kripke",
+    "target": "mill",
+    "kind": "influences",
+    "reason": "直接指称理论承密尔的专名\"直指\"说，反对描述主义。"
+  },
+  {
+    "source": "lewis",
+    "target": "hume",
+    "kind": "presupposes",
+    "reason": "休谟式随附以休谟否定必然联结为前提，世界是局域性质的马赛克。"
+  },
+  {
+    "source": "lewis",
+    "target": "quine",
+    "kind": "influences",
+    "reason": "以蒯因式的本体论承诺与量化方法为可能世界实在论辩护。"
+  },
+  {
+    "source": "lewis",
+    "target": "kripke",
+    "kind": "refutes",
+    "reason": "以对应者理论取代克里普克的跨界同一性，否认个体跨界存在。"
+  },
+  {
+    "source": "putnam",
+    "target": "kripke",
+    "kind": "influences",
+    "reason": "承克里普克对描述主义的批评，以孪生地球论证确立语义外在论。"
+  },
+  {
+    "source": "putnam",
+    "target": "quine",
+    "kind": "influences",
+    "reason": "承蒯因对意义与分析的怀疑，走向语义外在论与整体论。"
+  },
+  {
+    "source": "putnam",
+    "target": "wittgenstein",
+    "kind": "influences",
+    "reason": "\"意义即用法\"承后期维特根斯坦，反对意义的心理博物馆图景。"
+  },
+  {
+    "source": "putnam",
+    "target": "james",
+    "kind": "influences",
+    "reason": "后期实用主义转向承詹姆斯的直接实在论与事实/价值纠缠。"
+  },
+  {
+    "source": "putnam",
+    "target": "dewey",
+    "kind": "influences",
+    "reason": "内部实在论与实用主义转向承杜威的工具主义与探究。"
+  },
+  {
+    "source": "putnam",
+    "target": "kant",
+    "kind": "influences",
+    "reason": "内部实在论承康德的现象/物自体与心灵—世界关系。"
+  },
+  {
+    "source": "rorty",
+    "target": "dewey",
+    "kind": "synthesizes",
+    "reason": "以杜威实用主义为典范，综合塞拉斯与戴维森的反基础主义成新实用主义。"
+  },
+  {
+    "source": "rorty",
+    "target": "james",
+    "kind": "influences",
+    "reason": "承詹姆斯的实用主义真理观，主张真理是我们赞许为善者。"
+  },
+  {
+    "source": "rorty",
+    "target": "quine",
+    "kind": "influences",
+    "reason": "借蒯因对分析/综合的否定，反对作为自然之镜的表象主义。"
+  },
+  {
+    "source": "rorty",
+    "target": "sellars",
+    "kind": "influences",
+    "reason": "借塞拉斯\"所与之神话\"与科学图像，解构认识论的基础主义。"
+  },
+  {
+    "source": "rorty",
+    "target": "davidson",
+    "kind": "influences",
+    "reason": "借戴维森对图式/内容二元论的批判，放弃表象主义。"
+  },
+  {
+    "source": "rorty",
+    "target": "wittgenstein",
+    "kind": "influences",
+    "reason": "借后期维特根斯坦的语言游戏，放弃语言是心灵之镜的图景。"
+  },
+  {
+    "source": "macintyre",
+    "target": "aristotle",
+    "kind": "influences",
+    "reason": "《追寻美德》复兴亚里士多德的德性、实践与目的论伦理学。"
+  },
+  {
+    "source": "macintyre",
+    "target": "kant",
+    "kind": "refutes",
+    "reason": "批评康德式启蒙道德导致道德话语的碎片化与情感主义。"
+  },
+  {
+    "source": "macintyre",
+    "target": "hume",
+    "kind": "refutes",
+    "reason": "视情感主义为启蒙道德计划的破产，批判休谟式情感论的论证失败。"
+  },
+  {
+    "source": "williams",
+    "target": "hume",
+    "kind": "presupposes",
+    "reason": "内在理由论以休谟关于动机与激情优先的洞见为前提。"
+  },
+  {
+    "source": "williams",
+    "target": "kant",
+    "kind": "refutes",
+    "reason": "以\"道德运气\"与人格完整性批评康德式道德的无条件要求。"
+  },
+  {
+    "source": "williams",
+    "target": "mill",
+    "kind": "refutes",
+    "reason": "批评功利主义忽视人格完整性与消极责任，以根本计划对抗总量计算。"
+  },
+  {
+    "source": "williams",
+    "target": "aristotle",
+    "kind": "influences",
+    "reason": "主张伦理学需诉诸希腊思想与厚概念，恢复德性而非规则。"
+  },
+  {
+    "source": "parfit",
+    "target": "hume",
+    "kind": "influences",
+    "reason": "以心理连续性的束理论论人格同一性，承休谟的自我束论。"
+  },
+  {
+    "source": "parfit",
+    "target": "locke",
+    "kind": "influences",
+    "reason": "以心理连续性论承洛克以记忆界定人格同一性的传统。"
+  },
+  {
+    "source": "parfit",
+    "target": "kant",
+    "kind": "synthesizes",
+    "reason": "论证康德主义、契约论与后果主义可趋同于同一最高原则。"
+  },
+  {
+    "source": "parfit",
+    "target": "sidgwick",
+    "kind": "influences",
+    "reason": "承西季威克《伦理学方法》的客观理由与人口伦理问题。"
+  },
+  {
+    "source": "singer",
+    "target": "mill",
+    "kind": "influences",
+    "reason": "偏好功利主义承密尔与边沁的功利主义，扩展至动物与远方穷人。"
+  },
+  {
+    "source": "singer",
+    "target": "bentham",
+    "kind": "influences",
+    "reason": "《动物解放》承边沁\"它们能感受痛苦吗\"的功利主义动物观。"
+  },
+  {
+    "source": "nagel",
+    "target": "descartes",
+    "kind": "influences",
+    "reason": "\"成为一只蝙蝠\"延续笛卡尔的心身问题与意识的主观特征。"
+  },
+  {
+    "source": "nagel",
+    "target": "kant",
+    "kind": "influences",
+    "reason": "客观性与\"无处之见\"承康德的超验立场与物自体问题。"
+  },
+  {
+    "source": "nagel",
+    "target": "williams",
+    "kind": "influences",
+    "reason": "与威廉斯共同提出\"道德运气\"，质疑道德评价的控制条件。"
+  },
+  {
+    "source": "searle",
+    "target": "austin",
+    "kind": "influences",
+    "reason": "发展奥斯汀的言语行为理论，系统化为施事行为与意向性。"
+  },
+  {
+    "source": "searle",
+    "target": "brentano",
+    "kind": "influences",
+    "reason": "承布伦塔诺的意向性学说，主张心灵状态指向对象。"
+  },
+  {
+    "source": "searle",
+    "target": "wittgenstein",
+    "kind": "influences",
+    "reason": "承后期维特根斯坦的用法与规则思想，与奥斯汀一道发展言语行为论。"
+  },
+  {
+    "source": "dennett",
+    "target": "ryle",
+    "kind": "influences",
+    "reason": "曾在牛津师从赖尔，承范畴错误与行为主义倾向分析心灵。"
+  },
+  {
+    "source": "dennett",
+    "target": "quine",
+    "kind": "influences",
+    "reason": "自然主义与意向立场承蒯因的翻译不确定性对意向语汇的态度。"
+  },
+  {
+    "source": "dennett",
+    "target": "searle",
+    "kind": "refutes",
+    "reason": "以多重草稿模型反驳塞尔中文屋与意识的不可还原性。"
+  },
+  {
+    "source": "dennett",
+    "target": "descartes",
+    "kind": "refutes",
+    "reason": "反对笛卡尔剧场式的意识中心，主张意识是分布式多重草稿。"
+  },
+  {
+    "source": "chalmers",
+    "target": "nagel",
+    "kind": "presupposes",
+    "reason": "难问题以内格尔\"成为某物是什么样子\"的主观特征为前提。"
+  },
+  {
+    "source": "chalmers",
+    "target": "descartes",
+    "kind": "influences",
+    "reason": "以可设想性与解释鸿沟延续笛卡尔的心身问题。"
+  },
+  {
+    "source": "chalmers",
+    "target": "kripke",
+    "kind": "influences",
+    "reason": "借克里普克的后天必然与可设想性论证意识的非物理性。"
+  },
+  {
+    "source": "chalmers",
+    "target": "lewis",
+    "kind": "refutes",
+    "reason": "以僵尸论证反对刘易斯式物理主义对意识的功能化还原。"
+  },
+  {
+    "source": "chalmers",
+    "target": "dennett",
+    "kind": "refutes",
+    "reason": "以难问题反对丹尼特多重草稿模型对现象的消除式说明。"
+  },
+  {
+    "source": "nussbaum",
+    "target": "aristotle",
+    "kind": "influences",
+    "reason": "可行能力进路承亚里士多德的德性论与人类繁荣。"
+  },
+  {
+    "source": "nussbaum",
+    "target": "plato",
+    "kind": "influences",
+    "reason": "在《善的脆弱性》中与柏拉图对话，借其善与爱欲分析反思运气，但主要资源来自亚里士多德与悲剧。"
+  },
+  {
+    "source": "nussbaum",
+    "target": "williams",
+    "kind": "influences",
+    "reason": "承威廉斯的\"道德运气\"与对伦理理论的批评，重视脆弱性。"
+  },
+  {
+    "source": "taylor",
+    "target": "descartes",
+    "kind": "refutes",
+    "reason": "批评笛卡尔以来\"点状自我\"与分解式理性的原子个人主义。"
+  },
+  {
+    "source": "dewey",
+    "target": "james",
+    "kind": "influences",
+    "reason": "承詹姆斯的彻底经验主义与实用主义真理观，发展为工具主义。"
+  },
+  {
+    "source": "dewey",
+    "target": "peirce",
+    "kind": "influences",
+    "reason": "承皮尔士的实用主义准则与可错论，提出探究与问题解决的认识论。"
+  }
+]

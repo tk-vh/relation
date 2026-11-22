@@ -1,0 +1,920 @@
+[
+  {
+    "source": "husserl",
+    "target": "brentano",
+    "kind": "influences",
+    "reason": "继承并改造布伦塔诺的意向性学说，作为现象学描述意识的出发点。"
+  },
+  {
+    "source": "husserl",
+    "target": "descartes",
+    "kind": "influences",
+    "reason": "《笛卡尔式的沉思》重演笛卡尔的怀疑与自我，改以意向性奠基先验现象学。"
+  },
+  {
+    "source": "husserl",
+    "target": "kant",
+    "kind": "influences",
+    "reason": "以本质直观与意向性分析改造康德的先验哲学。"
+  },
+  {
+    "source": "scheler",
+    "target": "husserl",
+    "kind": "influences",
+    "reason": "把胡塞尔的现象学方法应用于情感与价值，主张价值在感受中被给予。"
+  },
+  {
+    "source": "scheler",
+    "target": "kant",
+    "kind": "refutes",
+    "reason": "《形式主义》以质料价值伦理学反对康德伦理学的形式主义。"
+  },
+  {
+    "source": "heidegger",
+    "target": "husserl",
+    "kind": "influences",
+    "reason": "把现象学从意识分析转向存在问题，改造为解释学的现象学。"
+  },
+  {
+    "source": "heidegger",
+    "target": "brentano",
+    "kind": "influences",
+    "reason": "早年读布伦塔诺论亚里士多德\"存在\"的多义，激起对存在意义的追问。"
+  },
+  {
+    "source": "heidegger",
+    "target": "kant",
+    "kind": "influences",
+    "reason": "《康德与形而上学问题》把先验图型论读作此在时间性的先声。"
+  },
+  {
+    "source": "heidegger",
+    "target": "hegel",
+    "kind": "refutes",
+    "reason": "批评黑格尔把存在等同无规定的直接性，仍囿于存在的遗忘。"
+  },
+  {
+    "source": "heidegger",
+    "target": "nietzsche",
+    "kind": "influences",
+    "reason": "把尼采判为最后一位形而上学家，纳入存在之遗忘的历史。"
+  },
+  {
+    "source": "heidegger",
+    "target": "dilthey",
+    "kind": "influences",
+    "reason": "承狄尔泰的生命体验与历史性，转化为此在的历史性与操心。"
+  },
+  {
+    "source": "heidegger",
+    "target": "kierkegaard",
+    "kind": "influences",
+    "reason": "借克尔凯郭尔的生存与焦虑，落实为此在的向死存在。"
+  },
+  {
+    "source": "heidegger",
+    "target": "holderlin",
+    "kind": "influences",
+    "reason": "后期以荷尔德林的诗为存在之思与语言的家园。"
+  },
+  {
+    "source": "jaspers",
+    "target": "kierkegaard",
+    "kind": "influences",
+    "reason": "承克尔凯郭尔的生存概念，以临界境况把握存在的边界。"
+  },
+  {
+    "source": "jaspers",
+    "target": "kant",
+    "kind": "influences",
+    "reason": "承康德的界限意识，把\"大全\"作为不可对象化的存在视域。"
+  },
+  {
+    "source": "marcel",
+    "target": "kierkegaard",
+    "kind": "influences",
+    "reason": "承克尔凯郭尔的生存哲学，发展基督教存在主义的在场与希望。"
+  },
+  {
+    "source": "berdyaev",
+    "target": "dostoevsky",
+    "kind": "influences",
+    "reason": "深受陀思妥耶夫斯基自由与精神世界的启发，发展人格主义。"
+  },
+  {
+    "source": "berdyaev",
+    "target": "marx",
+    "kind": "refutes",
+    "reason": "早年马克思主义者，后拒斥经济决定论与历史唯物主义。"
+  },
+  {
+    "source": "ortega",
+    "target": "husserl",
+    "kind": "influences",
+    "reason": "受胡塞尔《逻辑研究》《观念》影响，把现象学改造为生命理性的哲学。"
+  },
+  {
+    "source": "ortega",
+    "target": "unamuno",
+    "kind": "influences",
+    "reason": "承乌纳穆诺对具体生命的关切，提出\"我是我与我的境况\"。"
+  },
+  {
+    "source": "unamuno",
+    "target": "kierkegaard",
+    "kind": "influences",
+    "reason": "以克尔凯郭尔的信仰与绝望，书写对不朽的悲剧性渴望。"
+  },
+  {
+    "source": "sartre",
+    "target": "husserl",
+    "kind": "influences",
+    "reason": "承胡塞尔的意向性与自我，转为主张意识的虚无化与绝对自由。"
+  },
+  {
+    "source": "sartre",
+    "target": "heidegger",
+    "kind": "influences",
+    "reason": "《存在与虚无》承此在的生存论，改造为自为存在与自在存在。"
+  },
+  {
+    "source": "sartre",
+    "target": "hegel",
+    "kind": "influences",
+    "reason": "借主奴辩证法与他者，阐发自为存在与他人的注视。"
+  },
+  {
+    "source": "sartre",
+    "target": "marx",
+    "kind": "synthesizes",
+    "reason": "《辩证理性批判》以存在主义补充马克思主义的历史总体化。"
+  },
+  {
+    "source": "beauvoir",
+    "target": "sartre",
+    "kind": "presupposes",
+    "reason": "\"女人是变成的\"以萨特的存在先于本质为前提。"
+  },
+  {
+    "source": "beauvoir",
+    "target": "hegel",
+    "kind": "influences",
+    "reason": "承黑格尔主奴辩证法，论述女性如何被构成为他者。"
+  },
+  {
+    "source": "camus",
+    "target": "nietzsche",
+    "kind": "influences",
+    "reason": "承尼采对虚无与意义的诊断，发展荒诞与反抗。"
+  },
+  {
+    "source": "camus",
+    "target": "kierkegaard",
+    "kind": "refutes",
+    "reason": "《西西弗神话》拒斥克尔凯郭尔以信仰飞跃回避荒诞。"
+  },
+  {
+    "source": "camus",
+    "target": "marx",
+    "kind": "refutes",
+    "reason": "《反抗者》反对以历史必然性为革命暴力与谋杀辩护。"
+  },
+  {
+    "source": "merleau",
+    "target": "husserl",
+    "kind": "influences",
+    "reason": "承胡塞尔的生活世界与身体，发展具身知觉的现象学。"
+  },
+  {
+    "source": "merleau",
+    "target": "heidegger",
+    "kind": "influences",
+    "reason": "承此在的在世存在，转化为身体主体对世界的原初介入。"
+  },
+  {
+    "source": "merleau",
+    "target": "descartes",
+    "kind": "refutes",
+    "reason": "以身体主体反对笛卡尔的心身二元论与\"我思\"的优先性。"
+  },
+  {
+    "source": "merleau",
+    "target": "sartre",
+    "kind": "refutes",
+    "reason": "批评萨特自为与自在的二元对立，以身体的模糊性取代绝对自由。"
+  },
+  {
+    "source": "levinas",
+    "target": "husserl",
+    "kind": "influences",
+    "reason": "曾师从胡塞尔，承意向性却以他者的面容颠覆先验自我。"
+  },
+  {
+    "source": "levinas",
+    "target": "heidegger",
+    "kind": "refutes",
+    "reason": "批评海德格尔以存在论压制他者，主张伦理学作为第一哲学。"
+  },
+  {
+    "source": "levinas",
+    "target": "descartes",
+    "kind": "influences",
+    "reason": "借笛卡尔的无限观念，论证他者面容打破自我的总体化。"
+  },
+  {
+    "source": "levinas",
+    "target": "hegel",
+    "kind": "refutes",
+    "reason": "《总体与无限》反对黑格尔的总体化，主张无限超越总体。"
+  },
+  {
+    "source": "gadamer",
+    "target": "heidegger",
+    "kind": "influences",
+    "reason": "承海德格尔的解释学循环与时间性，发展哲学解释学。"
+  },
+  {
+    "source": "gadamer",
+    "target": "dilthey",
+    "kind": "influences",
+    "reason": "承狄尔泰对历史性的理解，改造为效果历史意识。"
+  },
+  {
+    "source": "gadamer",
+    "target": "hegel",
+    "kind": "influences",
+    "reason": "借鉴黑格尔的辩证法与历史，阐发视域融合。"
+  },
+  {
+    "source": "ricoeur",
+    "target": "husserl",
+    "kind": "influences",
+    "reason": "以现象学为出发点，经解释学的迂回发展反思哲学。"
+  },
+  {
+    "source": "ricoeur",
+    "target": "heidegger",
+    "kind": "influences",
+    "reason": "承海德格尔存在论的解释学，但强调文本迂回的路径。"
+  },
+  {
+    "source": "ricoeur",
+    "target": "freud",
+    "kind": "synthesizes",
+    "reason": "《弗洛伊德与哲学》把弗洛伊德读作怀疑的解释学，与现象学综合。"
+  },
+  {
+    "source": "ricoeur",
+    "target": "gadamer",
+    "kind": "influences",
+    "reason": "承伽达默尔的视域融合，发展叙事与隐喻的解释学。"
+  },
+  {
+    "source": "ricoeur",
+    "target": "marx",
+    "kind": "influences",
+    "reason": "以解释学重读马克思，将其与尼采、弗洛伊德并列为怀疑的解释学大师。"
+  },
+  {
+    "source": "weil",
+    "target": "plato",
+    "kind": "influences",
+    "reason": "以柏拉图的善与灵魂上升，阐发\"注意\"与去创造。"
+  },
+  {
+    "source": "weil",
+    "target": "marx",
+    "kind": "refutes",
+    "reason": "批评马克思主义的压迫观与历史决定论，转向义务与扎根。"
+  },
+  {
+    "source": "bataille",
+    "target": "nietzsche",
+    "kind": "influences",
+    "reason": "以尼采的上帝之死与耗费，发展越界与内在经验。"
+  },
+  {
+    "source": "bataille",
+    "target": "hegel",
+    "kind": "influences",
+    "reason": "经科耶夫解读的黑格尔否定性，发展耗费与主权。"
+  },
+  {
+    "source": "bataille",
+    "target": "freud",
+    "kind": "influences",
+    "reason": "借弗洛伊德的死亡驱力，论述色情与禁忌的越界。"
+  },
+  {
+    "source": "cioran",
+    "target": "nietzsche",
+    "kind": "influences",
+    "reason": "承尼采对虚无与衰落的洞见，发展其悲观格言。"
+  },
+  {
+    "source": "cioran",
+    "target": "schopenhauer",
+    "kind": "influences",
+    "reason": "承叔本华的悲观主义与意志苦难，写作清醒的绝望。"
+  },
+  {
+    "source": "girard",
+    "target": "nietzsche",
+    "kind": "refutes",
+    "reason": "反对尼采对基督教的怨恨诊断，主张福音揭示替罪羊机制。"
+  },
+  {
+    "source": "girard",
+    "target": "freud",
+    "kind": "refutes",
+    "reason": "以模仿欲望与替罪羊机制取代弗洛伊德的俄狄浦斯情结。"
+  },
+  {
+    "source": "girard",
+    "target": "dostoevsky",
+    "kind": "influences",
+    "reason": "以陀思妥耶夫斯基的小说为模仿欲望的典范。"
+  },
+  {
+    "source": "vasconcelos",
+    "target": "bergson",
+    "kind": "influences",
+    "reason": "借柏格森的生命冲动与绵延，构建\"宇宙种族\"的审美形而上学。"
+  },
+  {
+    "source": "paz",
+    "target": "ortega",
+    "kind": "influences",
+    "reason": "承奥尔特加\"我是我与我的境况\"，反思墨西哥身份与孤独。"
+  },
+  {
+    "source": "benjamin",
+    "target": "marx",
+    "kind": "synthesizes",
+    "reason": "以历史唯物主义结合弥赛亚救赎，写成《历史哲学论纲》。"
+  },
+  {
+    "source": "benjamin",
+    "target": "lukacs",
+    "kind": "influences",
+    "reason": "承卢卡奇的物化概念，发展灵晕丧失与经验的贫乏。"
+  },
+  {
+    "source": "horkheimer",
+    "target": "marx",
+    "kind": "influences",
+    "reason": "承马克思的批判，界定批判理论区别于传统理论。"
+  },
+  {
+    "source": "horkheimer",
+    "target": "freud",
+    "kind": "influences",
+    "reason": "把弗洛伊德纳入社会批判，解释权威人格与压抑。"
+  },
+  {
+    "source": "adorno",
+    "target": "hegel",
+    "kind": "influences",
+    "reason": "把黑格尔的辩证法改写为否定的辩证法，拒斥概念同一化。"
+  },
+  {
+    "source": "adorno",
+    "target": "marx",
+    "kind": "influences",
+    "reason": "承马克思的商品拜物教，发展文化工业与交换价值批判。"
+  },
+  {
+    "source": "adorno",
+    "target": "nietzsche",
+    "kind": "influences",
+    "reason": "承尼采对启蒙与道德的谱系诊断，深化启蒙辩证法。"
+  },
+  {
+    "source": "adorno",
+    "target": "freud",
+    "kind": "influences",
+    "reason": "借弗洛伊德的压抑与自恋，分析法西斯主义人格。"
+  },
+  {
+    "source": "adorno",
+    "target": "kant",
+    "kind": "influences",
+    "reason": "承康德判断力批判，阐发审美自律与否定性。"
+  },
+  {
+    "source": "marcuse",
+    "target": "heidegger",
+    "kind": "influences",
+    "reason": "早年师从海德格尔，把此在的历史性引入马克思主义。"
+  },
+  {
+    "source": "marcuse",
+    "target": "marx",
+    "kind": "influences",
+    "reason": "承马克思的异化，发展单向度社会与压抑性去升华。"
+  },
+  {
+    "source": "marcuse",
+    "target": "freud",
+    "kind": "synthesizes",
+    "reason": "《爱欲与文明》以弗洛伊德的本能理论与马克思的解放综合。"
+  },
+  {
+    "source": "habermas",
+    "target": "marx",
+    "kind": "influences",
+    "reason": "承马克思的意识形态批判，重构为交往理性与系统/生活世界。"
+  },
+  {
+    "source": "habermas",
+    "target": "kant",
+    "kind": "influences",
+    "reason": "承康德的启蒙与普遍主义，发展为话语伦理。"
+  },
+  {
+    "source": "habermas",
+    "target": "adorno",
+    "kind": "refutes",
+    "reason": "批评否定辩证法与工具理性批判陷入绝境，以交往理性重建启蒙。"
+  },
+  {
+    "source": "habermas",
+    "target": "husserl",
+    "kind": "influences",
+    "reason": "借胡塞尔的生活世界，发展为系统与生活世界的二元论。"
+  },
+  {
+    "source": "habermas",
+    "target": "derrida",
+    "kind": "refutes",
+    "reason": "《现代性的哲学话语》批评德里达解构理性的普遍基础。"
+  },
+  {
+    "source": "gramsci",
+    "target": "marx",
+    "kind": "influences",
+    "reason": "承马克思的上层建筑理论，发展文化霸权与阵地战。"
+  },
+  {
+    "source": "lukacs",
+    "target": "marx",
+    "kind": "influences",
+    "reason": "承马克思的异化与商品分析，发展物化与总体性。"
+  },
+  {
+    "source": "lukacs",
+    "target": "hegel",
+    "kind": "influences",
+    "reason": "承黑格尔的辩证法与总体性，发展阶级意识。"
+  },
+  {
+    "source": "freud",
+    "target": "schopenhauer",
+    "kind": "influences",
+    "reason": "意志形而上学与驱力学的亲缘；弗洛伊德自称未细读叔本华。"
+  },
+  {
+    "source": "freud",
+    "target": "nietzsche",
+    "kind": "influences",
+    "reason": "承认尼采先见地触及无意识、压抑与怨恨的机制。"
+  },
+  {
+    "source": "lacan",
+    "target": "freud",
+    "kind": "influences",
+    "reason": "以\"回到弗洛伊德\"为口号，重读无意识与驱力。"
+  },
+  {
+    "source": "lacan",
+    "target": "levistrauss",
+    "kind": "influences",
+    "reason": "借列维-斯特劳斯的结构人类学，并经索绪尔与雅各布森的语言学，重构无意识如语言般被结构。"
+  },
+  {
+    "source": "lacan",
+    "target": "hegel",
+    "kind": "influences",
+    "reason": "经科耶夫借黑格尔的主奴辩证法，发展镜像阶段与承认。"
+  },
+  {
+    "source": "levistrauss",
+    "target": "marx",
+    "kind": "influences",
+    "reason": "受马克思社会理论影响，但结构方法主要取自索绪尔与雅各布森的语言学。"
+  },
+  {
+    "source": "levistrauss",
+    "target": "kant",
+    "kind": "influences",
+    "reason": "承康德的先验范畴，以二元对立组织心灵结构。"
+  },
+  {
+    "source": "levistrauss",
+    "target": "sartre",
+    "kind": "refutes",
+    "reason": "《野性的思维》末章批评萨特的历史主义，以结构对抗历史。"
+  },
+  {
+    "source": "althusser",
+    "target": "marx",
+    "kind": "influences",
+    "reason": "以症候阅读重构马克思，主张认识论断裂与理论上的反人道主义。"
+  },
+  {
+    "source": "althusser",
+    "target": "lacan",
+    "kind": "influences",
+    "reason": "借拉康的镜像阶段与象征秩序，发展意识形态的询唤。"
+  },
+  {
+    "source": "althusser",
+    "target": "hegel",
+    "kind": "refutes",
+    "reason": "主张马克思与黑格尔之间断裂，反对黑格尔式总体性。"
+  },
+  {
+    "source": "althusser",
+    "target": "levistrauss",
+    "kind": "influences",
+    "reason": "借结构主义的无主体结构，反人道主义地解读马克思。"
+  },
+  {
+    "source": "foucault",
+    "target": "nietzsche",
+    "kind": "influences",
+    "reason": "承尼采的谱系学与权力，发展权力/知识与规训。"
+  },
+  {
+    "source": "foucault",
+    "target": "heidegger",
+    "kind": "influences",
+    "reason": "承认海德格尔是根本影响，承其存在历史与语言。"
+  },
+  {
+    "source": "foucault",
+    "target": "kant",
+    "kind": "influences",
+    "reason": "承\"何谓启蒙\"的问题，发展对现在的批判本体论。"
+  },
+  {
+    "source": "foucault",
+    "target": "bataille",
+    "kind": "influences",
+    "reason": "承巴塔耶的越界与耗费，论述界限经验与主体之死。"
+  },
+  {
+    "source": "foucault",
+    "target": "marx",
+    "kind": "refutes",
+    "reason": "以权力的分散性反对经济决定论与阶级一元论。"
+  },
+  {
+    "source": "deleuze",
+    "target": "nietzsche",
+    "kind": "influences",
+    "reason": "《尼采与哲学》以权力意志与永恒轮回发展差异哲学。"
+  },
+  {
+    "source": "deleuze",
+    "target": "bergson",
+    "kind": "influences",
+    "reason": "《柏格森主义》以绵延与虚拟发展差异与生成。"
+  },
+  {
+    "source": "deleuze",
+    "target": "spinoza",
+    "kind": "influences",
+    "reason": "借斯宾诺莎的内在性与欲望，发展内在性平面。"
+  },
+  {
+    "source": "deleuze",
+    "target": "kant",
+    "kind": "refutes",
+    "reason": "《差异与重复》批评康德的表象统一，以差异取代同一。"
+  },
+  {
+    "source": "deleuze",
+    "target": "hegel",
+    "kind": "refutes",
+    "reason": "以尼采的肯定差异反对黑格尔的否定辩证法。"
+  },
+  {
+    "source": "guattari",
+    "target": "lacan",
+    "kind": "refutes",
+    "reason": "受拉康分析训练，后以分裂分析反对俄狄浦斯与阉割。"
+  },
+  {
+    "source": "guattari",
+    "target": "freud",
+    "kind": "refutes",
+    "reason": "以欲望机器与分裂分析反对弗洛伊德的俄狄浦斯化。"
+  },
+  {
+    "source": "derrida",
+    "target": "heidegger",
+    "kind": "influences",
+    "reason": "把此在与存在论差异改写为痕迹与延异，解构在场形而上学。"
+  },
+  {
+    "source": "derrida",
+    "target": "husserl",
+    "kind": "influences",
+    "reason": "承胡塞尔的书写与观念性，揭示其时间性的延异悖论。"
+  },
+  {
+    "source": "derrida",
+    "target": "levistrauss",
+    "kind": "influences",
+    "reason": "承结构主义的差异原则，以延异解构能指/所指的稳定。"
+  },
+  {
+    "source": "derrida",
+    "target": "hegel",
+    "kind": "refutes",
+    "reason": "批评黑格尔的扬弃与总体化，以延异推迟意义的终结。"
+  },
+  {
+    "source": "derrida",
+    "target": "marx",
+    "kind": "influences",
+    "reason": "《马克思的幽灵》承马克思的批判，发展为幽灵学。"
+  },
+  {
+    "source": "derrida",
+    "target": "freud",
+    "kind": "influences",
+    "reason": "借弗洛伊德论书写的痕迹与延宕，发展延异概念。"
+  },
+  {
+    "source": "derrida",
+    "target": "levinas",
+    "kind": "influences",
+    "reason": "承列维纳斯的他者与伦理，论述对他者的责任与好客。"
+  },
+  {
+    "source": "lyotard",
+    "target": "kant",
+    "kind": "influences",
+    "reason": "承康德的崇高与判断力，发展后现代的崇高与歧异。"
+  },
+  {
+    "source": "lyotard",
+    "target": "wittgenstein",
+    "kind": "influences",
+    "reason": "借语言游戏概念，发展歧异与不可通约的短语。"
+  },
+  {
+    "source": "lyotard",
+    "target": "marx",
+    "kind": "refutes",
+    "reason": "《后现代状况》以对元叙事的怀疑，拒斥解放的宏大叙事。"
+  },
+  {
+    "source": "baudrillard",
+    "target": "marx",
+    "kind": "refutes",
+    "reason": "《生产之镜》抨击马克思的使用价值与历史唯物主义，以符号交换取代生产中心论。"
+  },
+  {
+    "source": "baudrillard",
+    "target": "levistrauss",
+    "kind": "influences",
+    "reason": "承结构主义的符号系统，发展拟像与符号交换。"
+  },
+  {
+    "source": "baudrillard",
+    "target": "bataille",
+    "kind": "influences",
+    "reason": "借巴塔耶的耗费与象征交换，发展符号交换与诱惑。"
+  },
+  {
+    "source": "baudrillard",
+    "target": "foucault",
+    "kind": "refutes",
+    "reason": "《忘却福柯》批评其权力与欲望仍停留于生产主义。"
+  },
+  {
+    "source": "badiou",
+    "target": "hegel",
+    "kind": "refutes",
+    "reason": "以事件与集合论重述一与多，拒斥黑格尔的辩证法与总体性。"
+  },
+  {
+    "source": "badiou",
+    "target": "marx",
+    "kind": "influences",
+    "reason": "承马克思的革命政治，主张真理程序的政治与事件。"
+  },
+  {
+    "source": "badiou",
+    "target": "lacan",
+    "kind": "influences",
+    "reason": "借拉康的实在界与主体，发展真理与事件的本体论。"
+  },
+  {
+    "source": "badiou",
+    "target": "deleuze",
+    "kind": "refutes",
+    "reason": "批评德勒兹的多重性，以集合论重述一与多的本体论。"
+  },
+  {
+    "source": "agamben",
+    "target": "foucault",
+    "kind": "influences",
+    "reason": "承福柯的生命权力与治理术，发展赤裸生命与神圣人。"
+  },
+  {
+    "source": "agamben",
+    "target": "benjamin",
+    "kind": "influences",
+    "reason": "借本雅明的例外状态与主权，论证例外成为常态。"
+  },
+  {
+    "source": "agamben",
+    "target": "heidegger",
+    "kind": "influences",
+    "reason": "承海德格尔的此在与语言，发展潜能与闲散。"
+  },
+  {
+    "source": "agamben",
+    "target": "schmitt",
+    "kind": "presupposes",
+    "reason": "例外状态的常态论以施米特的主权决定为前提。"
+  },
+  {
+    "source": "sloterdijk",
+    "target": "kant",
+    "kind": "influences",
+    "reason": "仿康德批判之名，把犬儒诊断为启蒙的虚假意识。"
+  },
+  {
+    "source": "sloterdijk",
+    "target": "heidegger",
+    "kind": "influences",
+    "reason": "承海德格尔的存在与座架，发展球体与人类技术学。"
+  },
+  {
+    "source": "land",
+    "target": "deleuze",
+    "kind": "influences",
+    "reason": "承德勒兹的欲望机器与生成，发展为加速主义。"
+  },
+  {
+    "source": "land",
+    "target": "bataille",
+    "kind": "influences",
+    "reason": "借巴塔耶的耗费与越界，发展资本的解体性加速。"
+  },
+  {
+    "source": "land",
+    "target": "marx",
+    "kind": "influences",
+    "reason": "承马克思对资本的分析，把资本主义推至加速与失控。"
+  },
+  {
+    "source": "zizek",
+    "target": "lacan",
+    "kind": "synthesizes",
+    "reason": "将拉康的实在界与黑格尔、马克思结合为意识形态批判。"
+  },
+  {
+    "source": "zizek",
+    "target": "hegel",
+    "kind": "influences",
+    "reason": "以拉康重读黑格尔，主张辩证法经由否定与实在界。"
+  },
+  {
+    "source": "zizek",
+    "target": "marx",
+    "kind": "influences",
+    "reason": "承马克思的意识形态与商品拜物教，发展崇高客体。"
+  },
+  {
+    "source": "butler",
+    "target": "foucault",
+    "kind": "influences",
+    "reason": "承福柯的权力与规训，发展性别作为操演与规范。"
+  },
+  {
+    "source": "butler",
+    "target": "beauvoir",
+    "kind": "influences",
+    "reason": "承波伏娃\"女人是变成的\"，推进为性别的操演性。"
+  },
+  {
+    "source": "butler",
+    "target": "lacan",
+    "kind": "influences",
+    "reason": "借拉康的象征界与认同，论证性别认同的失败与重复。"
+  },
+  {
+    "source": "butler",
+    "target": "derrida",
+    "kind": "influences",
+    "reason": "借德里达的引用性与重复，发展操演的迭代性。"
+  },
+  {
+    "source": "fanon",
+    "target": "hegel",
+    "kind": "influences",
+    "reason": "借主奴辩证法，论述殖民者与被殖民者的承认之争。"
+  },
+  {
+    "source": "fanon",
+    "target": "sartre",
+    "kind": "influences",
+    "reason": "承萨特关于注视与他者之恶，分析黑人的异化。"
+  },
+  {
+    "source": "fanon",
+    "target": "marx",
+    "kind": "influences",
+    "reason": "承马克思的阶级斗争，改造为殖民语境下的去殖民。"
+  },
+  {
+    "source": "fanon",
+    "target": "cesaire",
+    "kind": "influences",
+    "reason": "早年师从塞泽尔，承其对殖民主义与黑人性批判。"
+  },
+  {
+    "source": "wiredu",
+    "target": "descartes",
+    "kind": "refutes",
+    "reason": "以阿肯人的身心一体观反对笛卡尔的二元论。"
+  },
+  {
+    "source": "senghor",
+    "target": "bergson",
+    "kind": "influences",
+    "reason": "借柏格森的直觉，论证黑人性以节奏与情感为认识方式。"
+  },
+  {
+    "source": "senghor",
+    "target": "cesaire",
+    "kind": "influences",
+    "reason": "与塞泽尔共同提出黑人性，升华黑人文明的价值。"
+  },
+  {
+    "source": "cesaire",
+    "target": "marx",
+    "kind": "influences",
+    "reason": "借马克思主义的阶级分析，批判殖民主义与纳粹化。"
+  },
+  {
+    "source": "dussel",
+    "target": "levinas",
+    "kind": "influences",
+    "reason": "承列维纳斯的他者，发展从被排斥者出发的解放哲学。"
+  },
+  {
+    "source": "dussel",
+    "target": "marx",
+    "kind": "influences",
+    "reason": "承马克思对剥削与贫困的分析，改造为解放哲学。"
+  },
+  {
+    "source": "dussel",
+    "target": "hegel",
+    "kind": "refutes",
+    "reason": "反对黑格尔的欧洲中心主义历史，提出跨现代性。"
+  },
+  {
+    "source": "dussel",
+    "target": "fanon",
+    "kind": "influences",
+    "reason": "承法农对殖民性的批判与去殖民思想，阐发跨现代性。"
+  },
+  {
+    "source": "freire",
+    "target": "marx",
+    "kind": "influences",
+    "reason": "承马克思的阶级意识，发展被压迫者的意识化。"
+  },
+  {
+    "source": "freire",
+    "target": "hegel",
+    "kind": "influences",
+    "reason": "借黑格尔的主奴辩证法，论述师生关系的解放。"
+  },
+  {
+    "source": "freire",
+    "target": "fanon",
+    "kind": "influences",
+    "reason": "借法农的去殖民与被压迫者分析，发展批判教育学。"
+  },
+  {
+    "source": "fisher",
+    "target": "derrida",
+    "kind": "influences",
+    "reason": "借德里达的幽灵学，发展音乐与文化中的幽灵学。"
+  },
+  {
+    "source": "fisher",
+    "target": "zizek",
+    "kind": "influences",
+    "reason": "借齐泽克的意识形态与实在界，发展资本主义现实主义。"
+  }
+]

@@ -1,0 +1,626 @@
+[
+  {
+    "source": "schopenhauer",
+    "target": "kant",
+    "kind": "presupposes",
+    "reason": "以康德现象与物自体的区分为前提，把物自体认定为盲目挣扎的意志。"
+  },
+  {
+    "source": "schopenhauer",
+    "target": "plato",
+    "kind": "influences",
+    "reason": "借用柏拉图的理念作为意志客体化的中间层级，构成审美静观的对象。"
+  },
+  {
+    "source": "feuerbach",
+    "target": "hegel",
+    "kind": "refutes",
+    "reason": "把黑格尔的绝对精神倒转为感性的人，宣称神学无非是人本学的投射。"
+  },
+  {
+    "source": "feuerbach",
+    "target": "schleiermacher",
+    "kind": "refutes",
+    "reason": "反对施莱尔马赫以依赖感界定宗教，主张神只是人的类本质的对象化。"
+  },
+  {
+    "source": "stirner",
+    "target": "hegel",
+    "kind": "refutes",
+    "reason": "以不可化约的唯一者对抗黑格尔的普遍精神，斥其为凌驾个体的幽灵。"
+  },
+  {
+    "source": "stirner",
+    "target": "feuerbach",
+    "kind": "refutes",
+    "reason": "批判费尔巴哈用人的类本质取代上帝，仍是压制个体自我的抽象幽灵。"
+  },
+  {
+    "source": "kierkegaard",
+    "target": "hegel",
+    "kind": "refutes",
+    "reason": "以生存着的个体反对黑格尔的思辨体系，主张存在不可被概念中介扬弃。"
+  },
+  {
+    "source": "kierkegaard",
+    "target": "socrates",
+    "kind": "influences",
+    "reason": "承苏格拉底的反讽与诘问法，以间接沟通唤醒主体的激情抉择。"
+  },
+  {
+    "source": "kierkegaard",
+    "target": "schelling",
+    "kind": "influences",
+    "reason": "受谢林晚期实证哲学对现实存在的强调启发，抵制纯粹的概念推演。"
+  },
+  {
+    "source": "comte",
+    "target": "bacon",
+    "kind": "influences",
+    "reason": "承培根以观察与实验取代形而上思辨的经验进路，确立实证主义。"
+  },
+  {
+    "source": "comte",
+    "target": "descartes",
+    "kind": "refutes",
+    "reason": "以三阶段规律把笛卡尔式形而上学列为神学与实证之间的过渡批评对象。"
+  },
+  {
+    "source": "mill",
+    "target": "bentham",
+    "kind": "presupposes",
+    "reason": "以边沁的最大幸福原则为基础，引入高级与低级快乐之分加以修正。"
+  },
+  {
+    "source": "mill",
+    "target": "hume",
+    "kind": "influences",
+    "reason": "继承休谟的经验主义与观念联想说，发展归纳逻辑与经验的方法。"
+  },
+  {
+    "source": "mill",
+    "target": "wollstonecraft",
+    "kind": "influences",
+    "reason": "承续沃斯通克拉夫特对女性平等的论证，主张妇女在法律上的完全平等。"
+  },
+  {
+    "source": "mill",
+    "target": "socrates",
+    "kind": "influences",
+    "reason": "以苏格拉底宁受不义之死为典范，捍卫言论自由与个体异见。"
+  },
+  {
+    "source": "marx",
+    "target": "hegel",
+    "kind": "refutes",
+    "reason": "批判黑格尔的唯心主义，却保留其辩证法的合理内核，并倒转为物质生产。"
+  },
+  {
+    "source": "marx",
+    "target": "feuerbach",
+    "kind": "synthesizes",
+    "reason": "融合费尔巴哈的感性人本学与黑格尔辩证法，把异化归还物质生产。"
+  },
+  {
+    "source": "marx",
+    "target": "smith",
+    "kind": "presupposes",
+    "reason": "以斯密的劳动价值论为前提，发展剩余价值与资本剥削的批判。"
+  },
+  {
+    "source": "marx",
+    "target": "rousseau",
+    "kind": "influences",
+    "reason": "承卢梭对私有财产与不平等的批判，主张消灭私有制以复归人的社会本质。"
+  },
+  {
+    "source": "marx",
+    "target": "proudhon",
+    "kind": "refutes",
+    "reason": "在《哲学的贫困》中驳斥蒲鲁东的互助主义与抽象正义，坚持现实的阶级斗争。"
+  },
+  {
+    "source": "engels",
+    "target": "hegel",
+    "kind": "synthesizes",
+    "reason": "把黑格尔的辩证法与唯物主义结合，从唯心外壳中拯救辩证法的合理内核。"
+  },
+  {
+    "source": "engels",
+    "target": "feuerbach",
+    "kind": "influences",
+    "reason": "从费尔巴哈的唯物主义出发，以辩证法弥补其非历史、静态的自然观。"
+  },
+  {
+    "source": "engels",
+    "target": "smith",
+    "kind": "influences",
+    "reason": "承斯密古典政治经济学的分析，早年即批判其私有财产前提转向共产主义。"
+  },
+  {
+    "source": "proudhon",
+    "target": "rousseau",
+    "kind": "influences",
+    "reason": "承卢梭对私有财产起源与不平等的批判，宣称财产就是盗窃。"
+  },
+  {
+    "source": "proudhon",
+    "target": "hegel",
+    "kind": "influences",
+    "reason": "借用青年黑格尔派的矛盾语汇，却以经济序列的自发平衡取代正反合，马克思讥其为伪黑格尔。"
+  },
+  {
+    "source": "bakunin",
+    "target": "proudhon",
+    "kind": "influences",
+    "reason": "承蒲鲁东的无政府主义与互助联邦思想，走向集体主义无政府主义。"
+  },
+  {
+    "source": "bakunin",
+    "target": "marx",
+    "kind": "refutes",
+    "reason": "反对马克思的无产阶级专政与政党权威，主张以自由联邦取代一切国家。"
+  },
+  {
+    "source": "bakunin",
+    "target": "hegel",
+    "kind": "influences",
+    "reason": "早年追随黑格尔左派，以否定性的辩证法论证对现存秩序的无情破坏。"
+  },
+  {
+    "source": "bakunin",
+    "target": "feuerbach",
+    "kind": "influences",
+    "reason": "承费尔巴哈宗教即人的异化之说，主张彻底摧毁神与国家的权威。"
+  },
+  {
+    "source": "emerson",
+    "target": "plato",
+    "kind": "influences",
+    "reason": "汲取柏拉图主义与新柏拉图主义的理念论，以超灵贯穿人与自然的统一。"
+  },
+  {
+    "source": "emerson",
+    "target": "kant",
+    "kind": "influences",
+    "reason": "经由柯勒律治接受康德的先验唯心主义，主张精神先于并构造自然。"
+  },
+  {
+    "source": "emerson",
+    "target": "montaigne",
+    "kind": "influences",
+    "reason": "承蒙田的怀疑精神，把随笔文体用于对自立与自我的省察。"
+  },
+  {
+    "source": "thoreau",
+    "target": "emerson",
+    "kind": "influences",
+    "reason": "承爱默生的超验主义与自立精神，把自然直观落实为简朴的林中生活。"
+  },
+  {
+    "source": "dostoevsky",
+    "target": "bentham",
+    "kind": "refutes",
+    "reason": "借地下室人讥讽车尔尼雪夫斯基式的理性利己主义，其原型可追溯到边沁式功利算计。"
+  },
+  {
+    "source": "tolstoy",
+    "target": "rousseau",
+    "kind": "influences",
+    "reason": "承卢梭对文明虚伪与自然之善的批判，主张回归素朴的道德生活。"
+  },
+  {
+    "source": "tolstoy",
+    "target": "schopenhauer",
+    "kind": "influences",
+    "reason": "早年受叔本华悲观主义与禁欲思想影响，晚年转向不以暴力抗恶。"
+  },
+  {
+    "source": "nietzsche",
+    "target": "schopenhauer",
+    "kind": "refutes",
+    "reason": "以肯定的权力意志颠倒叔本华的生存意志，反对其否定生命的悲观主义。"
+  },
+  {
+    "source": "nietzsche",
+    "target": "heraclitus",
+    "kind": "influences",
+    "reason": "自承继承赫拉克利特的生成与斗争观，以权力意志与永恒轮回肯定流变。"
+  },
+  {
+    "source": "nietzsche",
+    "target": "emerson",
+    "kind": "influences",
+    "reason": "深受爱默生自立与超灵思想影响，取其自我肯定与超人的精神气质。"
+  },
+  {
+    "source": "nietzsche",
+    "target": "dostoevsky",
+    "kind": "influences",
+    "reason": "钦佩陀思妥耶夫斯基的心理深度，称其为唯一教给他心理学的作家。"
+  },
+  {
+    "source": "nietzsche",
+    "target": "socrates",
+    "kind": "refutes",
+    "reason": "以悲剧的诞生指责苏格拉底的理性主义扼杀了酒神式的生命冲动。"
+  },
+  {
+    "source": "dilthey",
+    "target": "kant",
+    "kind": "presupposes",
+    "reason": "以康德的认识批判为起点，转而建立精神科学自身的历史理性批判。"
+  },
+  {
+    "source": "dilthey",
+    "target": "schleiermacher",
+    "kind": "influences",
+    "reason": "承施莱尔马赫的解释学传统，把理解提升为精神科学的普遍方法。"
+  },
+  {
+    "source": "dilthey",
+    "target": "hegel",
+    "kind": "influences",
+    "reason": "借鉴黑格尔的客观精神概念，改造成生命体验在历史中的表达。"
+  },
+  {
+    "source": "brentano",
+    "target": "aristotle",
+    "kind": "presupposes",
+    "reason": "复兴亚里士多德与经院哲学的意向性概念，以对象指向界定心理现象。"
+  },
+  {
+    "source": "peirce",
+    "target": "kant",
+    "kind": "influences",
+    "reason": "承康德对范畴与判断形式的先验分析，改造成符号学与实用主义准则。"
+  },
+  {
+    "source": "peirce",
+    "target": "scotus",
+    "kind": "influences",
+    "reason": "承邓斯·司各脱的实在论与个体性原则，为其符号实在论奠基。"
+  },
+  {
+    "source": "peirce",
+    "target": "aristotle",
+    "kind": "influences",
+    "reason": "承亚里士多德的范畴与逻辑，发展其符号三分与溯因推理。"
+  },
+  {
+    "source": "james",
+    "target": "peirce",
+    "kind": "influences",
+    "reason": "承皮尔士的实用主义准则，把意义与真理理解为可验证的经验后果。"
+  },
+  {
+    "source": "james",
+    "target": "hume",
+    "kind": "influences",
+    "reason": "承休谟的彻底经验主义进路，主张以纯粹经验弥合心物二元。"
+  },
+  {
+    "source": "sidgwick",
+    "target": "mill",
+    "kind": "influences",
+    "reason": "承密尔的功利主义并系统化，指出直觉主义与利己主义的二元论。"
+  },
+  {
+    "source": "sidgwick",
+    "target": "bentham",
+    "kind": "influences",
+    "reason": "以边沁的功利主义为基础，发展直觉主义与功利原则的调和。"
+  },
+  {
+    "source": "sidgwick",
+    "target": "kant",
+    "kind": "influences",
+    "reason": "检验并拒绝康德式定言命令作为功利主义的充分基础，其直觉主义因此与义务论保持距离。"
+  },
+  {
+    "source": "santayana",
+    "target": "plato",
+    "kind": "influences",
+    "reason": "承柏拉图对永恒本质的尊崇，在存在的诸领域中保留本质的王国。"
+  },
+  {
+    "source": "santayana",
+    "target": "spinoza",
+    "kind": "influences",
+    "reason": "承斯宾诺莎的自然主义与智性之爱，发展其动物信仰与物质世界。"
+  },
+  {
+    "source": "santayana",
+    "target": "lucretius",
+    "kind": "influences",
+    "reason": "承卢克莱修的自然主义与诗意唯物主义，视宗教为精神的诗篇。"
+  },
+  {
+    "source": "santayana",
+    "target": "james",
+    "kind": "refutes",
+    "reason": "以自然主义、动物信仰与理性生活批判詹姆斯的实用主义真理观。"
+  },
+  {
+    "source": "dubois",
+    "target": "james",
+    "kind": "influences",
+    "reason": "师从威廉·詹姆斯，以实用主义方法分析种族经验与双重意识。"
+  },
+  {
+    "source": "dubois",
+    "target": "hegel",
+    "kind": "influences",
+    "reason": "以黑格尔式的承认问题为参照阐释双重意识；这一读解属后世阐释，并非直接承袭。"
+  },
+  {
+    "source": "dubois",
+    "target": "marx",
+    "kind": "influences",
+    "reason": "晚年转向马克思主义，以阶级分析补充种族分析，撰写重建史。"
+  },
+  {
+    "source": "douglass",
+    "target": "locke",
+    "kind": "influences",
+    "reason": "承洛克的天赋人权与自然权利说，论证奴隶制违背人的自然自由。"
+  },
+  {
+    "source": "scruton",
+    "target": "burke",
+    "kind": "influences",
+    "reason": "承柏克对传统与有机社会的捍卫，为现代保守主义奠定哲学根基。"
+  },
+  {
+    "source": "scruton",
+    "target": "kant",
+    "kind": "influences",
+    "reason": "以康德的审美判断与合目的性为框架，发展美与崇高的美学。"
+  },
+  {
+    "source": "scruton",
+    "target": "hegel",
+    "kind": "influences",
+    "reason": "借黑格尔的伦理生活概念，发展恋家情结与对家园的归属感。"
+  },
+  {
+    "source": "schmitt",
+    "target": "hobbes",
+    "kind": "influences",
+    "reason": "承霍布斯的绝对主权与自然状态，以敌友区分界定政治的本质。"
+  },
+  {
+    "source": "schmitt",
+    "target": "machiavelli",
+    "kind": "influences",
+    "reason": "承马基雅维利的政治现实主义，剥离道德以敌友区分划定政治。"
+  },
+  {
+    "source": "strauss",
+    "target": "plato",
+    "kind": "influences",
+    "reason": "以柏拉图的古典政治哲学为典范，复兴自然正当对抗历史主义。"
+  },
+  {
+    "source": "strauss",
+    "target": "machiavelli",
+    "kind": "refutes",
+    "reason": "视马基雅维利为现代性开端与邪恶教师，批判其以技艺取代德性。"
+  },
+  {
+    "source": "strauss",
+    "target": "alfarabi",
+    "kind": "influences",
+    "reason": "承法拉比的柏拉图式政治哲学，发展隐微写作与哲人统治的解读。"
+  },
+  {
+    "source": "strauss",
+    "target": "maimonides",
+    "kind": "influences",
+    "reason": "承迈蒙尼德的隐微写作，主张在字里行间阅读哲学与启示。"
+  },
+  {
+    "source": "strauss",
+    "target": "hegel",
+    "kind": "refutes",
+    "reason": "以自然正当之名批判黑格尔的历史主义，拒绝以历史取代规范。"
+  },
+  {
+    "source": "strauss",
+    "target": "rousseau",
+    "kind": "refutes",
+    "reason": "把卢梭视为现代自然权利危机的枢纽，批判其公意与历史哲学。"
+  },
+  {
+    "source": "arendt",
+    "target": "kant",
+    "kind": "influences",
+    "reason": "承康德判断力批判的审美共通感，重构行动与判断的政治哲学。"
+  },
+  {
+    "source": "arendt",
+    "target": "aristotle",
+    "kind": "influences",
+    "reason": "承亚里士多德的实践与言语之分，以行动与言说界定人的境况。"
+  },
+  {
+    "source": "arendt",
+    "target": "marx",
+    "kind": "influences",
+    "reason": "承马克思的劳动分析，却在劳动、工作与行动的三分中限定其意义。"
+  },
+  {
+    "source": "arendt",
+    "target": "heidegger",
+    "kind": "influences",
+    "reason": "早年师从海德格尔，汲取在世存在思想却转向公共的行动。"
+  },
+  {
+    "source": "arendt",
+    "target": "rousseau",
+    "kind": "refutes",
+    "reason": "以法国革命的恐怖为鉴，批判卢梭公意对多元公共领域的吞噬。"
+  },
+  {
+    "source": "voegelin",
+    "target": "plato",
+    "kind": "influences",
+    "reason": "承柏拉图的秩序哲学与灵魂城邦类比，重建历史中的秩序符号。"
+  },
+  {
+    "source": "voegelin",
+    "target": "augustine",
+    "kind": "influences",
+    "reason": "承奥古斯丁的两城论，界定现代意识形态为末世的内在化。"
+  },
+  {
+    "source": "voegelin",
+    "target": "hegel",
+    "kind": "refutes",
+    "reason": "视黑格尔历史哲学为现代灵知主义的顶点，批判其把末世内在化。"
+  },
+  {
+    "source": "voegelin",
+    "target": "marx",
+    "kind": "refutes",
+    "reason": "视马克思的历史唯物主义为灵知主义的末世内在化，以阶级代替上帝。"
+  },
+  {
+    "source": "voegelin",
+    "target": "comte",
+    "kind": "refutes",
+    "reason": "以孔德的实证主义为灵知主义样本，批判其以人道教内在化末世。"
+  },
+  {
+    "source": "kojeve",
+    "target": "hegel",
+    "kind": "synthesizes",
+    "reason": "融合黑格尔主奴辩证法与马克思、海德格尔，提出承认欲望驱动的历史终结论。"
+  },
+  {
+    "source": "kojeve",
+    "target": "marx",
+    "kind": "influences",
+    "reason": "承马克思的阶级斗争与劳动，把主奴斗争读作历史的动力。"
+  },
+  {
+    "source": "kojeve",
+    "target": "heidegger",
+    "kind": "influences",
+    "reason": "借海德格尔的向死存在与时间性，改造绝对知识为人的历史存在。"
+  },
+  {
+    "source": "junger",
+    "target": "nietzsche",
+    "kind": "influences",
+    "reason": "承尼采的权力意志与超人，把技术时代刻画为工人的新类型。"
+  },
+  {
+    "source": "guenon",
+    "target": "shankara",
+    "kind": "influences",
+    "reason": "承商羯罗的不二吠檀多，主张形而上学是对绝对同一的直觉认识。"
+  },
+  {
+    "source": "guenon",
+    "target": "plato",
+    "kind": "influences",
+    "reason": "承柏拉图主义对超验领域的尊崇，认定诸宗教之下有一原初传统。"
+  },
+  {
+    "source": "evola",
+    "target": "guenon",
+    "kind": "influences",
+    "reason": "承盖农的传统主义与现代性即衰败的论断，转向激进的反现代。"
+  },
+  {
+    "source": "evola",
+    "target": "nietzsche",
+    "kind": "influences",
+    "reason": "借尼采的反现代与贵族激进主义，融合传统等级制与权力意志。"
+  },
+  {
+    "source": "dugin",
+    "target": "heidegger",
+    "kind": "influences",
+    "reason": "借海德格尔的存在之问与地缘化的此在，建构第四政治理论。"
+  },
+  {
+    "source": "dugin",
+    "target": "schmitt",
+    "kind": "influences",
+    "reason": "承施米特的敌友区分与大地的法，发展欧亚主义的地缘政治。"
+  },
+  {
+    "source": "dugin",
+    "target": "evola",
+    "kind": "influences",
+    "reason": "承埃沃拉的反现代传统主义，以原初传统反抗自由主义秩序。"
+  },
+  {
+    "source": "berlin",
+    "target": "mill",
+    "kind": "influences",
+    "reason": "承密尔对自由与个体性的捍卫，区分消极自由与积极自由。"
+  },
+  {
+    "source": "berlin",
+    "target": "herder",
+    "kind": "influences",
+    "reason": "承赫尔德的多元主义与民族特性，发展价值多元论与反启蒙。"
+  },
+  {
+    "source": "berlin",
+    "target": "rousseau",
+    "kind": "refutes",
+    "reason": "以卢梭的公意与强迫自由为警例，论证积极自由如何滑向专制。"
+  },
+  {
+    "source": "hayek",
+    "target": "smith",
+    "kind": "influences",
+    "reason": "把自发秩序的观念追溯至斯密的“看不见的手”，但“自发秩序”是哈耶克自己的术语。"
+  },
+  {
+    "source": "hayek",
+    "target": "hume",
+    "kind": "influences",
+    "reason": "承休谟的怀疑论与习俗规则，反对建构理性主义而倡渐进演化。"
+  },
+  {
+    "source": "hayek",
+    "target": "burke",
+    "kind": "influences",
+    "reason": "承柏克对传统与有机秩序的信赖，捍卫自发秩序与法治。"
+  },
+  {
+    "source": "oakeshott",
+    "target": "hobbes",
+    "kind": "influences",
+    "reason": "承霍布斯的公民联合与权威观，主张政治是规则下的自由联合。"
+  },
+  {
+    "source": "oakeshott",
+    "target": "burke",
+    "kind": "influences",
+    "reason": "承柏克的传统主义与审慎，反对政治中的理性主义与蓝图改革。"
+  },
+  {
+    "source": "oakeshott",
+    "target": "montaigne",
+    "kind": "influences",
+    "reason": "承蒙田的怀疑与闲适，主张哲学与政治是诸声音的持续对话。"
+  },
+  {
+    "source": "gomezdavila",
+    "target": "nietzsche",
+    "kind": "influences",
+    "reason": "承尼采的格言文体与对现代性的嘲讽，以反讽批判进步神话。"
+  },
+  {
+    "source": "gomezdavila",
+    "target": "burke",
+    "kind": "influences",
+    "reason": "承柏克对抽象权利与传统秩序的反省，成为彻底的反动保守主义。"
+  }
+]
