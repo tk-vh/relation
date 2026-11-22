@@ -161,9 +161,10 @@ class Atlas {
 
   readHash(): void {
     const id = decodeURIComponent(location.hash.replace(/^#\/?/, ''));
-    if (id && graph.byId.has(id)) {
-      this.selectedId = id;
-    }
+    this.pathMode = false;
+    this.pathFrom = null;
+    this.pathTo = null;
+    this.selectedId = id && graph.byId.has(id) ? id : null;
   }
 
   private writeHash(id: string | null): void {

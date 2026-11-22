@@ -346,6 +346,8 @@
     }
 
     .dialog {
+      display: flex;
+      flex-direction: column;
       width: 100%;
       height: 100%;
       border: 0;
@@ -353,7 +355,13 @@
     }
 
     .results {
-      max-height: calc(100vh - 170px);
+      flex: 1;
+      max-height: none;
+    }
+
+    .foot {
+      margin-top: auto;
+      padding-bottom: calc(10px + env(safe-area-inset-bottom));
     }
 
     .meta {

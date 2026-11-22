@@ -1,5 +1,5 @@
 <script lang="ts">
-  import graph, { RELATION_META } from '../graph/model';
+  import graph from '../graph/model';
   import { atlas } from '../state.svelte';
   import { eraColor } from '../theme';
   import Icon from './Icon.svelte';

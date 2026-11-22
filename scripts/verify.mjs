@@ -77,6 +77,10 @@ check(
 
 await page.screenshot({ path: '/tmp/opencode/verify-detail.png' });
 
+await page.evaluate(() => (location.hash = ''));
+await page.waitForTimeout(300);
+check('clearing the hash returns to the guide', await page.locator('.intro-panel h1').isVisible());
+
 await page.keyboard.press('Control+k');
 await page.waitForTimeout(200);
 check('⌘K opens search', await page.locator('.dialog input').isVisible());
