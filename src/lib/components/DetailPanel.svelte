@@ -1,14 +1,16 @@
 <script lang="ts">
-  import { atlas, type SheetDetent } from '../state.svelte';
+  import { atlas } from '../state.svelte';
   import { eraColor } from '../theme';
   import Icon from './Icon.svelte';
   import RelationList from './RelationList.svelte';
+  import SheetHandle from './SheetHandle.svelte';
   import TracePanel from './TracePanel.svelte';
 
   const person = $derived(atlas.selected);
   let scroller = $state<HTMLDivElement>();
   let copied = $state(false);
   let copyTimer: ReturnType<typeof setTimeout> | null = null;
+  let dragHeight = $state<number | null>(null);
 
   $effect(() => {
     const id = atlas.selectedId;
@@ -30,12 +32,6 @@
   const outgoing = $derived(person ? (atlas.graph.outgoing.get(person.id) ?? []) : []);
   const incoming = $derived(person ? (atlas.graph.incoming.get(person.id) ?? []) : []);
   const lifespan = $derived(person ? atlas.graph.lifespan(person) : '');
-
-  function cycleDetent() {
-    const order: SheetDetent[] = ['minimized', 'half', 'expanded'];
-    const next = order[(order.indexOf(atlas.sheetDetent) + 1) % order.length] ?? 'half';
-    atlas.setSheetDetent(next);
-  }
 
   async function shareCurrent() {
     if (!person) return;
@@ -59,17 +55,16 @@
 {:else if person}
   <aside
     class="panel detail-panel"
+    class:dragging={dragHeight !== null}
     data-detent={atlas.sheetDetent}
+    style={dragHeight !== null ? `--drag-height:${dragHeight}px` : undefined}
     aria-label={person.name}
   >
-    <button
-      type="button"
-      class="sheet-handle"
-      onclick={cycleDetent}
-      aria-label={person.name}
-    >
-      <span class="sheet-handle-bar" aria-hidden="true"></span>
-    </button>
+    <SheetHandle
+      kind="detail"
+      label={person.name}
+      ondragheight={(heightPx) => (dragHeight = heightPx)}
+    />
 
     <div class="panel-head">
       <span class="era" style={`--era:${eraColor(person.eraIndex, atlas.themeMode)}`}>
@@ -247,16 +242,12 @@
 {/if}
 
 <style>
-  .sheet-handle {
-    display: none;
-  }
-
   .panel-head {
     display: flex;
     flex: none;
     align-items: center;
     justify-content: space-between;
-    padding: 12px 12px 10px 22px;
+    padding: 13px 14px 11px 28px;
     border-bottom: 1px solid var(--rule);
   }
 
@@ -265,7 +256,7 @@
     gap: 8px;
     align-items: center;
     font-family: var(--font-sans);
-    font-size: 10.5px;
+    font-size: 11.5px;
     font-weight: 600;
     letter-spacing: 0.12em;
     color: var(--ink-soft);
@@ -285,8 +276,8 @@
 
   .icon-btn {
     display: grid;
-    width: 30px;
-    height: 30px;
+    width: 32px;
+    height: 32px;
     color: var(--ink-soft);
     place-items: center;
     transition: color 0.15s ease, background 0.15s ease;
@@ -302,11 +293,11 @@
   }
 
   .sheet {
-    padding: 20px 24px 30px;
+    padding: 24px 28px 34px;
   }
 
   .cover {
-    padding-bottom: 18px;
+    padding-bottom: 20px;
   }
 
   .folio {
@@ -316,17 +307,17 @@
 
   h1 {
     margin: 0;
-    font-size: 36px;
+    font-size: 40px;
     font-weight: 600;
-    line-height: 1.22;
+    line-height: 1.2;
     letter-spacing: 0.01em;
     color: var(--ink);
   }
 
   .name-en {
-    margin: 4px 0 0;
+    margin: 5px 0 0;
     font-family: var(--font-latin);
-    font-size: 16px;
+    font-size: 17.5px;
     font-style: italic;
     line-height: 1.35;
     color: var(--ink-soft);
@@ -335,22 +326,22 @@
   .meta {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 10px 14px;
-    margin: 16px 0 0;
-    padding-top: 12px;
+    gap: 10px 16px;
+    margin: 18px 0 0;
+    padding-top: 14px;
     border-top: 1px solid var(--rule);
   }
 
   .meta div {
     display: flex;
     flex-direction: column;
-    gap: 2px;
+    gap: 3px;
     min-width: 0;
   }
 
   dt {
     font-family: var(--font-sans);
-    font-size: 9.5px;
+    font-size: 10.5px;
     font-weight: 600;
     letter-spacing: 0.11em;
     color: var(--ink-faint);
@@ -358,8 +349,8 @@
 
   dd {
     margin: 0;
-    font-size: 13px;
-    line-height: 1.48;
+    font-size: 14px;
+    line-height: 1.5;
     color: var(--ink-soft);
     overflow-wrap: anywhere;
   }
@@ -369,9 +360,9 @@
     flex-wrap: wrap;
     gap: 10px;
     align-items: center;
-    margin-top: 16px;
+    margin-top: 18px;
     font-family: var(--font-sans);
-    font-size: 11px;
+    font-size: 12px;
     color: var(--ink-soft);
   }
 
@@ -385,10 +376,10 @@
     display: flex;
     gap: 5px;
     align-items: center;
-    padding: 5px 10px;
+    padding: 6px 12px;
     margin-left: auto;
     font-family: var(--font-sans);
-    font-size: 10.5px;
+    font-size: 11.5px;
     font-weight: 500;
     letter-spacing: 0.04em;
     color: var(--seal);
@@ -405,16 +396,16 @@
 
   .bio {
     margin: 0;
-    font-size: 14.5px;
-    line-height: 1.82;
+    font-size: 16px;
+    line-height: 1.85;
     color: var(--ink);
     text-align: justify;
   }
 
   blockquote {
-    margin: 22px 0 0;
-    padding: 14px 18px;
-    font-size: 15.5px;
+    margin: 24px 0 0;
+    padding: 16px 20px;
+    font-size: 16.5px;
     line-height: 1.8;
     color: var(--ink);
     background: var(--sheet-deep);
@@ -422,8 +413,8 @@
   }
 
   .ruled-section {
-    margin-top: 26px;
-    padding-top: 10px;
+    margin-top: 28px;
+    padding-top: 11px;
     border-top: 2px solid var(--ink);
   }
 
@@ -431,8 +422,8 @@
     display: flex;
     gap: 10px;
     align-items: baseline;
-    margin: 0 0 8px;
-    font-size: 16px;
+    margin: 0 0 10px;
+    font-size: 17.5px;
     font-weight: 600;
     letter-spacing: 0.02em;
     color: var(--ink);
@@ -440,7 +431,7 @@
 
   h2 em {
     font-family: var(--font-latin);
-    font-size: 11.5px;
+    font-size: 12px;
     font-style: italic;
     font-weight: 500;
     letter-spacing: 0.06em;
@@ -456,18 +447,18 @@
 
   .ideas li {
     display: grid;
-    grid-template-columns: 26px 1fr;
+    grid-template-columns: 28px 1fr;
     gap: 8px;
-    padding: 9px 0;
-    font-size: 13.5px;
-    line-height: 1.62;
+    padding: 10px 0;
+    font-size: 14.5px;
+    line-height: 1.68;
     color: var(--ink-soft);
     border-bottom: 1px solid color-mix(in srgb, var(--rule) 70%, transparent);
   }
 
   .ideas .num {
     font-family: var(--font-latin);
-    font-size: 12px;
+    font-size: 12.5px;
     font-style: italic;
     color: var(--ink-faint);
   }
@@ -477,7 +468,7 @@
   }
 
   .work {
-    padding: 11px 0;
+    padding: 12px 0;
     border-bottom: 1px solid color-mix(in srgb, var(--rule) 70%, transparent);
   }
 
@@ -493,47 +484,47 @@
   }
 
   .work-title {
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 600;
     color: var(--ink);
   }
 
   .work-year {
     font-family: var(--font-latin);
-    font-size: 12.5px;
+    font-size: 13px;
     font-style: italic;
     color: var(--ink-faint);
     white-space: nowrap;
   }
 
   .work-en {
-    margin: 2px 0 0;
+    margin: 3px 0 0;
     font-family: var(--font-latin);
-    font-size: 12px;
+    font-size: 13px;
     font-style: italic;
     color: var(--ink-faint);
   }
 
   .work-note {
-    margin: 5px 0 0;
-    font-size: 13px;
-    line-height: 1.65;
+    margin: 6px 0 0;
+    font-size: 14px;
+    line-height: 1.68;
     color: var(--ink-soft);
   }
 
   .no-works {
     margin: 0;
     padding-top: 10px;
-    font-size: 13px;
-    line-height: 1.7;
+    font-size: 14px;
+    line-height: 1.72;
     color: var(--ink-soft);
     border-top: 1px solid var(--rule);
   }
 
   .start p {
     margin: 0;
-    font-size: 13px;
-    line-height: 1.7;
+    font-size: 14px;
+    line-height: 1.72;
     color: var(--ink-soft);
   }
 
@@ -542,10 +533,10 @@
     gap: 12px;
     align-items: center;
     justify-content: space-between;
-    margin-top: 24px;
+    margin-top: 26px;
     padding-top: 14px;
     font-family: var(--font-sans);
-    font-size: 10.5px;
+    font-size: 11.5px;
     color: var(--ink-soft);
     border-top: 1px solid var(--rule);
   }
@@ -562,7 +553,7 @@
 
   .colophon-en {
     font-family: var(--font-latin);
-    font-size: 11px;
+    font-size: 12px;
     font-style: italic;
     color: var(--ink-faint);
   }
@@ -573,51 +564,66 @@
     }
 
     .detail-panel[data-detent='minimized'] {
-      height: 62px;
-      max-height: 62px;
+      height: calc(68px + env(safe-area-inset-bottom));
+      max-height: calc(68px + env(safe-area-inset-bottom));
     }
 
     .detail-panel[data-detent='half'] {
-      height: 45vh;
-      max-height: 45vh;
+      height: 48vh;
+      height: 48dvh;
+      max-height: 48vh;
+      max-height: 48dvh;
     }
 
     .detail-panel[data-detent='expanded'] {
       height: 86vh;
+      height: 86dvh;
       max-height: 86vh;
-    }
-
-    .sheet-handle {
-      display: flex;
-      flex: none;
-      align-items: center;
-      justify-content: center;
-      width: 100%;
-      padding: 10px 0 4px;
-    }
-
-    .sheet-handle-bar {
-      width: 34px;
-      height: 3.5px;
-      background: var(--rule);
-      border-radius: 999px;
+      max-height: 86dvh;
     }
 
     .panel-head {
-      padding: 2px 12px 8px 22px;
+      padding: 2px 12px 8px 20px;
+    }
+
+    .icon-btn {
+      width: 36px;
+      height: 36px;
     }
 
     .sheet {
-      padding: 18px 20px 26px;
+      padding: 16px 20px calc(28px + env(safe-area-inset-bottom));
     }
 
     h1 {
-      font-size: 32px;
+      font-size: 30px;
+    }
+
+    .name-en {
+      font-size: 16px;
+    }
+
+    .meta {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px 14px;
+    }
+
+    .meta div:first-child {
+      grid-column: 1 / -1;
+    }
+
+    dd {
+      font-size: 13.5px;
     }
 
     .bio {
-      font-size: 14px;
+      font-size: 15px;
       line-height: 1.8;
+    }
+
+    blockquote {
+      font-size: 15px;
+      padding: 14px 16px;
     }
   }
 </style>

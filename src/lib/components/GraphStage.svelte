@@ -9,6 +9,7 @@
     type RelationKind,
     type Thinker,
   } from '../graph/model';
+  import { desktopPanelClearance, sheetHeightPx, type SheetKind } from '../sheet';
   import { atlas } from '../state.svelte';
   import { eraColor, relationColor, withAlpha } from '../theme';
   import Icon from './Icon.svelte';
@@ -289,16 +290,15 @@
 
     const left = 0;
     const top = compact ? 98 : 104;
-    const right = Math.max(left + 1, compact ? width - 48 : width - 436);
+    const right = Math.max(left + 1, compact ? width - 48 : width - desktopPanelClearance(width));
     let bottom = height - 68;
     if (compact) {
-      if (atlas.selected || atlas.pathMode) {
-        if (atlas.sheetDetent === 'expanded') bottom = height * 0.24;
-        else if (atlas.sheetDetent === 'minimized') bottom = height - 88;
-        else bottom = height * 0.44;
-      } else {
-        bottom = height * 0.52;
-      }
+      const activeKind: SheetKind = atlas.pathMode
+        ? 'trace'
+        : atlas.selected
+          ? 'detail'
+          : 'intro';
+      bottom = height - sheetHeightPx(activeKind, atlas.sheetDetent, height) - 12;
     }
     const clampedBottom = Math.max(top + 1, bottom);
     return {
@@ -1177,20 +1177,20 @@
 
   @media (max-width: 959px) {
     .controls {
-      top: 104px;
+      top: calc(106px + env(safe-area-inset-top));
       right: 12px;
       bottom: auto;
       left: auto;
     }
 
     .controls.fullscreen {
-      top: 16px;
+      top: calc(16px + env(safe-area-inset-top));
       right: 16px;
     }
 
     .controls button {
-      width: 32px;
-      height: 32px;
+      width: 36px;
+      height: 36px;
     }
 
     .tip {

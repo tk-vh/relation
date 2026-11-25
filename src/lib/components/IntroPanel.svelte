@@ -1,10 +1,13 @@
 <script lang="ts">
   import { RELATION_KINDS, RELATION_STYLE } from '../graph/model';
-  import { atlas, type SheetDetent } from '../state.svelte';
+  import { atlas } from '../state.svelte';
   import { eraColor, relationColor, withAlpha } from '../theme';
   import Icon from './Icon.svelte';
+  import SheetHandle from './SheetHandle.svelte';
 
   const HUB_IDS = ['aristotle', 'plato', 'kant', 'hegel', 'buddha', 'augustine'] as const;
+
+  let dragHeight = $state<number | null>(null);
 
   const hubs = $derived(
     HUB_IDS.map((id) => atlas.graph.byId.get(id)).filter((person) => person !== undefined),
@@ -15,27 +18,20 @@
   );
 
   const totals = $derived(atlas.totals);
-
-  function cycleDetent() {
-    const order: SheetDetent[] = ['minimized', 'half', 'expanded'];
-    const next = order[(order.indexOf(atlas.sheetDetent) + 1) % order.length] ?? 'half';
-    atlas.setSheetDetent(next);
-  }
 </script>
 
 <aside
   class="panel intro-panel"
+  class:dragging={dragHeight !== null}
   data-detent={atlas.sheetDetent}
+  style={dragHeight !== null ? `--drag-height:${dragHeight}px` : undefined}
   aria-label={atlas.strings.introHeader}
 >
-  <button
-    type="button"
-    class="sheet-handle"
-    onclick={cycleDetent}
-    aria-label={atlas.strings.introHeader}
-  >
-    <span class="sheet-handle-bar" aria-hidden="true"></span>
-  </button>
+  <SheetHandle
+    kind="intro"
+    label={atlas.strings.introHeader}
+    ondragheight={(heightPx) => (dragHeight = heightPx)}
+  />
 
   <div class="panel-head">
     <span class="micro">{atlas.strings.introHeader}</span>
@@ -157,16 +153,12 @@
     background: var(--sheet);
   }
 
-  .sheet-handle {
-    display: none;
-  }
-
   .panel-head {
     display: flex;
     flex: none;
     align-items: center;
     justify-content: space-between;
-    padding: 12px 14px 10px 22px;
+    padding: 13px 14px 11px 28px;
     border-bottom: 1px solid var(--rule);
   }
 
@@ -176,8 +168,8 @@
 
   .icon-btn {
     display: grid;
-    width: 30px;
-    height: 30px;
+    width: 32px;
+    height: 32px;
     color: var(--ink-soft);
     place-items: center;
     transition: color 0.15s ease, background 0.15s ease;
@@ -189,7 +181,7 @@
   }
 
   .intro {
-    padding: 20px 24px 26px;
+    padding: 24px 28px 30px;
   }
 
   .kicker {
@@ -213,7 +205,7 @@
 
   .lede {
     margin: 12px 0 0;
-    font-size: 13.5px;
+    font-size: 14.5px;
     line-height: 1.85;
     color: var(--ink-soft);
     text-align: justify;
@@ -457,47 +449,51 @@
     }
 
     .intro-panel[data-detent='minimized'] {
-      height: 62px;
-      max-height: 62px;
+      height: calc(68px + env(safe-area-inset-bottom));
+      max-height: calc(68px + env(safe-area-inset-bottom));
     }
 
     .intro-panel[data-detent='half'] {
-      height: 36vh;
-      max-height: 36vh;
+      height: 44vh;
+      height: 44dvh;
+      max-height: 44vh;
+      max-height: 44dvh;
     }
 
     .intro-panel[data-detent='expanded'] {
-      height: 80vh;
-      max-height: 80vh;
-    }
-
-    .sheet-handle {
-      display: flex;
-      flex: none;
-      align-items: center;
-      justify-content: center;
-      width: 100%;
-      padding: 10px 0 4px;
-    }
-
-    .sheet-handle-bar {
-      width: 34px;
-      height: 3.5px;
-      background: var(--rule);
-      border-radius: 999px;
+      height: 84vh;
+      height: 84dvh;
+      max-height: 84vh;
+      max-height: 84dvh;
     }
 
     .panel-head {
-      padding: 2px 12px 8px 22px;
+      padding: 2px 12px 8px 20px;
+    }
+
+    .icon-btn {
+      width: 36px;
+      height: 36px;
     }
 
     .intro {
-      padding: 16px 20px 24px;
+      padding: 14px 20px calc(24px + env(safe-area-inset-bottom));
     }
 
     h1 {
-      font-size: 26px;
-      line-height: 1.44;
+      font-size: 25px;
+      line-height: 1.38;
+    }
+
+    .lede {
+      margin-top: 8px;
+      font-size: 13.5px;
+      line-height: 1.72;
+    }
+
+    .numbers {
+      margin-top: 14px;
+      padding: 10px 0;
     }
   }
 </style>

@@ -1,12 +1,14 @@
 <script lang="ts">
   import { RELATION_STYLE } from '../graph/model';
-  import { atlas, type SheetDetent } from '../state.svelte';
+  import { atlas } from '../state.svelte';
   import { eraColor, relationColor, withAlpha } from '../theme';
   import Icon from './Icon.svelte';
   import RelationPhrase from './RelationPhrase.svelte';
+  import SheetHandle from './SheetHandle.svelte';
 
   let query = $state('');
   let scroller = $state<HTMLDivElement>();
+  let dragHeight = $state<number | null>(null);
 
   const from = $derived(atlas.pathFrom ? (atlas.graph.byId.get(atlas.pathFrom) ?? null) : null);
   const to = $derived(atlas.pathTo ? (atlas.graph.byId.get(atlas.pathTo) ?? null) : null);
@@ -25,12 +27,6 @@
       scroller.scrollTop = 0;
     }
   });
-
-  function cycleDetent() {
-    const order: SheetDetent[] = ['minimized', 'half', 'expanded'];
-    const next = order[(order.indexOf(atlas.sheetDetent) + 1) % order.length] ?? 'half';
-    atlas.setSheetDetent(next);
-  }
 
   function pick(id: string) {
     query = '';
@@ -55,17 +51,16 @@
 
 <aside
   class="panel trace-panel"
+  class:dragging={dragHeight !== null}
   data-detent={atlas.sheetDetent}
+  style={dragHeight !== null ? `--drag-height:${dragHeight}px` : undefined}
   aria-label={atlas.strings.lineageHeader}
 >
-  <button
-    type="button"
-    class="sheet-handle"
-    onclick={cycleDetent}
-    aria-label={atlas.strings.lineageHeader}
-  >
-    <span class="sheet-handle-bar" aria-hidden="true"></span>
-  </button>
+  <SheetHandle
+    kind="trace"
+    label={atlas.strings.lineageHeader}
+    ondragheight={(heightPx) => (dragHeight = heightPx)}
+  />
 
   <div class="panel-head">
     <span class="micro">{atlas.strings.lineageHeader}</span>
@@ -248,16 +243,12 @@
     color: var(--ink);
   }
 
-  .sheet-handle {
-    display: none;
-  }
-
   .panel-head {
     display: flex;
     flex: none;
     align-items: center;
     justify-content: space-between;
-    padding: 12px 12px 10px 22px;
+    padding: 13px 14px 11px 28px;
     border-bottom: 1px solid var(--rule);
   }
 
@@ -267,8 +258,8 @@
 
   .icon-btn {
     display: grid;
-    width: 30px;
-    height: 30px;
+    width: 32px;
+    height: 32px;
     color: var(--ink-soft);
     place-items: center;
     transition: color 0.15s ease, background 0.15s ease;
@@ -280,7 +271,7 @@
   }
 
   .trace-body {
-    padding: 20px 24px 28px;
+    padding: 24px 28px 30px;
   }
 
   h1 {
@@ -635,36 +626,47 @@
 
   @media (max-width: 959px) {
     .trace-panel {
-      height: 56vh;
-      max-height: 56vh;
+      transition: height 0.24s var(--ease), max-height 0.24s var(--ease);
     }
 
-    .sheet-handle {
-      display: flex;
-      flex: none;
-      align-items: center;
-      justify-content: center;
-      width: 100%;
-      padding: 10px 0 4px;
+    .trace-panel[data-detent='minimized'] {
+      height: calc(68px + env(safe-area-inset-bottom));
+      max-height: calc(68px + env(safe-area-inset-bottom));
     }
 
-    .sheet-handle-bar {
-      width: 34px;
-      height: 3.5px;
-      background: var(--rule);
-      border-radius: 999px;
+    .trace-panel[data-detent='half'] {
+      height: 52vh;
+      height: 52dvh;
+      max-height: 52vh;
+      max-height: 52dvh;
+    }
+
+    .trace-panel[data-detent='expanded'] {
+      height: 86vh;
+      height: 86dvh;
+      max-height: 86vh;
+      max-height: 86dvh;
     }
 
     .panel-head {
-      padding: 4px 12px 8px 22px;
+      padding: 2px 12px 8px 20px;
+    }
+
+    .icon-btn {
+      width: 36px;
+      height: 36px;
     }
 
     .trace-body {
-      padding: 18px 20px 24px;
+      padding: 16px 20px calc(24px + env(safe-area-inset-bottom));
     }
 
     h1 {
       font-size: 22px;
+    }
+
+    input {
+      font-size: 16px;
     }
   }
 </style>

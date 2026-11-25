@@ -99,11 +99,11 @@
 
   .row {
     display: grid;
-    grid-template-columns: 22px 1fr auto;
-    gap: 11px;
+    grid-template-columns: 24px 1fr auto;
+    gap: 12px;
     align-items: start;
     width: 100%;
-    padding: 12px 0;
+    padding: 13px 0;
     text-align: left;
     transition: background 0.15s ease, padding 0.15s ease;
   }
@@ -116,11 +116,11 @@
 
   .mark {
     display: grid;
-    width: 22px;
-    height: 22px;
+    width: 24px;
+    height: 24px;
     margin-top: 1px;
     font-family: var(--font-serif);
-    font-size: 12px;
+    font-size: 13px;
     line-height: 1;
     place-items: center;
     border: 1px solid;
@@ -135,13 +135,13 @@
   }
 
   .sentence {
-    font-size: 14.5px;
+    font-size: 15.5px;
     line-height: 1.5;
     color: var(--ink);
   }
 
   .reason {
-    font-size: 13px;
+    font-size: 14px;
     line-height: 1.65;
     color: var(--ink-soft);
   }
@@ -149,7 +149,7 @@
   .kind {
     padding-top: 2px;
     font-family: var(--font-sans);
-    font-size: 9.5px;
+    font-size: 10.5px;
     font-weight: 600;
     letter-spacing: 0.06em;
     white-space: nowrap;
@@ -157,9 +157,9 @@
 
   .more {
     width: 100%;
-    padding: 10px 0;
+    padding: 11px 0;
     font-family: var(--font-sans);
-    font-size: 10.5px;
+    font-size: 11.5px;
     letter-spacing: 0.04em;
     color: var(--ink-soft);
     text-align: left;
@@ -174,7 +174,21 @@
   .none {
     margin: 0;
     padding: 10px 0;
-    font-size: 13px;
+    font-size: 14px;
     color: var(--ink-faint);
+  }
+
+  @media (max-width: 959px) {
+    .row {
+      padding: 12px 0;
+    }
+
+    .sentence {
+      font-size: 14.5px;
+    }
+
+    .reason {
+      font-size: 13.5px;
+    }
   }
 </style>

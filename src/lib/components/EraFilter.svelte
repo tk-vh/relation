@@ -52,7 +52,7 @@
   .era-filter {
     position: fixed;
     top: 62px;
-    right: 436px;
+    right: var(--panel-clearance);
     left: 0;
     z-index: 20;
     display: flex;
@@ -191,8 +191,11 @@
 
   @media (max-width: 959px) {
     .era-filter {
-      top: 50px;
+      top: calc(50px + env(safe-area-inset-top));
       right: 0;
+      padding: 2px 0;
+      background: color-mix(in srgb, var(--canvas) 82%, transparent);
+      backdrop-filter: blur(6px);
     }
 
     .scroll {
@@ -206,12 +209,17 @@
     }
 
     .chip {
-      padding: 6px 8px;
-      font-size: 10.5px;
+      padding: 7px 10px;
+      font-size: 11.5px;
     }
 
     .controls {
       padding-right: 10px;
+    }
+
+    .era-switch {
+      width: 36px;
+      height: 36px;
     }
   }
 </style>

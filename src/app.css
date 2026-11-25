@@ -38,7 +38,9 @@
   --font-serif: 'Noto Serif SC', 'Songti SC', 'Source Han Serif SC', 'SimSun', serif;
   --font-sans: 'Noto Sans CJK SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
   --font-latin: 'Cormorant Garamond', 'Noto Serif SC', serif;
-  --panel-width: 404px;
+  --panel-gap: 16px;
+  --panel-width: clamp(460px, 34vw, 540px);
+  --panel-clearance: calc(var(--panel-width) + var(--panel-gap) * 2);
   --gutter: 28px;
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
   color-scheme: light;
@@ -135,9 +137,9 @@ input:focus-visible,
 
 .panel {
   position: fixed;
-  top: 16px;
-  right: 16px;
-  bottom: 16px;
+  top: var(--panel-gap);
+  right: var(--panel-gap);
+  bottom: var(--panel-gap);
   z-index: 30;
   display: flex;
   flex-direction: column;
@@ -192,6 +194,7 @@ input:focus-visible,
 @media (max-width: 959px) {
   :root {
     --panel-width: auto;
+    --panel-clearance: 0px;
     --gutter: 20px;
   }
 
@@ -201,10 +204,28 @@ input:focus-visible,
     bottom: 0;
     left: 0;
     width: auto;
-    max-height: 78vh;
-    border-radius: 14px 14px 0 0;
+    max-height: 86vh;
+    max-height: 86dvh;
+    border-radius: 16px 16px 0 0;
     border-bottom: 0;
+    box-shadow: 0 -10px 32px rgba(20, 19, 17, 0.1), 0 -1px 4px rgba(20, 19, 17, 0.05);
     animation: sheet-in 0.32s var(--ease);
+  }
+
+  [data-theme='dark'] .panel {
+    box-shadow: 0 -12px 36px rgba(0, 0, 0, 0.55), 0 -1px 4px rgba(0, 0, 0, 0.35);
+  }
+
+  .panel[data-detent='minimized'] .panel-scroll {
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  .panel.dragging {
+    height: var(--drag-height) !important;
+    max-height: 92vh !important;
+    max-height: 92dvh !important;
+    transition: none !important;
   }
 
   @keyframes sheet-in {

@@ -62,6 +62,24 @@ const kant = page.locator('svg .node[data-id="kant"]');
 await kant.click({ force: true });
 await page.waitForTimeout(600);
 check('clicking a node opens its page', (await page.locator('.panel h1').first().textContent())?.trim() === '康德');
+const desktopDetailMetrics = await page.evaluate(() => {
+  const panel = document.querySelector('.detail-panel');
+  const bio = document.querySelector('.detail-panel .bio');
+  return {
+    width: panel ? Math.round(panel.getBoundingClientRect().width) : 0,
+    bioFontSize: bio ? Number.parseFloat(getComputedStyle(bio).fontSize) : 0,
+  };
+});
+check(
+  'desktop detail panel is wider (>= 460px at 1440px)',
+  desktopDetailMetrics.width >= 460,
+  `${desktopDetailMetrics.width}px`,
+);
+check(
+  'desktop detail bio font-size >= 15.5px',
+  desktopDetailMetrics.bioFontSize >= 15.5,
+  `${desktopDetailMetrics.bioFontSize}px`,
+);
 const panelText = await page.locator('.panel').first().innerText();
 check('relation sentence names both thinkers', panelText.includes('康德') && panelText.includes('莱布尼茨'));
 check('relation reason is visible', panelText.includes('莱布尼茨预定和谐'));
@@ -224,6 +242,22 @@ check(
   'mobile has no horizontal overflow',
   await mobile.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth + 1),
 );
+const introNumbersFit = await mobile.evaluate(() => {
+  const panel = document.querySelector('.intro-panel');
+  const numbers = document.querySelector('.intro-panel .numbers');
+  if (!panel || !numbers) return { ok: false, detail: 'missing elements' };
+  const panelRect = panel.getBoundingClientRect();
+  const numbersRect = numbers.getBoundingClientRect();
+  return {
+    ok: numbersRect.bottom <= panelRect.bottom + 1,
+    detail: `numbers.bottom=${Math.round(numbersRect.bottom)} panel.bottom=${Math.round(panelRect.bottom)}`,
+  };
+});
+check(
+  'mobile intro numbers row is not clipped at initial half detent',
+  introNumbersFit.ok,
+  introNumbersFit.detail,
+);
 await mobile.screenshot({ path: '/tmp/opencode/verify-mobile.png' });
 
 await mobile.locator('.masthead button[aria-label="搜索思想家"]').click();
@@ -235,6 +269,52 @@ await mobile.locator('.dialog input').press('Enter');
 await mobile.waitForTimeout(500);
 check('mobile detail sheet opens', (await mobile.locator('.panel h1').first().textContent())?.trim() === '老子');
 await mobile.screenshot({ path: '/tmp/opencode/verify-mobile-detail.png' });
+
+const detailBefore = await mobile.evaluate(() => {
+  const panel = document.querySelector('.detail-panel');
+  return {
+    detent: panel?.getAttribute('data-detent') ?? '',
+    height: panel ? Math.round(panel.getBoundingClientRect().height) : 0,
+  };
+});
+await mobile.locator('.detail-panel .sheet-handle').click();
+await mobile.waitForTimeout(350);
+const detailAfter = await mobile.evaluate(() => {
+  const panel = document.querySelector('.detail-panel');
+  return {
+    detent: panel?.getAttribute('data-detent') ?? '',
+    height: panel ? Math.round(panel.getBoundingClientRect().height) : 0,
+  };
+});
+check(
+  'mobile detail sheet handle cycles detent and changes height',
+  detailBefore.detent !== detailAfter.detent && detailAfter.height > detailBefore.height + 100,
+  `${detailBefore.detent}(${detailBefore.height}px) -> ${detailAfter.detent}(${detailAfter.height}px)`,
+);
+
+await mobile.locator('.masthead button[aria-label="追溯世系"]').click();
+await mobile.waitForTimeout(350);
+const traceBefore = await mobile.evaluate(() => {
+  const panel = document.querySelector('.trace-panel');
+  return {
+    detent: panel?.getAttribute('data-detent') ?? '',
+    height: panel ? Math.round(panel.getBoundingClientRect().height) : 0,
+  };
+});
+await mobile.locator('.trace-panel .sheet-handle').click();
+await mobile.waitForTimeout(350);
+const traceAfter = await mobile.evaluate(() => {
+  const panel = document.querySelector('.trace-panel');
+  return {
+    detent: panel?.getAttribute('data-detent') ?? '',
+    height: panel ? Math.round(panel.getBoundingClientRect().height) : 0,
+  };
+});
+check(
+  'mobile trace sheet handle cycles detent and changes height',
+  traceBefore.detent !== traceAfter.detent && traceAfter.height > traceBefore.height + 100,
+  `${traceBefore.detent}(${traceBefore.height}px) -> ${traceAfter.detent}(${traceAfter.height}px)`,
+);
 
 check('no browser console errors', errors.length === 0, errors.join(' | '));
 

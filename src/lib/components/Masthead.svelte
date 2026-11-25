@@ -113,7 +113,7 @@
   .masthead {
     position: fixed;
     top: 0;
-    right: 436px;
+    right: var(--panel-clearance);
     left: 0;
     z-index: 25;
     display: flex;
@@ -305,8 +305,8 @@
     .masthead {
       right: 0;
       gap: 8px;
-      height: 48px;
-      padding: 0 14px;
+      height: calc(48px + env(safe-area-inset-top));
+      padding: env(safe-area-inset-top) 12px 0;
     }
 
     .brand {
@@ -330,8 +330,14 @@
       gap: 2px;
     }
 
+    .icon-btn {
+      width: 36px;
+      height: 36px;
+    }
+
     .trace-btn {
-      padding: 0 7px;
+      height: 36px;
+      padding: 0 8px;
       border-color: transparent;
     }
 

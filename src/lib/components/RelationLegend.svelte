@@ -32,7 +32,7 @@
   .legend {
     position: fixed;
     bottom: 18px;
-    right: 436px;
+    right: var(--panel-clearance);
     left: 72px;
     z-index: 20;
     display: flex;
