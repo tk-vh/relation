@@ -1,38 +1,100 @@
 <script lang="ts">
+  import { onMount } from 'svelte';
   import { atlas } from '../state.svelte';
   import { eraColor } from '../theme';
+
+  let scroller = $state<HTMLDivElement>();
+  let canScrollLeft = $state(false);
+  let canScrollRight = $state(false);
+
+  function updateScrollState() {
+    if (!scroller) return;
+    canScrollLeft = scroller.scrollLeft > 2;
+    canScrollRight = scroller.scrollLeft + scroller.clientWidth < scroller.scrollWidth - 2;
+  }
+
+  function onWheel(event: WheelEvent) {
+    if (!scroller || scroller.scrollWidth <= scroller.clientWidth) return;
+    const delta = Math.abs(event.deltaY) >= Math.abs(event.deltaX) ? event.deltaY : event.deltaX;
+    if (delta === 0) return;
+    event.preventDefault();
+    scroller.scrollLeft += delta;
+    updateScrollState();
+  }
+
+  function nudge(direction: -1 | 1) {
+    if (!scroller) return;
+    scroller.scrollBy({ left: direction * 240, behavior: 'smooth' });
+  }
+
+  $effect(() => {
+    void atlas.language;
+    queueMicrotask(updateScrollState);
+  });
+
+  onMount(() => {
+    updateScrollState();
+    const observer = new ResizeObserver(updateScrollState);
+    if (scroller) observer.observe(scroller);
+    return () => observer.disconnect();
+  });
 </script>
 
 <div class="era-filter" aria-label={atlas.strings.eraLabel}>
-  <div class="scroll">
-    <span class="filter-label micro">{atlas.strings.eraLabel}</span>
-    {#each atlas.graph.eras as era, index (index)}
-      {@const visible = atlas.isEraVisible(index)}
+  <div class="rail">
+    {#if canScrollLeft}
       <button
         type="button"
-        class="chip"
-        class:off={!visible}
-        aria-pressed={visible}
-        onclick={() => atlas.toggleEra(index)}
-        title={era}
+        class="scroll-btn left"
+        onclick={() => nudge(-1)}
+        aria-label={atlas.language === 'zh' ? '向左滚动时代' : 'Scroll eras left'}
       >
-        <span
-          class="dot"
-          style={visible ? `background:${eraColor(index, atlas.themeMode)}` : undefined}
-        ></span>
-        <span class="name">{atlas.strings.eraShort(index)}</span>
-        <span class="count">{atlas.graph.eraCounts[index] ?? 0}</span>
-      </button>
-    {/each}
-  </div>
-
-  <div class="controls">
-    {#if atlas.hasFilters}
-      <button type="button" class="reset" onclick={() => atlas.resetFilters()}>
-        {atlas.language === 'zh' ? '全部' : 'All'}
+        ‹
       </button>
     {/if}
 
+    <div
+      class="scroll"
+      class:fade-left={canScrollLeft}
+      class:fade-right={canScrollRight}
+      bind:this={scroller}
+      onscroll={updateScrollState}
+      onwheel={onWheel}
+    >
+      <span class="filter-label micro">{atlas.strings.eraLabel}</span>
+      {#each atlas.graph.eras as era, index (index)}
+        {@const visible = atlas.isEraVisible(index)}
+        <button
+          type="button"
+          class="chip"
+          class:off={!visible}
+          aria-pressed={visible}
+          onclick={() => atlas.toggleEra(index)}
+          title={era}
+        >
+          <span
+            class="dot"
+            style={visible ? `background:${eraColor(index, atlas.themeMode)}` : undefined}
+          ></span>
+          <span class="name">{atlas.strings.eraShort(index)}</span>
+          <span class="count">{atlas.graph.eraCounts[index] ?? 0}</span>
+        </button>
+      {/each}
+    </div>
+
+    {#if canScrollRight}
+      <button
+        type="button"
+        class="scroll-btn right"
+        onclick={() => nudge(1)}
+        aria-label={atlas.language === 'zh' ? '向右滚动时代' : 'Scroll eras right'}
+      >
+        ›
+      </button>
+    {/if}
+  </div>
+
+  <div class="controls">
     <button
       type="button"
       class="era-switch"
@@ -56,25 +118,80 @@
     left: 0;
     z-index: 20;
     display: flex;
-    gap: 8px;
+    gap: 4px;
     align-items: center;
     pointer-events: none;
+  }
+
+  .rail {
+    position: relative;
+    display: flex;
+    flex: 1;
+    min-width: 0;
+    align-items: center;
+    pointer-events: auto;
   }
 
   .scroll {
     display: flex;
     flex: 1;
+    min-width: 0;
     gap: 0;
     align-items: center;
     padding-left: 28px;
-    padding-right: 8px;
+    padding-right: 12px;
     overflow-x: auto;
-    pointer-events: auto;
     scrollbar-width: none;
   }
 
   .scroll::-webkit-scrollbar {
     display: none;
+  }
+
+  .scroll.fade-left {
+    mask-image: linear-gradient(90deg, transparent, #000 32px);
+  }
+
+  .scroll.fade-right {
+    mask-image: linear-gradient(90deg, #000 calc(100% - 32px), transparent);
+  }
+
+  .scroll.fade-left.fade-right {
+    mask-image: linear-gradient(90deg, transparent, #000 32px, #000 calc(100% - 32px), transparent);
+  }
+
+  .scroll-btn {
+    position: absolute;
+    top: 50%;
+    z-index: 2;
+    display: grid;
+    place-items: center;
+    width: 24px;
+    height: 24px;
+    padding: 0;
+    font-family: var(--font-sans);
+    font-size: 16px;
+    line-height: 1;
+    color: var(--canvas-ink-soft);
+    background: color-mix(in srgb, var(--canvas) 88%, transparent);
+    border: 1px solid var(--rule);
+    border-radius: 999px;
+    transform: translateY(-50%);
+    transition: color 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+  }
+
+  .scroll-btn:hover {
+    color: var(--canvas-ink);
+    border-color: var(--canvas-ink-faint);
+    background: var(--canvas-surface);
+  }
+
+  .scroll-btn.left {
+    left: 6px;
+  }
+
+  .scroll-btn.right {
+    right: 2px;
   }
 
   .filter-label {
@@ -135,22 +252,6 @@
     pointer-events: auto;
   }
 
-  .reset {
-    padding: 4px 8px;
-    font-family: var(--font-sans);
-    font-size: 9.5px;
-    letter-spacing: 0.05em;
-    color: var(--canvas-ink-soft);
-    border: 1px solid var(--rule);
-    transition: color 0.15s ease, background 0.15s ease, border-color 0.15s ease;
-  }
-
-  .reset:hover {
-    color: var(--canvas-ink);
-    border-color: var(--canvas-ink-faint);
-    background: color-mix(in srgb, var(--canvas-ink) 6%, transparent);
-  }
-
   .era-switch {
     display: grid;
     place-items: center;
@@ -200,7 +301,10 @@
 
     .scroll {
       padding-left: 10px;
-      mask-image: linear-gradient(90deg, #000 90%, transparent);
+    }
+
+    .scroll-btn {
+      display: none;
     }
 
     .filter-label,

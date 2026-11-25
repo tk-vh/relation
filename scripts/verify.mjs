@@ -117,13 +117,13 @@ const dimmed = await page.locator('svg .node[data-era="分析哲学"]').evaluate
 );
 check('era filter dims that era', dimmed);
 check('era filter marks the chip off', (await page.locator('.chip.off').count()) === 1);
-await page.locator('.era-filter .reset').click();
+await analysis.click();
 await page.waitForFunction(() => document.querySelectorAll('.chip.off').length === 0);
-check('reset restores every era', (await page.locator('.chip.off').count()) === 0);
+check('toggling era chip again restores it', (await page.locator('.chip.off').count()) === 0);
 await page.locator('.legend .item', { hasText: '受影响' }).click();
 await page.waitForFunction(() => document.querySelectorAll('.legend .item.off').length === 1);
 check('relation-kind filter can hide influences', (await page.locator('.legend .item.off').count()) === 1);
-await page.locator('.era-filter .reset').click();
+await page.locator('.legend .item', { hasText: '受影响' }).click();
 await page.waitForFunction(() => document.querySelectorAll('.legend .item.off').length === 0);
 
 const lightBg = await page.evaluate(() => getComputedStyle(document.body).backgroundColor);
@@ -161,7 +161,7 @@ check(
 await page.screenshot({ path: '/tmp/opencode/verify-en-dark.png' });
 await page.locator('[data-testid="lang-toggle"]').click();
 await page.locator('[data-testid="theme-toggle"]').click();
-await page.locator('.era-filter .reset').click();
+await analysis.click();
 await page.waitForTimeout(200);
 
 await page.locator('.legend .item', { hasText: '受影响' }).click();
@@ -175,7 +175,7 @@ check(
 await page.locator('.era-filter [role="switch"]').click();
 await page.waitForTimeout(150);
 check('era master switch restores all 14 eras', (await page.locator('.chip.off').count()) === 0);
-await page.locator('.era-filter .reset').click();
+await page.locator('.legend .item', { hasText: '受影响' }).click();
 
 await page.locator('button[aria-label="全屏图谱"]').click();
 await page.waitForTimeout(250);
