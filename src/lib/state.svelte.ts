@@ -84,10 +84,6 @@ class Atlas {
     return this.hiddenEras.size > 0 || this.hiddenKinds.size > 0;
   }
 
-  get allErasVisible(): boolean {
-    return this.hiddenEras.size === 0;
-  }
-
   get anyEraVisible(): boolean {
     return this.hiddenEras.size < this.graph.eras.length;
   }
@@ -265,10 +261,6 @@ class Atlas {
 
   closeSearch(): void {
     this.searchOpen = false;
-  }
-
-  enterFullscreen(): void {
-    this.graphFullscreen = true;
   }
 
   exitFullscreen(): void {

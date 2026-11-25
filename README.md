@@ -35,17 +35,11 @@
 
 ## 数据与校验
 
-前端当前实际加载的图谱数据位于 `src/lib/data/`：
+前端加载的图谱数据位于 `src/lib/data/`：
 
 - `src/lib/data/graph.json`：中文图谱（234 位思想家、787 条关系）
 - `src/lib/data/graph.en.json`：英文图谱（234 位思想家、787 条关系）
 - `src/lib/data/layout.json`：234 个节点的预计算坐标
-
-此外，仓库还保留了早期的原始数据与草稿脚本：
-
-- `data.js` / `data.zh.js`：原始英文/中文人物数据表。
-- `data/relations.draft/`：早期按传统拆分的 6 份关系草稿（共 648 条关系）。
-- `scripts/build-graph.mjs`（`npm run data`）：仅从 `data.zh.js` 与 `data/relations.draft/*.json` 合并、去重、校验并写入 `src/lib/data/graph.json`，**不会**生成 `graph.en.json` 或 `layout.json`。直接运行会用 648 条草稿覆盖当前 787 条的 `graph.json`，使用前请注意确认目标数据来源。
 
 独立校验器位于 `engine/src/main.rs`（Rust），通过 `npm run graph:check` 对 `graph.json` 与 `graph.en.json` 执行类型化检查：校验 ID 唯一性与存在性、无自环、无重复有向边、理由不少于 12 字符、无孤立节点，对可疑的年代方向发出警告，并输出关系分布、弱连通分量、高频节点与时代统计。
 
@@ -81,12 +75,9 @@ npm run graph:check  # 使用 Rust 校验 graph.json 与 graph.en.json
 
 ```text
 .github/workflows/deploy.yml  GitHub Pages 自动构建与发布工作流
-data.js / data.zh.js          原始英文/中文人物数据表
-data/relations.draft/         早期按传统分组的 6 份关系草稿（648 条）
-scripts/build-graph.mjs       合并草稿并生成中文 graph.json 的脚本
 scripts/verify.mjs            Playwright 桌面与移动端端到端验收脚本
 engine/src/main.rs            Rust 图谱校验器
-src/lib/data/                 当前前端加载的 graph.json、graph.en.json 与 layout.json
+src/lib/data/                 graph.json、graph.en.json 与 layout.json
 src/lib/graph/model.ts        图谱类型、索引、检索与无向最短路径
 src/lib/state.svelte.ts       选择、筛选、双语、主题与追溯状态
 src/lib/sheet.ts              桌面面板宽度与移动端抽屉档位几何计算

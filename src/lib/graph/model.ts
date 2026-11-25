@@ -287,5 +287,3 @@ export const graphs: Record<AtlasLanguage, PhilosophyGraph> = {
 };
 
 export const layoutData: LayoutData = layoutRaw as LayoutData;
-
-export default graphs.zh;

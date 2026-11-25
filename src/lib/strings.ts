@@ -23,10 +23,7 @@ export interface UiStrings {
   readonly expandRest: (count: number) => string;
   readonly randomOne: string;
   readonly share: string;
-  readonly shareTitle: (name: string) => string;
-  readonly shareBody: (name: string, link: string) => string;
   readonly copiedLink: string;
-  readonly shareCopyFailed: string;
   readonly closeArchive: string;
   readonly chapter: (index: number, lifespan: string) => string;
   readonly school: string;
@@ -59,7 +56,6 @@ export interface UiStrings {
   readonly randomWalk: string;
   readonly introHint: string;
   readonly dataCredit: string;
-  readonly relationSummary: (critiques: number, syntheses: number) => string;
   readonly influenceSummary: (influences: number, critiques: number) => string;
   readonly lineageHeader: string;
   readonly pickStart: string;
@@ -89,17 +85,11 @@ export interface UiStrings {
   readonly searchFooter: (thinkers: number, eras: number) => string;
   readonly tapResult: string;
   readonly graphDescription: (thinkers: number, relations: number) => string;
-  readonly zoomState: (zoom: number) => string;
   readonly zoomIn: string;
   readonly zoomOut: string;
   readonly fit: string;
   readonly fullscreen: string;
   readonly exitFullscreen: string;
-  readonly loadingTitle: string;
-  readonly loadingSubtitle: string;
-  readonly errorPrefix: string;
-  readonly influencePrefix: string;
-  readonly influenceSuffix: string;
   eraShort(index: number): string;
   formatYear(year: number): string;
   relationLabel(kind: RelationKind): string;
@@ -200,10 +190,7 @@ export const ZhStrings: UiStrings = createStrings({
   expandRest: (count) => `展开其余 ${count} 条`,
   randomOne: '随机一位',
   share: '分享',
-  shareTitle: (name) => `分享 ${name}`,
-  shareBody: (name, link) => `${name} · 哲学家图谱\n${link}`,
   copiedLink: '已复制链接',
-  shareCopyFailed: '无法复制链接',
   closeArchive: '关闭档案',
   chapter: (index, lifespan) => `第 ${String(index + 1).padStart(2, '0')} 章 · ${lifespan}`,
   school: '学派',
@@ -237,7 +224,6 @@ export const ZhStrings: UiStrings = createStrings({
   randomWalk: '随机漫步',
   introHint: '箭头指向被依赖者 · 点击节点看档案 · 拖动平移 · 拖动节点 · 滚轮缩放 · 右上角全屏',
   dataCredit: '数据整理自公开哲学史资料',
-  relationSummary: (critiques, syntheses) => `${critiques} 条批判 · ${syntheses} 条综合`,
   influenceSummary: (influences, critiques) => `${influences} 条影响 · ${critiques} 条批判`,
   lineageHeader: 'LINEAGE · 追溯世系',
   pickStart: '选择起点思想家',
@@ -269,17 +255,11 @@ export const ZhStrings: UiStrings = createStrings({
   tapResult: '点击结果打开档案',
   graphDescription: (thinkers, relations) =>
     `哲学依赖关系图，${thinkers} 位思想家，${relations} 条关系`,
-  zoomState: (zoom) => `缩放 ${zoom.toFixed(2)}`,
   zoomIn: '放大',
   zoomOut: '缩小',
   fit: '适应画布',
   fullscreen: '全屏图谱',
   exitFullscreen: '退出全屏',
-  loadingTitle: '哲学家图谱',
-  loadingSubtitle: 'PHILOSOPHER ATLAS',
-  errorPrefix: '图谱数据读取失败',
-  influencePrefix: ' 受 ',
-  influenceSuffix: ' 影响',
 });
 
 export const EnStrings: UiStrings = createStrings({
@@ -320,10 +300,7 @@ export const EnStrings: UiStrings = createStrings({
   expandRest: (count) => `Show ${count} more`,
   randomOne: 'Random thinker',
   share: 'Share',
-  shareTitle: (name) => `Share ${name}`,
-  shareBody: (name, link) => `${name} · Philosopher Atlas\n${link}`,
   copiedLink: 'Link copied',
-  shareCopyFailed: 'Could not copy link',
   closeArchive: 'Close archive',
   chapter: (index, lifespan) => `Chapter ${String(index + 1).padStart(2, '0')} · ${lifespan}`,
   school: 'School',
@@ -358,7 +335,6 @@ export const EnStrings: UiStrings = createStrings({
   introHint:
     'Arrows point to the thinker depended on · Click a node for the archive · Drag to pan · Drag a node to move · Scroll to zoom · Fullscreen at top right',
   dataCredit: 'Compiled from public histories of philosophy',
-  relationSummary: (critiques, syntheses) => `${critiques} critiques · ${syntheses} syntheses`,
   influenceSummary: (influences, critiques) => `${influences} influences · ${critiques} critiques`,
   lineageHeader: 'LINEAGE',
   pickStart: 'Choose a starting thinker',
@@ -392,17 +368,11 @@ export const EnStrings: UiStrings = createStrings({
   tapResult: 'Tap a result to open',
   graphDescription: (thinkers, relations) =>
     `Philosophy dependency graph, ${thinkers} thinkers, ${relations} relations`,
-  zoomState: (zoom) => `Zoom ${zoom.toFixed(2)}`,
   zoomIn: 'Zoom in',
   zoomOut: 'Zoom out',
   fit: 'Fit',
   fullscreen: 'Fullscreen graph',
   exitFullscreen: 'Exit fullscreen',
-  loadingTitle: 'Philosopher Atlas',
-  loadingSubtitle: '哲学家图谱',
-  errorPrefix: 'Could not load atlas data',
-  influencePrefix: ' was influenced by ',
-  influenceSuffix: '',
 });
 
 export function stringsFor(language: AtlasLanguage): UiStrings {
