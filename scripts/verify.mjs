@@ -108,6 +108,78 @@ check('relation-kind filter can hide influences', (await page.locator('.legend .
 await page.locator('.era-filter .reset').click();
 await page.waitForFunction(() => document.querySelectorAll('.legend .item.off').length === 0);
 
+const lightBg = await page.evaluate(() => getComputedStyle(document.body).backgroundColor);
+check('default theme is light (#fcfbf8)', lightBg === 'rgb(252, 251, 248)', lightBg);
+await page.locator('[data-testid="theme-toggle"]').click();
+await page.waitForTimeout(200);
+const darkBg = await page.evaluate(() => getComputedStyle(document.body).backgroundColor);
+check('theme toggle switches to dark (#0c0c0e)', darkBg === 'rgb(12, 12, 14)', darkBg);
+await page.screenshot({ path: '/tmp/opencode/verify-dark.png' });
+
+await page.locator('.chip', { hasText: '分析' }).click();
+await page.locator('.chip.off').waitFor({ state: 'visible' });
+const activeId = await page.evaluate(() => location.hash.replace(/^#\/?/, ''));
+const wangTransformBefore = await page
+  .locator(`svg .node[data-id="${activeId}"]`)
+  .getAttribute('transform');
+await page.locator('[data-testid="lang-toggle"]').click();
+await page.waitForTimeout(250);
+check(
+  'language toggle switches UI and graph to English',
+  (await page.locator('.panel h1').first().textContent())?.trim() === 'Wang Yangming',
+);
+check(
+  'era filter survives language switch',
+  (await page.locator('.chip.off').count()) === 1,
+);
+const wangTransformAfter = await page
+  .locator(`svg .node[data-id="${activeId}"]`)
+  .getAttribute('transform');
+check(
+  'node position stays identical across language switch',
+  wangTransformBefore !== null && wangTransformBefore === wangTransformAfter,
+  `${wangTransformBefore} vs ${wangTransformAfter}`,
+);
+await page.screenshot({ path: '/tmp/opencode/verify-en-dark.png' });
+await page.locator('[data-testid="lang-toggle"]').click();
+await page.locator('[data-testid="theme-toggle"]').click();
+await page.locator('.era-filter .reset').click();
+await page.waitForTimeout(200);
+
+await page.locator('.legend .item', { hasText: '受影响' }).click();
+await page.locator('.era-filter [role="switch"]').click();
+await page.waitForTimeout(150);
+check('era master switch hides all 14 eras', (await page.locator('.chip.off').count()) === 14);
+check(
+  'era master switch preserves relation-kind filter',
+  (await page.locator('.legend .item.off').count()) === 1,
+);
+await page.locator('.era-filter [role="switch"]').click();
+await page.waitForTimeout(150);
+check('era master switch restores all 14 eras', (await page.locator('.chip.off').count()) === 0);
+await page.locator('.era-filter .reset').click();
+
+await page.locator('button[aria-label="全屏图谱"]').click();
+await page.waitForTimeout(250);
+check('fullscreen hides masthead and panel', (await page.locator('.masthead').count()) === 0 && (await page.locator('.panel').count()) === 0);
+await page.keyboard.press('Escape');
+await page.waitForTimeout(250);
+check('Escape exits fullscreen', (await page.locator('.masthead').count()) === 1);
+
+await page.goto(`${BASE}/#/kant`, { waitUntil: 'networkidle' });
+await page.waitForTimeout(300);
+const kantText = await page.locator('.panel').first().innerText();
+check(
+  'Kant archive renders multiple selected works',
+  kantText.includes('纯粹理性批判') && kantText.includes('实践理性批判'),
+);
+await page.goto(`${BASE}/#/socrates`, { waitUntil: 'networkidle' });
+await page.waitForTimeout(300);
+check(
+  'Socrates archive renders no-works fallback',
+  (await page.locator('.panel').first().innerText()).includes('无完整著作传世'),
+);
+
 await page.goto(BASE, { waitUntil: 'networkidle' });
 await page.waitForTimeout(500);
 await page.locator('.masthead button[aria-label="追溯世系"]').click();
