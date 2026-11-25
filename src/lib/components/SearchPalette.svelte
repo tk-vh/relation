@@ -1,7 +1,7 @@
 <script lang="ts">
   import { tick } from 'svelte';
   import { fade, scale } from 'svelte/transition';
-  import graph, { type Thinker } from '../graph/model';
+  import type { Thinker } from '../graph/model';
   import { atlas } from '../state.svelte';
   import { eraColor } from '../theme';
   import Icon from './Icon.svelte';
@@ -11,12 +11,9 @@
   let query = $state('');
   let active = $state(0);
 
-  const hubs = graph.thinkers
-    .slice()
-    .sort((a, b) => (graph.descendants.get(b.id) ?? 0) - (graph.descendants.get(a.id) ?? 0))
-    .slice(0, 7);
-
-  let results = $derived<Thinker[]>(query.trim() ? graph.search(query, 14) : hubs);
+  let results = $derived<Thinker[]>(
+    query.trim() ? atlas.graph.search(query, 16) : atlas.graph.hubs.slice(0, 8),
+  );
 
   $effect(() => {
     if (!atlas.searchOpen) return;
@@ -79,7 +76,7 @@
       bind:this={dialog}
       role="dialog"
       aria-modal="true"
-      aria-label="搜索思想家"
+      aria-label={atlas.strings.search}
       tabindex="-1"
       onkeydown={trapFocus}
       transition:scale={{ duration: 180, start: 0.985 }}
@@ -91,13 +88,22 @@
           bind:value={query}
           oninput={() => (active = 0)}
           onkeydown={onKey}
-          placeholder="搜索人名、学派、命题"
-          aria-label="搜索人名、学派、命题"
+          placeholder={atlas.strings.searchPlaceholder}
+          aria-label={atlas.strings.searchPlaceholder}
           autocomplete="off"
           spellcheck="false"
         />
         {#if query}
-          <button type="button" class="clear" onclick={() => (query = '')} aria-label="清空">
+          <button
+            type="button"
+            class="clear"
+            onclick={() => {
+              query = '';
+              active = 0;
+              input?.focus();
+            }}
+            aria-label={atlas.strings.close}
+          >
             <Icon name="close" size={13} />
           </button>
         {/if}
@@ -105,14 +111,16 @@
           type="button"
           class="search-close"
           onclick={() => atlas.closeSearch()}
-          aria-label="关闭搜索"
+          aria-label={atlas.strings.close}
         >
-          关闭
+          {atlas.strings.close}
         </button>
       </div>
 
       <div class="results">
-        <p class="micro heading" aria-live="polite">{query ? `找到 ${results.length} 位` : '思想的枢纽'}</p>
+        <p class="micro heading" aria-live="polite">
+          {query.trim() ? atlas.strings.found(results.length) : atlas.strings.hubs}
+        </p>
         {#if results.length}
           {#each results as person, index (person.id)}
             <button
@@ -122,31 +130,38 @@
               onmouseenter={() => (active = index)}
               onclick={() => choose(person)}
             >
-              <span class="dot" style={`background:${eraColor(person.eraIndex)}`}></span>
+              <span
+                class="dot"
+                style={`background:${eraColor(person.eraIndex, atlas.themeMode)}`}
+              ></span>
               <span class="names">
                 <span class="name">{person.name}</span>
-                <span class="en">{person.nameEn}</span>
+                {#if person.nameEn}
+                  <span class="en">{person.nameEn}</span>
+                {/if}
               </span>
               <span class="meta">
-                <span>{person.era}</span>
-                <span class="school">{person.schools}</span>
+                <span class="era">{person.era}</span>
+                {#if person.schools}
+                  <span class="school">{person.schools}</span>
+                {/if}
               </span>
-              <span class="count">{graph.degree.get(person.id) ?? 0} 条线索</span>
+              <span class="count">
+                {atlas.strings.clueCount(atlas.graph.degree.get(person.id) ?? 0)}
+              </span>
             </button>
           {/each}
         {:else}
           <div class="empty">
-            <p>没有找到「{query}」。</p>
-            <p class="sub">试试中文名、英文名或学派。</p>
+            <p>{atlas.strings.noResults(query)}</p>
+            <p class="sub">{atlas.strings.searchEmptyHint}</p>
           </div>
         {/if}
       </div>
 
       <div class="foot">
-        <span>↑↓ 选择</span>
-        <span>↵ 打开</span>
-        <span>ESC 关闭</span>
-        <span class="foot-note">{graph.thinkers.length} 位思想家 · {graph.eras.length} 个时代</span>
+        <span>{atlas.strings.searchFooter(atlas.totals.thinkers, atlas.totals.eras)}</span>
+        <span class="foot-note">{atlas.strings.tapResult}</span>
       </div>
     </div>
   </div>
@@ -160,29 +175,34 @@
     display: flex;
     align-items: flex-start;
     justify-content: center;
-    padding-top: min(16vh, 150px);
-    background: rgba(10, 8, 6, 0.68);
+    padding: 104px 16px 16px;
+    background: color-mix(in srgb, var(--canvas-deep) 72%, transparent);
     backdrop-filter: blur(3px);
   }
 
   .dialog {
-    width: min(640px, calc(100vw - 32px));
+    display: flex;
+    flex-direction: column;
+    width: min(640px, 100%);
+    max-height: calc(100vh - 136px);
     overflow: hidden;
     color: var(--ink);
-    background: var(--paper);
-    border: 1px solid rgba(28, 25, 23, 0.2);
-    box-shadow: 0 40px 120px rgba(0, 0, 0, 0.6);
+    background: var(--sheet);
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    box-shadow: var(--panel-shadow);
   }
 
   .input-row {
     display: flex;
     gap: 10px;
     align-items: center;
-    padding: 16px 18px;
+    padding: 14px 18px;
     border-bottom: 1px solid var(--rule);
   }
 
   .glass {
+    display: flex;
     color: var(--ink-faint);
   }
 
@@ -190,11 +210,12 @@
     flex: 1;
     min-width: 0;
     font-family: var(--font-serif);
-    font-size: 19px;
+    font-size: 18px;
     color: var(--ink);
     background: none;
     border: 0;
     outline: none;
+    caret-color: var(--seal);
   }
 
   input::placeholder {
@@ -203,19 +224,18 @@
 
   .clear {
     display: grid;
-    width: 26px;
-    height: 26px;
-    color: var(--ink-faint);
     place-items: center;
+    width: 30px;
+    height: 30px;
+    color: var(--ink-soft);
   }
 
   .search-close {
     padding: 4px 2px 4px 10px;
-    margin-left: -2px;
     font-family: var(--font-sans);
-    font-size: 10px;
-    letter-spacing: 0.06em;
-    color: var(--ink-faint);
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    color: var(--ink-soft);
     border-left: 1px solid var(--rule);
   }
 
@@ -225,13 +245,16 @@
   }
 
   .results {
-    max-height: min(52vh, 440px);
+    flex: 1;
+    min-height: 0;
     overflow-y: auto;
-    padding: 8px;
+    padding: 8px 10px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--scrollbar-thumb) transparent;
   }
 
   .heading {
-    margin: 8px 10px 6px;
+    margin: 6px 10px;
     color: var(--ink-faint);
   }
 
@@ -242,10 +265,12 @@
     width: 100%;
     padding: 10px 12px;
     text-align: left;
+    border-radius: 2px;
+    transition: background 0.12s ease;
   }
 
   .result.active {
-    background: var(--paper-deep);
+    background: var(--sheet-deep);
   }
 
   .dot {
@@ -263,6 +288,7 @@
   }
 
   .name {
+    font-family: var(--font-serif);
     font-size: 15px;
     font-weight: 600;
     color: var(--ink);
@@ -283,31 +309,37 @@
     flex-direction: column;
     align-items: flex-end;
     font-family: var(--font-sans);
-    font-size: 10px;
-    color: var(--ink-soft);
     white-space: nowrap;
   }
 
+  .era {
+    font-size: 10.5px;
+    color: var(--ink-soft);
+  }
+
   .school {
+    font-size: 9.5px;
     color: var(--ink-faint);
   }
 
   .count {
-    display: none;
-    width: 62px;
+    width: 64px;
     font-family: var(--font-sans);
-    font-size: 9px;
+    font-size: 9.5px;
     color: var(--ink-faint);
     text-align: right;
+    white-space: nowrap;
   }
 
   .empty {
-    padding: 28px 18px 34px;
+    padding: 26px 14px;
   }
 
   .empty p {
     margin: 0;
+    font-family: var(--font-serif);
     font-size: 15px;
+    color: var(--ink);
   }
 
   .empty .sub {
@@ -319,10 +351,10 @@
   .foot {
     display: flex;
     gap: 16px;
+    align-items: center;
     padding: 10px 18px;
     font-family: var(--font-sans);
-    font-size: 9.5px;
-    letter-spacing: 0.04em;
+    font-size: 10px;
     color: var(--ink-faint);
     border-top: 1px solid var(--rule);
   }
@@ -331,41 +363,30 @@
     margin-left: auto;
   }
 
-  @media (min-width: 1100px) {
-    .count {
-      display: block;
-    }
-  }
-
-  @media (max-width: 640px) {
+  @media (max-width: 959px) {
     .scrim {
       align-items: stretch;
-      padding-top: 0;
-      background: var(--paper);
+      padding: 0;
+      background: var(--sheet);
       backdrop-filter: none;
     }
 
     .dialog {
-      display: flex;
-      flex-direction: column;
       width: 100%;
       height: 100%;
+      max-height: none;
       border: 0;
+      border-radius: 0;
       box-shadow: none;
     }
 
-    .results {
-      flex: 1;
-      max-height: none;
+    .school,
+    .count {
+      display: none;
     }
 
     .foot {
-      margin-top: auto;
       padding-bottom: calc(10px + env(safe-area-inset-bottom));
-    }
-
-    .meta {
-      display: none;
     }
   }
 </style>

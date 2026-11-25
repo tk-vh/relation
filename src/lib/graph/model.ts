@@ -1,4 +1,8 @@
-import raw from '../data/graph.json';
+import graphZh from '../data/graph.json';
+import graphEn from '../data/graph.en.json';
+import layoutRaw from '../data/layout.json';
+
+export type AtlasLanguage = 'zh' | 'en';
 
 export const RELATION_KINDS = ['presupposes', 'refutes', 'synthesizes', 'influences'] as const;
 export type RelationKind = (typeof RELATION_KINDS)[number];
@@ -42,22 +46,33 @@ export type Relation = {
 
 export type GraphData = {
   version: number;
+  language?: AtlasLanguage;
   eras: string[];
   thinkers: Thinker[];
   relations: Relation[];
   stats: { thinkers: number; relations: number; kinds: Record<RelationKind, number> };
 };
 
+export type LayoutNode = {
+  id: string;
+  x: number;
+  y: number;
+};
+
+export type LayoutData = {
+  width: number;
+  height: number;
+  nodes: LayoutNode[];
+};
+
 export type Neighbour = {
   thinker: Thinker;
   relation: Relation;
-  /** True when the selected thinker does the depending, i.e. selected -> other. */
   outgoing: boolean;
 };
 
 export type PathStep = {
   relation: Relation;
-  /** True when the walk follows the relation's source -> target direction. */
   forward: boolean;
 };
 
@@ -66,42 +81,18 @@ export type Lineage = {
   steps: PathStep[];
 };
 
-export const RELATION_META: Record<
+export function relationKey(relation: Relation): string {
+  return `${relation.source}|${relation.target}|${relation.kind}`;
+}
+
+export const RELATION_STYLE: Record<
   RelationKind,
-  { label: string; verb: string; glyph: string; color: string; dash: string; plain: string }
+  { glyph: string; dashed: boolean; dash: string }
 > = {
-  presupposes: {
-    label: '预设前提',
-    verb: '预设了',
-    glyph: '∴',
-    color: '#8fa7b8',
-    dash: '',
-    plain: '要成立，必须先接受',
-  },
-  refutes: {
-    label: '批判',
-    verb: '批判了',
-    glyph: '×',
-    color: '#d65a46',
-    dash: '5 4',
-    plain: '明确反对其论证或结论',
-  },
-  synthesizes: {
-    label: '综合',
-    verb: '综合了',
-    glyph: '⊕',
-    color: '#e0b05a',
-    dash: '',
-    plain: '把其纳入一个新的结构',
-  },
-  influences: {
-    label: '受影响',
-    verb: '受…影响',
-    glyph: '∼',
-    color: '#8b8174',
-    dash: '1.5 3.5',
-    plain: '受其启发，并非严格推导',
-  },
+  presupposes: { glyph: '∴', dashed: false, dash: '' },
+  refutes: { glyph: '×', dashed: true, dash: '4 3' },
+  synthesizes: { glyph: '⊕', dashed: false, dash: '' },
+  influences: { glyph: '∼', dashed: true, dash: '4 3' },
 };
 
 const normalize = (value: string) =>
@@ -110,6 +101,13 @@ const normalize = (value: string) =>
     .normalize('NFD')
     .replace(/[\u0300-\u036f]/g, '')
     .replace(/[·・\s\-—–]/g, '');
+
+type SearchEntry = {
+  thinker: Thinker;
+  normalizedName: string;
+  normalizedNameEn: string;
+  searchableText: string;
+};
 
 export class PhilosophyGraph {
   readonly thinkers: readonly Thinker[];
@@ -120,12 +118,12 @@ export class PhilosophyGraph {
   readonly incoming: ReadonlyMap<string, Relation[]>;
   readonly neighbours: ReadonlyMap<string, Neighbour[]>;
   readonly stats: GraphData['stats'];
+  readonly eraCounts: readonly number[];
+  readonly hubs: readonly Thinker[];
   readonly degree: ReadonlyMap<string, number>;
-  /** How many positions this thinker builds on. */
   readonly ancestors: ReadonlyMap<string, number>;
-  /** How many later thinkers build on this one. */
   readonly descendants: ReadonlyMap<string, number>;
-  private readonly searchIndex: ReadonlyMap<string, string>;
+  private readonly searchEntries: readonly SearchEntry[];
 
   constructor(data: GraphData) {
     this.thinkers = data.thinkers;
@@ -140,6 +138,7 @@ export class PhilosophyGraph {
     const degree = new Map<string, number>();
     const ancestors = new Map<string, number>();
     const descendants = new Map<string, number>();
+    const eraCounts = new Array<number>(data.eras.length).fill(0);
 
     for (const thinker of data.thinkers) {
       outgoing.set(thinker.id, []);
@@ -148,6 +147,9 @@ export class PhilosophyGraph {
       degree.set(thinker.id, 0);
       ancestors.set(thinker.id, 0);
       descendants.set(thinker.id, 0);
+      if (thinker.eraIndex >= 0 && thinker.eraIndex < eraCounts.length) {
+        eraCounts[thinker.eraIndex] = (eraCounts[thinker.eraIndex] ?? 0) + 1;
+      }
     }
 
     for (const relation of data.relations) {
@@ -167,37 +169,63 @@ export class PhilosophyGraph {
     this.outgoing = outgoing;
     this.incoming = incoming;
     this.neighbours = neighbours;
+    this.eraCounts = eraCounts;
     this.degree = degree;
     this.ancestors = ancestors;
     this.descendants = descendants;
-    this.searchIndex = new Map(
-      data.thinkers.map((thinker) => [
-        thinker.id,
-        normalize(
-          [thinker.name, thinker.nameEn, thinker.schools, thinker.era, ...thinker.ideas].join(' '),
-        ),
-      ]),
+    this.hubs = [...data.thinkers].sort(
+      (a, b) => (descendants.get(b.id) ?? 0) - (descendants.get(a.id) ?? 0),
     );
+    this.searchEntries = data.thinkers.map((thinker) => ({
+      thinker,
+      normalizedName: normalize(thinker.name),
+      normalizedNameEn: normalize(thinker.nameEn),
+      searchableText: normalize(
+        [
+          thinker.name,
+          thinker.nameEn,
+          thinker.schools,
+          thinker.era,
+          ...thinker.ideas,
+          ...thinker.books.flatMap((book) =>
+            book.titleEn ? [book.title, book.titleEn] : [book.title],
+          ),
+        ].join(' '),
+      ),
+    }));
   }
 
   name(id: string): string {
     return this.byId.get(id)?.name ?? id;
   }
 
+  nodeRadius(id: string): number {
+    return (
+      3.2 +
+      Math.sqrt(this.descendants.get(id) ?? 0) * 1.75 +
+      Math.sqrt(this.ancestors.get(id) ?? 0) * 0.55
+    );
+  }
+
+  lifespan(person: Thinker): string {
+    return [person.born, person.died]
+      .filter((value) => value.length > 0 && value !== '不详' && value !== '—' && value !== '?')
+      .join(' — ');
+  }
+
   search(query: string, limit = 12): Thinker[] {
     const needle = normalize(query);
     if (!needle) return [];
     const scored: { thinker: Thinker; score: number }[] = [];
-    for (const thinker of this.thinkers) {
-      const name = normalize(thinker.name);
-      const nameEn = normalize(thinker.nameEn);
-      const index = this.searchIndex.get(thinker.id) ?? '';
+    for (const entry of this.searchEntries) {
       let score = -1;
-      if (name === needle || nameEn === needle) score = 0;
-      else if (name.startsWith(needle) || nameEn.startsWith(needle)) score = 1;
-      else if (name.includes(needle) || nameEn.includes(needle)) score = 2;
-      else if (index.includes(needle)) score = 3;
-      if (score >= 0) scored.push({ thinker, score });
+      if (entry.normalizedName === needle || entry.normalizedNameEn === needle) score = 0;
+      else if (entry.normalizedName.startsWith(needle) || entry.normalizedNameEn.startsWith(needle))
+        score = 1;
+      else if (entry.normalizedName.includes(needle) || entry.normalizedNameEn.includes(needle))
+        score = 2;
+      else if (entry.searchableText.includes(needle)) score = 3;
+      if (score >= 0) scored.push({ thinker: entry.thinker, score });
     }
     return scored
       .sort((a, b) => a.score - b.score || b.thinker.eraIndex - a.thinker.eraIndex)
@@ -206,7 +234,7 @@ export class PhilosophyGraph {
   }
 
   /**
-   * Undirected shortest walk, so a reader can trace a thread even when some
+   * Undirected shortest walk so a reader can trace a thread even when some
    * links point backwards in time. Filtered links are excluded.
    */
   lineage(from: string, to: string, allow: (relation: Relation) => boolean): Lineage | null {
@@ -253,5 +281,11 @@ export class PhilosophyGraph {
   }
 }
 
-const graph = new PhilosophyGraph(raw as GraphData);
-export default graph;
+export const graphs: Record<AtlasLanguage, PhilosophyGraph> = {
+  zh: new PhilosophyGraph(graphZh as GraphData),
+  en: new PhilosophyGraph(graphEn as GraphData),
+};
+
+export const layoutData: LayoutData = layoutRaw as LayoutData;
+
+export default graphs.zh;

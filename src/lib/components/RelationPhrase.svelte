@@ -1,5 +1,7 @@
 <script lang="ts">
-  import { RELATION_META, type Relation, type Thinker } from '../graph/model';
+  import type { Relation, Thinker } from '../graph/model';
+  import { atlas } from '../state.svelte';
+  import { relationColor } from '../theme';
 
   let {
     relation,
@@ -13,7 +15,8 @@
     onselect?: ((id: string) => void) | null;
   } = $props();
 
-  const meta = $derived(RELATION_META[relation.kind]);
+  const color = $derived(relationColor(relation.kind, atlas.themeMode));
+  const verb = $derived(atlas.strings.relationVerb(relation.kind));
 </script>
 
 <span class="phrase">
@@ -23,16 +26,16 @@
     <b>{source.name}</b>
   {/if}
 
-  {#if relation.kind === 'influences'}
-    <span class="verb" style={`color:${meta.color}`}>受</span>
+  {#if atlas.language === 'zh' && relation.kind === 'influences'}
+    <span class="verb" style={`color:${color}`}>受</span>
     {#if onselect}
       <button type="button" onclick={() => onselect(target.id)}>{target.name}</button>
     {:else}
       <b>{target.name}</b>
     {/if}
-    <span class="verb" style={`color:${meta.color}`}>影响</span>
+    <span class="verb" style={`color:${color}`}>影响</span>
   {:else}
-    <span class="verb" style={`color:${meta.color}`}>{meta.verb}</span>
+    <span class="verb" style={`color:${color}`}>{verb}</span>
     {#if onselect}
       <button type="button" onclick={() => onselect(target.id)}>{target.name}</button>
     {:else}
@@ -44,10 +47,12 @@
 <style>
   .phrase {
     display: inline;
+    color: var(--ink);
   }
 
   b {
     font-weight: 600;
+    color: var(--ink);
   }
 
   button {
@@ -55,8 +60,9 @@
     padding: 0;
     font: inherit;
     font-weight: 600;
-    color: inherit;
+    color: var(--ink);
     text-align: left;
+    transition: color 0.15s ease;
   }
 
   button:hover {
@@ -65,7 +71,7 @@
 
   .verb {
     margin: 0 4px;
-    font-size: 12.5px;
+    font-size: 13px;
     font-weight: 400;
   }
 </style>

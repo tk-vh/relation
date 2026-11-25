@@ -9,6 +9,11 @@
   import RelationLegend from './lib/components/RelationLegend.svelte';
   import SearchPalette from './lib/components/SearchPalette.svelte';
 
+  $effect(() => {
+    document.documentElement.dataset.theme = atlas.themeMode;
+    document.documentElement.lang = atlas.language === 'zh' ? 'zh-CN' : 'en';
+  });
+
   onMount(() => {
     atlas.readHash();
 
@@ -31,9 +36,7 @@
       }
 
       if (event.key === 'Escape') {
-        if (atlas.searchOpen) atlas.closeSearch();
-        else if (atlas.pathMode) atlas.endTrace();
-        else if (atlas.selectedId) atlas.clearSelection();
+        atlas.handleEscape();
       }
     };
 
@@ -49,13 +52,15 @@
 
 <main>
   <GraphStage />
-  <Masthead />
-  <EraFilter />
-  <RelationLegend />
-  {#if atlas.pathMode || atlas.selected}
-    <DetailPanel />
-  {:else}
-    <IntroPanel />
+  {#if !atlas.graphFullscreen}
+    <Masthead />
+    <EraFilter />
+    <RelationLegend />
+    {#if atlas.pathMode || atlas.selected}
+      <DetailPanel />
+    {:else}
+      <IntroPanel />
+    {/if}
   {/if}
   <SearchPalette />
 </main>

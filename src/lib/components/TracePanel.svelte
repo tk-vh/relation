@@ -1,27 +1,47 @@
 <script lang="ts">
-  import graph from '../graph/model';
-  import { atlas } from '../state.svelte';
-  import { eraColor } from '../theme';
+  import { RELATION_STYLE } from '../graph/model';
+  import { atlas, type SheetDetent } from '../state.svelte';
+  import { eraColor, relationColor, withAlpha } from '../theme';
   import Icon from './Icon.svelte';
   import RelationPhrase from './RelationPhrase.svelte';
 
   let query = $state('');
+  let scroller = $state<HTMLDivElement>();
 
-  const from = $derived(atlas.pathFrom ? (graph.byId.get(atlas.pathFrom) ?? null) : null);
-  const to = $derived(atlas.pathTo ? (graph.byId.get(atlas.pathTo) ?? null) : null);
+  const from = $derived(atlas.pathFrom ? (atlas.graph.byId.get(atlas.pathFrom) ?? null) : null);
+  const to = $derived(atlas.pathTo ? (atlas.graph.byId.get(atlas.pathTo) ?? null) : null);
   const lineage = $derived(atlas.lineage);
 
   const results = $derived(
     query.trim()
-      ? graph
+      ? atlas.graph
           .search(query, 8)
           .filter((person) => person.id !== atlas.pathFrom && person.id !== atlas.pathTo)
       : [],
   );
 
+  $effect(() => {
+    if (to?.id && scroller) {
+      scroller.scrollTop = 0;
+    }
+  });
+
+  function cycleDetent() {
+    const order: SheetDetent[] = ['minimized', 'half', 'expanded'];
+    const next = order[(order.indexOf(atlas.sheetDetent) + 1) % order.length] ?? 'half';
+    atlas.setSheetDetent(next);
+  }
+
   function pick(id: string) {
     query = '';
     atlas.select(id);
+  }
+
+  function handleKeydown(event: KeyboardEvent) {
+    if (event.key === 'Enter' && results.length > 0) {
+      event.preventDefault();
+      pick(results[0]!.id);
+    }
   }
 
   function stepNames(index: number) {
@@ -33,97 +53,131 @@
   }
 </script>
 
-<aside class="panel trace-panel" aria-label="追溯世系">
+<aside
+  class="panel trace-panel"
+  data-detent={atlas.sheetDetent}
+  aria-label={atlas.strings.lineageHeader}
+>
+  <button
+    type="button"
+    class="sheet-handle"
+    onclick={cycleDetent}
+    aria-label={atlas.strings.lineageHeader}
+  >
+    <span class="sheet-handle-bar" aria-hidden="true"></span>
+  </button>
+
   <div class="panel-head">
-    <span class="micro">LINEAGE · 追溯世系</span>
-    <button type="button" class="icon-btn" onclick={() => atlas.endTrace()} aria-label="退出追溯">
+    <span class="micro">{atlas.strings.lineageHeader}</span>
+    <button
+      type="button"
+      class="icon-btn"
+      onclick={() => atlas.endTrace()}
+      aria-label={atlas.strings.exitTrace}
+      title={atlas.strings.exitTrace}
+    >
       <Icon name="close" size={15} />
     </button>
   </div>
 
-  <div class="panel-scroll">
+  <div class="panel-scroll" bind:this={scroller}>
     <div class="trace-body">
-      <h1>顺着一条线索，<br />读回它的来路。</h1>
-      <p class="lede">选择两端，看看思想如何一段段传到这里。连线会标出每一步的依赖关系，理由就写在下面。</p>
+      {#if !from || !to}
+        <h1>{!from ? atlas.strings.pickStart : atlas.strings.pickEnd}</h1>
+        <p class="lede">{atlas.strings.pickerLede}</p>
+      {/if}
 
       <div class="endpoints">
         <div class="endpoint" class:empty={!from}>
-          <span class="micro">起点</span>
+          <span class="micro">{atlas.strings.startEndpoint}</span>
           {#if from}
             <button type="button" class="person" onclick={() => atlas.jumpTo(from.id)}>
-              <span class="dot" style={`background:${eraColor(from.eraIndex)}`}></span>
+              <span class="dot" style={`background:${eraColor(from.eraIndex, atlas.themeMode)}`}></span>
               <span class="p-name">{from.name}</span>
-              <span class="p-era">{from.era}</span>
             </button>
           {:else}
-            <span class="placeholder">在下方或图上选择</span>
+            <span class="placeholder">{atlas.strings.pending}</span>
           {/if}
         </div>
 
-        <div class="connector" aria-hidden="true"><span></span><Icon name="arrow" size={13} /></div>
+        <span class="connector" aria-hidden="true">
+          <Icon name="arrow" size={14} />
+        </span>
 
         <div class="endpoint" class:empty={!to}>
-          <span class="micro">终点</span>
+          <span class="micro">{atlas.strings.endEndpoint}</span>
           {#if to}
             <button type="button" class="person" onclick={() => atlas.jumpTo(to.id)}>
-              <span class="dot" style={`background:${eraColor(to.eraIndex)}`}></span>
+              <span class="dot" style={`background:${eraColor(to.eraIndex, atlas.themeMode)}`}></span>
               <span class="p-name">{to.name}</span>
-              <span class="p-era">{to.era}</span>
             </button>
           {:else}
-            <span class="placeholder">在下方或图上选择</span>
+            <span class="placeholder">{atlas.strings.pending}</span>
           {/if}
         </div>
       </div>
 
-      {#if !to}
+      {#if !from || !to}
         <div class="picker">
           <div class="picker-input">
             <Icon name="search" size={15} />
             <input
               bind:value={query}
-              placeholder={from ? '选择终点思想家' : '选择起点思想家'}
-              aria-label={from ? '选择终点思想家' : '选择起点思想家'}
+              onkeydown={handleKeydown}
+              placeholder={!from ? atlas.strings.chooseStart : atlas.strings.chooseEnd}
+              aria-label={!from ? atlas.strings.chooseStart : atlas.strings.chooseEnd}
               autocomplete="off"
             />
           </div>
-          {#if query}
+          {#if query.trim()}
             <ul>
               {#each results as person (person.id)}
                 <li>
                   <button type="button" class="result" onclick={() => pick(person.id)}>
-                    <span class="dot" style={`background:${eraColor(person.eraIndex)}`}></span>
+                    <span class="dot" style={`background:${eraColor(person.eraIndex, atlas.themeMode)}`}></span>
                     <span class="r-name">{person.name}</span>
-                    <span class="r-en">{person.nameEn}</span>
+                    {#if person.nameEn}
+                      <span class="r-en">{person.nameEn}</span>
+                    {:else}
+                      <span class="r-en"></span>
+                    {/if}
                     <span class="r-era">{person.era}</span>
                   </button>
                 </li>
               {:else}
-                <li class="no-result">没有找到「{query}」。</li>
+                <li class="no-result">{atlas.strings.noResults(query.trim())}</li>
               {/each}
             </ul>
           {:else}
-            <p class="picker-hint">也可以直接在图上点选节点。选择后会自动寻找最短的一条依赖链。</p>
+            <p class="picker-hint">{atlas.strings.graphPickHint}</p>
           {/if}
         </div>
-      {/if}
-
-      {#if lineage && lineage.steps.length}
+      {:else if lineage && lineage.steps.length}
         <div class="path">
           <div class="path-head">
-            <span class="micro">一条线索 · {lineage.steps.length} 步</span>
+            <span class="micro">{atlas.strings.stepCount(lineage.steps.length)}</span>
             <button
               type="button"
               class="text-btn"
-              onclick={() => from && atlas.jumpTo(from.id)}
-            >查看起点</button>
+              onclick={() => atlas.jumpTo(from.id)}
+            >
+              {atlas.strings.viewStart}
+            </button>
           </div>
           <ol>
             {#each lineage.steps as step, index (step.relation.source + step.relation.target + index)}
               {@const names = stepNames(index)}
+              {@const style = RELATION_STYLE[step.relation.kind]}
+              {@const color = relationColor(step.relation.kind, atlas.themeMode)}
               {#if names}
                 <li>
                   <span class="step-num">{String(index + 1).padStart(2, '0')}</span>
+                  <span
+                    class="step-glyph"
+                    style={`color:${color};background:${withAlpha(color, 0.12)};border-color:${withAlpha(color, 0.55)}`}
+                  >
+                    {style.glyph}
+                  </span>
                   <div class="step-body">
                     <div class="step-sentence">
                       <RelationPhrase
@@ -133,34 +187,40 @@
                         onselect={(id) => atlas.jumpTo(id)}
                       />
                     </div>
-                    <p class="step-reason">{step.relation.reason}</p>
+                    {#if step.relation.reason}
+                      <p class="step-reason">{step.relation.reason}</p>
+                    {/if}
                   </div>
                 </li>
               {/if}
             {/each}
           </ol>
           <div class="arrival">
-            <span class="arrival-rule"></span>
-            <p>抵达 <b>{to?.name}</b>。<span>{to?.era}</span></p>
+            <span class="arrival-rule" aria-hidden="true"></span>
+            <p>{atlas.strings.arrival(to.name, to.era)}</p>
           </div>
         </div>
-      {:else if from && to}
+      {:else}
         <div class="dead-end">
-          <p class="dead-title">这两页之间，还没有收录的依赖链。</p>
-          <p class="dead-body">
-            他们可能属于不同的思想流域，也可能需要对中间人物做补充。这条图谱只呈现已经过整理的关系，不会凭空补上一段。
-          </p>
-          {#if atlas.hasFilters}
-            <button type="button" class="solid-btn" onclick={() => atlas.resetFilters()}>清除筛选后重试</button>
-          {/if}
-          <button
-            type="button"
-            class="outline-btn"
-            onclick={() => {
-              atlas.pathTo = null;
-              query = '';
-            }}
-          >换一个终点</button>
+          <p class="dead-title">{atlas.strings.deadTitle}</p>
+          <p class="dead-body">{atlas.strings.deadBody}</p>
+          <div class="dead-actions">
+            {#if atlas.hasFilters}
+              <button type="button" class="solid-btn" onclick={() => atlas.resetFilters()}>
+                {atlas.strings.clearFiltersRetry}
+              </button>
+            {/if}
+            <button
+              type="button"
+              class="outline-btn"
+              onclick={() => {
+                atlas.clearTraceEnd();
+                query = '';
+              }}
+            >
+              {atlas.strings.chooseAnotherEnd}
+            </button>
+          </div>
         </div>
       {/if}
 
@@ -169,14 +229,15 @@
           type="button"
           class="outline-btn"
           onclick={() => {
-            atlas.pathFrom = null;
-            atlas.pathTo = null;
+            atlas.reselectTrace();
             query = '';
           }}
         >
-          重新选择
+          {atlas.strings.reselect}
         </button>
-        <button type="button" class="solid-btn" onclick={() => atlas.endTrace()}>退出追溯</button>
+        <button type="button" class="solid-btn" onclick={() => atlas.endTrace()}>
+          {atlas.strings.exitLineage}
+        </button>
       </div>
     </div>
   </div>
@@ -187,12 +248,16 @@
     color: var(--ink);
   }
 
+  .sheet-handle {
+    display: none;
+  }
+
   .panel-head {
     display: flex;
     flex: none;
     align-items: center;
     justify-content: space-between;
-    padding: 14px 18px 12px 24px;
+    padding: 12px 12px 10px 22px;
     border-bottom: 1px solid var(--rule);
   }
 
@@ -202,58 +267,65 @@
 
   .icon-btn {
     display: grid;
-    width: 28px;
-    height: 28px;
-    color: var(--ink-faint);
+    width: 30px;
+    height: 30px;
+    color: var(--ink-soft);
     place-items: center;
+    transition: color 0.15s ease, background 0.15s ease;
   }
 
   .icon-btn:hover {
     color: var(--ink);
-    background: var(--paper-deep);
+    background: var(--sheet-deep);
   }
 
   .trace-body {
-    padding: 24px 26px 30px;
+    padding: 20px 24px 28px;
   }
 
   h1 {
     margin: 0;
-    font-size: 27px;
+    font-size: 25px;
     font-weight: 600;
-    line-height: 1.45;
+    line-height: 1.35;
     letter-spacing: 0.01em;
+    color: var(--ink);
   }
 
   .lede {
-    margin: 12px 0 0;
+    margin: 6px 0 14px;
     font-size: 13px;
-    line-height: 1.85;
+    line-height: 1.75;
     color: var(--ink-soft);
   }
 
   .endpoints {
-    margin-top: 22px;
-    border-top: 1px solid var(--rule);
-    border-bottom: 1px solid var(--rule);
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 8px;
+    align-items: center;
+    padding: 10px 12px;
+    border: 1px solid var(--rule);
+    border-radius: 0;
   }
 
   .endpoint {
     display: flex;
     flex-direction: column;
-    gap: 6px;
-    padding: 11px 0;
+    gap: 3px;
+    min-width: 0;
   }
 
   .endpoint .micro {
-    font-size: 8.5px;
+    font-size: 9px;
     color: var(--ink-faint);
   }
 
   .person {
     display: flex;
-    gap: 8px;
-    align-items: baseline;
+    gap: 6px;
+    align-items: center;
+    padding: 0;
     text-align: left;
   }
 
@@ -262,52 +334,45 @@
     width: 6px;
     height: 6px;
     border-radius: 50%;
-    transform: translateY(-2px);
   }
 
   .p-name {
-    font-size: 18px;
+    overflow: hidden;
+    font-size: 14px;
     font-weight: 600;
     color: var(--ink);
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
-  .p-era {
-    font-family: var(--font-sans);
-    font-size: 9px;
-    color: var(--ink-faint);
+  .person:hover .p-name {
+    color: var(--seal);
   }
 
   .placeholder {
     font-family: var(--font-sans);
-    font-size: 11px;
+    font-size: 10.5px;
     color: var(--ink-faint);
   }
 
   .connector {
-    display: flex;
-    gap: 6px;
-    align-items: center;
-    padding-left: 2px;
+    display: grid;
     color: var(--seal);
-  }
-
-  .connector span {
-    width: 28px;
-    height: 1px;
-    background: rgba(179, 70, 46, 0.4);
+    place-items: center;
   }
 
   .picker {
-    margin-top: 18px;
+    margin-top: 14px;
   }
 
   .picker-input {
     display: flex;
     gap: 9px;
     align-items: center;
-    padding: 9px 11px;
-    background: var(--paper-deep);
+    padding: 10px 11px;
+    background: var(--sheet-deep);
     border: 1px solid var(--rule);
+    border-radius: 0;
   }
 
   .picker-input:focus-within {
@@ -315,6 +380,7 @@
   }
 
   .picker-input :global(svg) {
+    flex: none;
     color: var(--ink-faint);
   }
 
@@ -322,7 +388,7 @@
     flex: 1;
     min-width: 0;
     font-family: var(--font-serif);
-    font-size: 13.5px;
+    font-size: 14px;
     color: var(--ink);
     background: none;
     border: 0;
@@ -335,7 +401,7 @@
 
   ul {
     padding: 0;
-    margin: 6px 0 0;
+    margin: 0;
     list-style: none;
     border: 1px solid var(--rule);
     border-top: 0;
@@ -344,20 +410,27 @@
   .result {
     display: flex;
     gap: 8px;
-    align-items: baseline;
+    align-items: center;
     width: 100%;
-    padding: 8px 11px;
+    padding: 9px 11px;
     text-align: left;
-    border-bottom: 1px solid rgba(28, 25, 23, 0.08);
+    border-bottom: 1px solid color-mix(in srgb, var(--rule) 70%, transparent);
+    transition: background 0.15s ease;
+  }
+
+  li:last-child .result {
+    border-bottom: 0;
   }
 
   .result:hover {
-    background: var(--paper-deep);
+    background: var(--sheet-deep);
   }
 
   .r-name {
     font-size: 14px;
     font-weight: 600;
+    color: var(--ink);
+    white-space: nowrap;
   }
 
   .r-en {
@@ -373,44 +446,45 @@
 
   .r-era {
     font-family: var(--font-sans);
-    font-size: 8.5px;
+    font-size: 9.5px;
     color: var(--ink-faint);
     white-space: nowrap;
   }
 
   .no-result {
     padding: 12px;
-    font-size: 12px;
+    font-size: 12.5px;
     color: var(--ink-faint);
   }
 
   .picker-hint {
     margin: 8px 0 0;
-    font-size: 11.5px;
+    font-size: 12px;
     line-height: 1.7;
     color: var(--ink-faint);
   }
 
   .path {
-    margin-top: 22px;
+    margin-top: 20px;
   }
 
   .path-head {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding-bottom: 8px;
+    padding-bottom: 7px;
     border-bottom: 2px solid var(--ink);
   }
 
   .path-head .micro {
-    font-size: 8.5px;
+    font-size: 9.5px;
     color: var(--ink-soft);
   }
 
   .text-btn {
+    padding: 0;
     font-family: var(--font-sans);
-    font-size: 9.5px;
+    font-size: 10.5px;
     color: var(--seal);
     text-decoration: underline;
     text-underline-offset: 3px;
@@ -424,46 +498,63 @@
 
   .path li {
     display: grid;
-    grid-template-columns: 26px 1fr;
+    grid-template-columns: 22px 22px 1fr;
     gap: 9px;
-    padding: 13px 0;
-    border-bottom: 1px solid rgba(28, 25, 23, 0.1);
+    align-items: start;
+    padding: 12px 0;
+    border-bottom: 1px solid color-mix(in srgb, var(--rule) 70%, transparent);
   }
 
   .step-num {
+    padding-top: 2px;
     font-family: var(--font-latin);
     font-size: 12px;
     font-style: italic;
     color: var(--ink-faint);
   }
 
+  .step-glyph {
+    display: grid;
+    width: 22px;
+    height: 22px;
+    margin-top: 1px;
+    font-family: var(--font-serif);
+    font-size: 12px;
+    line-height: 1;
+    place-items: center;
+    border: 1px solid;
+    border-radius: 3px;
+  }
+
   .step-body {
     display: flex;
     flex-direction: column;
     gap: 5px;
+    min-width: 0;
   }
 
   .step-sentence {
     font-size: 14.5px;
-    line-height: 1.45;
+    line-height: 1.5;
     color: var(--ink);
   }
 
   .step-reason {
     margin: 0;
-    font-size: 12.5px;
-    line-height: 1.7;
+    font-size: 13px;
+    line-height: 1.65;
     color: var(--ink-soft);
   }
 
   .arrival {
     display: flex;
-    gap: 10px;
+    gap: 9px;
     align-items: center;
     padding-top: 13px;
   }
 
   .arrival-rule {
+    flex: none;
     width: 22px;
     height: 1px;
     background: var(--seal);
@@ -472,89 +563,108 @@
   .arrival p {
     margin: 0;
     font-family: var(--font-sans);
-    font-size: 10.5px;
+    font-size: 11px;
     color: var(--ink-soft);
   }
 
-  .arrival b {
-    font-family: var(--font-serif);
-    font-size: 13px;
-    color: var(--ink);
-  }
-
-  .arrival span {
-    margin-left: 5px;
-    color: var(--ink-faint);
-  }
-
   .dead-end {
-    margin-top: 22px;
-    padding: 16px 16px 18px;
-    background: var(--paper-deep);
+    margin-top: 20px;
+    padding: 16px;
+    background: var(--sheet-deep);
     border-left: 2px solid var(--ink-faint);
   }
 
   .dead-title {
     margin: 0;
-    font-size: 14.5px;
+    font-size: 17px;
     font-weight: 600;
     line-height: 1.5;
+    color: var(--ink);
   }
 
   .dead-body {
-    margin: 7px 0 12px;
-    font-size: 12px;
-    line-height: 1.75;
+    margin: 6px 0 12px;
+    font-size: 12.5px;
+    line-height: 1.65;
     color: var(--ink-soft);
+  }
+
+  .dead-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
   }
 
   .trace-actions {
     display: flex;
     gap: 8px;
-    margin-top: 26px;
+    margin-top: 22px;
   }
 
   .outline-btn,
   .solid-btn {
-    padding: 9px 14px;
+    padding: 9px 15px;
     font-family: var(--font-sans);
-    font-size: 10.5px;
+    font-size: 11px;
+    font-weight: 500;
     letter-spacing: 0.04em;
     border: 1px solid var(--ink);
-    transition: background 0.15s ease, color 0.15s ease;
+    border-radius: 0;
+    transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
   }
 
   .outline-btn {
     color: var(--ink);
+    background: transparent;
   }
 
   .outline-btn:hover {
-    background: var(--paper-deep);
+    background: var(--sheet-deep);
   }
 
   .solid-btn {
-    color: var(--paper);
+    color: var(--sheet);
     background: var(--ink);
   }
 
   .solid-btn:hover {
+    color: var(--sheet);
     background: var(--seal);
     border-color: var(--seal);
   }
 
-  .dead-end .solid-btn,
-  .dead-end .outline-btn {
-    margin-right: 8px;
-    margin-bottom: 8px;
-  }
+  @media (max-width: 959px) {
+    .trace-panel {
+      height: 56vh;
+      max-height: 56vh;
+    }
 
-  @media (max-width: 900px) {
+    .sheet-handle {
+      display: flex;
+      flex: none;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      padding: 10px 0 4px;
+    }
+
+    .sheet-handle-bar {
+      width: 34px;
+      height: 3.5px;
+      background: var(--rule);
+      border-radius: 999px;
+    }
+
+    .panel-head {
+      padding: 4px 12px 8px 22px;
+    }
+
     .trace-body {
       padding: 18px 20px 24px;
     }
 
     h1 {
-      font-size: 23px;
+      font-size: 22px;
     }
   }
 </style>

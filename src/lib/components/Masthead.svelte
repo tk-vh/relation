@@ -1,5 +1,4 @@
 <script lang="ts">
-  import graph from '../graph/model';
   import { atlas } from '../state.svelte';
   import Icon from './Icon.svelte';
 
@@ -13,46 +12,101 @@
   <button
     type="button"
     class="brand"
+    class:zh={atlas.language === 'zh'}
     onclick={() => {
       atlas.endTrace();
       atlas.clearSelection();
     }}
-    aria-label="返回图谱"
+    aria-label={atlas.strings.brand}
   >
-    <span class="seal" aria-hidden="true"><span>关</span><span>系</span></span>
-    <span class="brand-text">
-      <span class="wordmark">关系</span>
-      <span class="latin">RELATION</span>
-    </span>
-    <span class="tagline">一部哲学依赖图谱</span>
+    <svg class="seal" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+      <rect
+        x="0.5"
+        y="0.5"
+        width="27"
+        height="27"
+        rx="3"
+        fill="var(--seal-bg)"
+        stroke={atlas.themeMode === 'dark' ? 'var(--rule)' : 'none'}
+        stroke-width="1"
+      />
+      <circle cx="14" cy="14" r="5.9" stroke="var(--seal-stroke)" stroke-width="1.85" />
+      <line x1="14" y1="5.27" x2="14" y2="22.73" stroke="var(--seal-stroke)" stroke-width="1.85" />
+      <line
+        x1="10.94"
+        y1="5.27"
+        x2="17.06"
+        y2="5.27"
+        stroke="var(--seal-stroke)"
+        stroke-width="1.48"
+      />
+      <line
+        x1="10.94"
+        y1="22.73"
+        x2="17.06"
+        y2="22.73"
+        stroke="var(--seal-stroke)"
+        stroke-width="1.48"
+      />
+      <circle cx="14" cy="14" r="2.4" fill="var(--seal-bg)" />
+      <circle cx="14" cy="14" r="1.64" fill="var(--seal-dot)" />
+    </svg>
+    <span class="wordmark">{atlas.strings.brand}</span>
+    <span class="latin">{atlas.strings.brandLatin}</span>
+    <span class="divider" aria-hidden="true"></span>
+    <span class="tagline">{atlas.strings.brandTagline}</span>
   </button>
 
   <div class="actions">
     <button
       type="button"
-      class="action"
-      class:active={atlas.pathMode}
-      onclick={trace}
-      aria-label={atlas.pathMode ? '退出追溯' : '追溯世系'}
+      class="icon-btn"
+      data-testid="theme-toggle"
+      onclick={() => atlas.toggleTheme()}
+      aria-label={atlas.strings.themeToggle}
+      title={atlas.strings.themeToggle}
     >
-      <Icon name="trace" size={14} />
-      <span class="action-label">{atlas.pathMode ? '退出追溯' : '追溯'}</span>
+      <Icon name={atlas.themeMode === 'dark' ? 'sun' : 'moon'} size={17} />
     </button>
+
     <button
       type="button"
-      class="search"
-      onclick={() => atlas.openSearch()}
-      aria-label="搜索思想家"
+      class="icon-btn lang-btn"
+      data-testid="lang-toggle"
+      onclick={() => atlas.toggleLanguage()}
+      aria-label={atlas.strings.languageToggle}
+      title={atlas.strings.languageToggle}
     >
-      <Icon name="search" size={14} />
-      <span class="search-label">搜索思想家、学派或命题</span>
+      {atlas.language === 'zh' ? 'EN' : '中'}
+    </button>
+
+    <button
+      type="button"
+      class="trace-btn"
+      class:active={atlas.pathMode}
+      onclick={trace}
+      aria-label={atlas.strings.traceLineage}
+      aria-pressed={atlas.pathMode}
+    >
+      <Icon name="arrow" size={13} />
+      <span class="trace-label">{atlas.pathMode ? atlas.strings.exitTrace : atlas.strings.trace}</span>
+    </button>
+
+    <button
+      type="button"
+      class="search-btn"
+      onclick={() => atlas.openSearch()}
+      aria-label={atlas.strings.search}
+    >
+      <Icon name="search" size={15} />
+      <span class="search-label">{atlas.strings.searchPlaceholder}</span>
       <kbd>⌘K</kbd>
     </button>
-  </div>
 
-  <span class="counts">
-    {graph.thinkers.length} 位思想家 <span>·</span> {graph.relations.length} 条线索
-  </span>
+    <span class="counts">
+      {atlas.strings.counts(atlas.totals.thinkers, atlas.totals.relations)}
+    </span>
+  </div>
 </header>
 
 <style>
@@ -65,10 +119,14 @@
     display: flex;
     gap: 20px;
     align-items: center;
-    height: 62px;
+    height: 58px;
     padding: 0 28px;
     pointer-events: none;
-    background: linear-gradient(180deg, rgba(16, 14, 11, 0.86), rgba(16, 14, 11, 0));
+    background: linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--canvas) 92%, transparent) 0%,
+      color-mix(in srgb, var(--canvas) 0%, transparent) 100%
+    );
   }
 
   .brand {
@@ -82,107 +140,126 @@
   }
 
   .seal {
-    display: flex;
-    gap: 1px;
-    align-items: center;
-    justify-content: center;
-    width: 31px;
-    height: 31px;
-    font-family: var(--font-serif);
-    font-size: 10px;
-    font-weight: 600;
-    line-height: 1;
-    color: #f6f1e7;
-    background: var(--seal);
-    border-radius: 1px;
-    box-shadow: 0 0 0 1px rgba(246, 241, 231, 0.12) inset;
-  }
-
-  .seal span {
+    flex: none;
+    width: 28px;
+    height: 28px;
     display: block;
-    writing-mode: vertical-rl;
-  }
-
-  .brand-text {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
   }
 
   .wordmark {
-    font-size: 22px;
+    font-family: var(--font-serif);
+    font-size: 21px;
     font-weight: 600;
     line-height: 1.15;
-    letter-spacing: 0.14em;
-    color: #f6f1e7;
+    letter-spacing: 0.1px;
+    color: var(--canvas-ink);
+    white-space: nowrap;
+  }
+
+  .brand.zh .wordmark {
+    letter-spacing: 1px;
   }
 
   .latin {
-    margin-top: 1px;
+    display: none;
     font-family: var(--font-latin);
-    font-size: 8.5px;
-    letter-spacing: 0.34em;
-    color: #8d857a;
+    font-style: italic;
+    font-size: 9px;
+    letter-spacing: 2px;
+    color: var(--canvas-ink-faint);
+    white-space: nowrap;
+  }
+
+  .divider {
+    display: none;
+    width: 1px;
+    height: 14px;
+    margin-left: 3px;
+    background: var(--rule);
   }
 
   .tagline {
-    padding-left: 15px;
-    margin-left: 3px;
+    display: none;
     font-family: var(--font-sans);
     font-size: 9.5px;
-    letter-spacing: 0.08em;
-    color: #8d857a;
-    border-left: 1px solid rgba(236, 230, 216, 0.16);
+    letter-spacing: 0.6px;
+    color: var(--canvas-ink-faint);
+    white-space: nowrap;
   }
 
   .actions {
     display: flex;
-    gap: 7px;
+    gap: 8px;
     align-items: center;
     margin-left: auto;
     pointer-events: auto;
   }
 
-  .action {
-    display: flex;
-    gap: 6px;
-    align-items: center;
-    padding: 6px 10px;
-    font-family: var(--font-sans);
-    font-size: 10px;
-    letter-spacing: 0.05em;
-    color: #b6ad9f;
-    border: 1px solid rgba(236, 230, 216, 0.16);
+  .icon-btn {
+    display: grid;
+    place-items: center;
+    width: 34px;
+    height: 34px;
+    padding: 0;
+    color: var(--canvas-ink-soft);
+    border-radius: 3px;
     transition: color 0.15s ease, background 0.15s ease;
   }
 
-  .action:hover,
-  .action.active {
-    color: #f6f1e7;
-    background: rgba(236, 230, 216, 0.08);
+  .icon-btn:hover {
+    color: var(--canvas-ink);
+    background: color-mix(in srgb, var(--canvas-ink) 7%, transparent);
   }
 
-  .action.active {
-    color: #f0c7bc;
-    border-color: rgba(214, 90, 70, 0.5);
+  .lang-btn {
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
   }
 
-  .search {
+  .trace-btn {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    height: 32px;
+    padding: 0 11px;
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--canvas-ink-soft);
+    border: 1px solid var(--rule);
+    border-radius: 0;
+    white-space: nowrap;
+    transition: color 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+  }
+
+  .trace-btn:hover {
+    color: var(--canvas-ink);
+    background: color-mix(in srgb, var(--canvas-ink) 5%, transparent);
+  }
+
+  .trace-btn.active {
+    color: var(--seal);
+    border-color: color-mix(in srgb, var(--seal) 70%, transparent);
+    background: color-mix(in srgb, var(--seal) 7%, transparent);
+  }
+
+  .search-btn {
     display: flex;
     gap: 8px;
     align-items: center;
-    width: 245px;
-    padding: 7px 9px 7px 11px;
-    font-size: 10px;
-    color: #857c6f;
+    width: 184px;
+    padding: 7px 4px;
+    color: var(--canvas-ink-faint);
     text-align: left;
-    border-bottom: 1px solid rgba(236, 230, 216, 0.2);
-    transition: border-color 0.15s ease, color 0.15s ease;
+    border-bottom: 1px solid var(--rule);
+    transition: color 0.15s ease, border-color 0.15s ease;
   }
 
-  .search:hover {
-    color: #cfc7b9;
-    border-bottom-color: rgba(236, 230, 216, 0.45);
+  .search-btn:hover {
+    color: var(--canvas-ink-soft);
+    border-bottom-color: var(--canvas-ink-faint);
   }
 
   .search-label {
@@ -195,86 +272,83 @@
   }
 
   kbd {
+    flex: none;
     font-family: var(--font-sans);
     font-size: 8.5px;
     letter-spacing: 0.06em;
-    color: #6e665b;
+    color: var(--canvas-ink-faint);
   }
 
   .counts {
-    margin-left: 14px;
+    display: none;
+    margin-left: 6px;
     font-family: var(--font-sans);
-    font-size: 9px;
-    letter-spacing: 0.05em;
-    color: #6e665b;
+    font-size: 9.5px;
+    color: var(--canvas-ink-faint);
     white-space: nowrap;
   }
 
-  .counts span {
-    margin: 0 4px;
-    opacity: 0.6;
-  }
-
-  @media (max-width: 1180px) {
+  @media (min-width: 1500px) {
+    .latin,
+    .divider,
+    .tagline,
     .counts {
-      display: none;
+      display: inline-block;
     }
 
-    .tagline {
-      display: none;
-    }
-
-    .search {
-      width: 200px;
+    .search-btn {
+      width: 245px;
     }
   }
 
-  @media (max-width: 900px) {
+  @media (max-width: 959px) {
     .masthead {
       right: 0;
-      height: 54px;
+      gap: 8px;
+      height: 48px;
       padding: 0 14px;
-      background: linear-gradient(180deg, rgba(16, 14, 11, 0.94), rgba(16, 14, 11, 0));
+    }
+
+    .brand {
+      gap: 8px;
     }
 
     .seal {
-      width: 27px;
-      height: 27px;
-      font-size: 9px;
+      width: 24px;
+      height: 24px;
     }
 
     .wordmark {
-      font-size: 19px;
+      font-size: 16.5px;
     }
 
-    .latin,
-    .search-label {
-      display: none;
-    }
-
-    .action-label {
-      display: inline;
-      font-size: 9px;
+    .brand.zh .wordmark {
+      font-size: 17.5px;
     }
 
     .actions {
-      gap: 4px;
+      gap: 2px;
     }
 
-    .action {
-      width: auto;
-      height: 32px;
-      justify-content: center;
+    .trace-btn {
       padding: 0 7px;
-      border: 0;
+      border-color: transparent;
     }
 
-    .search {
-      width: auto;
-      padding: 7px;
-      border: 0;
+    .trace-btn.active {
+      border-color: color-mix(in srgb, var(--seal) 70%, transparent);
     }
 
+    .search-btn {
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      padding: 0;
+      color: var(--canvas-ink-soft);
+      border-bottom: 0;
+    }
+
+    .search-label,
     kbd {
       display: none;
     }

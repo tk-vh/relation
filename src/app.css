@@ -4,28 +4,76 @@
 @import '@fontsource/cormorant-garamond/latin-500-italic.css';
 @import '@fontsource/cormorant-garamond/latin-600.css';
 
-:root {
-  --wall: #16130f;
-  --wall-raised: #1d1915;
-  --wall-deep: #100e0b;
-  --paper: #f6f1e7;
-  --paper-deep: #ede6d8;
-  --ink: #1c1917;
-  --ink-soft: #6b6257;
-  --ink-faint: #918779;
-  --ivory: #ece6d8;
-  --ivory-soft: #c8c0b2;
-  --ivory-faint: #8d857a;
-  --rule: #d8cfc0;
-  --hairline: rgba(236, 230, 216, 0.13);
-  --seal: #b3462e;
-  --seal-soft: #d65a46;
+:root,
+[data-theme='light'] {
+  --canvas: #fcfbf8;
+  --canvas-deep: #f4f1ea;
+  --canvas-surface: #ffffff;
+  --canvas-guide: #e7e2d8;
+  --sheet: #ffffff;
+  --sheet-deep: #f7f4ee;
+  --ink: #141311;
+  --ink-soft: #4a4640;
+  --ink-faint: #7d776e;
+  --canvas-ink: #141311;
+  --canvas-ink-soft: #3d3a34;
+  --canvas-ink-faint: #7d776e;
+  --rule: #e5e0d6;
+  --seal: #b83b28;
+  --seal-soft: #d14f3a;
+  --label-bg: #fcfbf8;
+  --label-text: #3a3732;
+  --label-text-strong: #141311;
+  --seal-bg: #141311;
+  --seal-stroke: #f4efe6;
+  --seal-dot: #c8432b;
+  --rel-presupposes: #2b5ea8;
+  --rel-refutes: #b83b28;
+  --rel-synthesizes: #b87314;
+  --rel-influences: #6b655d;
+  --panel-shadow: 0 18px 48px rgba(20, 19, 17, 0.08), 0 2px 8px rgba(20, 19, 17, 0.04);
+  --surface-shadow: 0 6px 20px rgba(20, 19, 17, 0.07);
+  --scrollbar-thumb: rgba(20, 19, 17, 0.18);
+  --selection-bg: rgba(184, 59, 40, 0.18);
   --font-serif: 'Noto Serif SC', 'Songti SC', 'Source Han Serif SC', 'SimSun', serif;
   --font-sans: 'Noto Sans CJK SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
   --font-latin: 'Cormorant Garamond', 'Noto Serif SC', serif;
   --panel-width: 404px;
-  --gutter: 32px;
+  --gutter: 28px;
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  color-scheme: light;
+}
+
+[data-theme='dark'] {
+  --canvas: #0c0c0e;
+  --canvas-deep: #08080a;
+  --canvas-surface: #151518;
+  --canvas-guide: #222228;
+  --sheet: #141417;
+  --sheet-deep: #1c1c21;
+  --ink: #f4f2ed;
+  --ink-soft: #b8b3aa;
+  --ink-faint: #847f77;
+  --canvas-ink: #f4f2ed;
+  --canvas-ink-soft: #c7c2b9;
+  --canvas-ink-faint: #847f77;
+  --rule: #28282e;
+  --seal: #d9533d;
+  --seal-soft: #eb6b54;
+  --label-bg: #0c0c0e;
+  --label-text: #d8d3ca;
+  --label-text-strong: #f8f6f1;
+  --seal-bg: #1b1a18;
+  --seal-stroke: #f4efe6;
+  --seal-dot: #c8432b;
+  --rel-presupposes: #6da6d9;
+  --rel-refutes: #e0604b;
+  --rel-synthesizes: #e0a43b;
+  --rel-influences: #9c968d;
+  --panel-shadow: 0 24px 64px rgba(0, 0, 0, 0.52), 0 2px 10px rgba(0, 0, 0, 0.3);
+  --surface-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  --scrollbar-thumb: rgba(244, 242, 237, 0.18);
+  --selection-bg: rgba(217, 83, 61, 0.28);
   color-scheme: dark;
 }
 
@@ -41,23 +89,12 @@ body,
 }
 
 body {
-  background: var(--wall);
-  color: var(--ivory);
+  background: var(--canvas);
+  color: var(--canvas-ink);
   font-family: var(--font-serif);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   overflow: hidden;
-}
-
-body::before {
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  content: '';
-  pointer-events: none;
-  opacity: 0.035;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 240 240' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  mix-blend-mode: soft-light;
 }
 
 button,
@@ -75,12 +112,12 @@ button {
 button:focus-visible,
 input:focus-visible,
 [tabindex]:focus-visible {
-  outline: 1px solid var(--seal-soft);
-  outline-offset: 3px;
+  outline: 1px solid var(--seal);
+  outline-offset: 2px;
 }
 
 ::selection {
-  background: rgba(179, 70, 46, 0.28);
+  background: var(--selection-bg);
 }
 
 .micro {
@@ -106,23 +143,11 @@ input:focus-visible,
   flex-direction: column;
   width: var(--panel-width);
   color: var(--ink);
-  background: var(--paper);
-  border: 1px solid rgba(28, 25, 23, 0.18);
-  box-shadow:
-    0 30px 80px rgba(0, 0, 0, 0.46),
-    0 2px 0 rgba(255, 255, 255, 0.5) inset;
-  animation: panel-in 0.42s var(--ease);
-}
-
-.panel::after {
-  position: absolute;
-  inset: 0;
-  z-index: 3;
-  content: '';
-  pointer-events: none;
-  opacity: 0.28;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='p'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23p)'/%3E%3C/svg%3E");
-  mix-blend-mode: multiply;
+  background: var(--sheet);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  box-shadow: var(--panel-shadow);
+  animation: panel-in 0.36s var(--ease);
 }
 
 .panel-scroll {
@@ -132,7 +157,7 @@ input:focus-visible,
   overflow-y: auto;
   overscroll-behavior: contain;
   scrollbar-width: thin;
-  scrollbar-color: rgba(28, 25, 23, 0.22) transparent;
+  scrollbar-color: var(--scrollbar-thumb) transparent;
 }
 
 .panel-scroll::-webkit-scrollbar {
@@ -140,14 +165,14 @@ input:focus-visible,
 }
 
 .panel-scroll::-webkit-scrollbar-thumb {
-  background: rgba(28, 25, 23, 0.2);
+  background: var(--scrollbar-thumb);
   border-radius: 10px;
 }
 
 @keyframes panel-in {
   from {
     opacity: 0;
-    transform: translateX(24px);
+    transform: translateX(20px);
   }
   to {
     opacity: 1;
@@ -164,27 +189,28 @@ input:focus-visible,
   }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 959px) {
   :root {
     --panel-width: auto;
-    --gutter: 18px;
+    --gutter: 20px;
   }
 
   .panel {
     top: auto;
-    right: 8px;
-    bottom: 8px;
-    left: 8px;
+    right: 0;
+    bottom: 0;
+    left: 0;
     width: auto;
-    max-height: 72vh;
-    border-radius: 3px;
-    animation: sheet-in 0.36s var(--ease);
+    max-height: 78vh;
+    border-radius: 14px 14px 0 0;
+    border-bottom: 0;
+    animation: sheet-in 0.32s var(--ease);
   }
 
   @keyframes sheet-in {
     from {
       opacity: 0;
-      transform: translateY(30px);
+      transform: translateY(28px);
     }
     to {
       opacity: 1;

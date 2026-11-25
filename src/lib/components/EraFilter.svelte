@@ -1,61 +1,59 @@
 <script lang="ts">
-  import graph from '../graph/model';
   import { atlas } from '../state.svelte';
   import { eraColor } from '../theme';
-
-  const counts = new Map<string, number>();
-  for (const person of graph.thinkers) {
-    counts.set(person.era, (counts.get(person.era) ?? 0) + 1);
-  }
-
-  const short: Record<string, string> = {
-    前苏格拉底: '前苏',
-    古典希腊: '古典',
-    希腊化与罗马: '希腊化',
-    东方: '东方',
-    中世纪: '中世',
-    文艺复兴与早期近代: '文艺复兴',
-    启蒙运动: '启蒙',
-    德国唯心主义: '德国唯心',
-    '19世纪': '19世纪',
-    现象学与存在主义: '现象学',
-    分析哲学: '分析',
-    政治与保守主义: '政治',
-    批判理论与战后: '批判',
-    后结构主义: '后结构',
-  };
 </script>
 
-<div class="era-filter" aria-label="按时代筛选">
+<div class="era-filter" aria-label={atlas.strings.eraLabel}>
   <div class="scroll">
-    <span class="filter-label micro">时代</span>
-    {#each graph.eras as era, index (era)}
-      {@const visible = atlas.isEraVisible(era)}
+    <span class="filter-label micro">{atlas.strings.eraLabel}</span>
+    {#each atlas.graph.eras as era, index (index)}
+      {@const visible = atlas.isEraVisible(index)}
       <button
         type="button"
         class="chip"
         class:off={!visible}
         aria-pressed={visible}
-        onclick={() => atlas.toggleEra(era)}
-        title={visible ? `隐藏${era}` : `显示${era}`}
+        onclick={() => atlas.toggleEra(index)}
+        title={era}
       >
-        <span class="dot" style={`background:${eraColor(index)}`}></span>
-        <span class="name">{short[era] ?? era}</span>
-        <span class="count">{counts.get(era) ?? 0}</span>
+        <span
+          class="dot"
+          style={visible ? `background:${eraColor(index, atlas.themeMode)}` : undefined}
+        ></span>
+        <span class="name">{atlas.strings.eraShort(index)}</span>
+        <span class="count">{atlas.graph.eraCounts[index] ?? 0}</span>
       </button>
     {/each}
   </div>
-  {#if atlas.hasFilters}
-    <button type="button" class="reset" onclick={() => atlas.resetFilters()}>全部</button>
-  {/if}
+
+  <div class="controls">
+    {#if atlas.hasFilters}
+      <button type="button" class="reset" onclick={() => atlas.resetFilters()}>
+        {atlas.language === 'zh' ? '全部' : 'All'}
+      </button>
+    {/if}
+
+    <button
+      type="button"
+      class="era-switch"
+      role="switch"
+      aria-checked={atlas.anyEraVisible}
+      aria-label={atlas.strings.eraLabel}
+      onclick={() => atlas.toggleAllEras()}
+    >
+      <span class="track" class:on={atlas.anyEraVisible}>
+        <span class="thumb"></span>
+      </span>
+    </button>
+  </div>
 </div>
 
 <style>
   .era-filter {
     position: fixed;
-    top: 74px;
+    top: 62px;
     right: 436px;
-    left: 28px;
+    left: 0;
     z-index: 20;
     display: flex;
     gap: 8px;
@@ -68,6 +66,8 @@
     flex: 1;
     gap: 0;
     align-items: center;
+    padding-left: 28px;
+    padding-right: 8px;
     overflow-x: auto;
     pointer-events: auto;
     scrollbar-width: none;
@@ -80,103 +80,138 @@
   .filter-label {
     flex: none;
     padding-right: 10px;
-    font-size: 8px;
-    color: #625b51;
+    font-size: 8.5px;
+    color: var(--canvas-ink-faint);
   }
 
   .chip {
     display: flex;
     flex: none;
-    gap: 6px;
+    gap: 5px;
     align-items: center;
-    padding: 5px 9px 5px 0;
-    margin-right: 7px;
+    padding: 6px 9px;
     font-family: var(--font-sans);
-    font-size: 10px;
-    letter-spacing: 0.03em;
-    color: #cfc7b9;
+    font-size: 11px;
+    color: var(--canvas-ink-soft);
     white-space: nowrap;
-    border-bottom: 1px solid transparent;
     transition: color 0.15s ease, opacity 0.15s ease;
   }
 
   .chip:hover {
-    color: #f6f1e7;
-    border-bottom-color: rgba(236, 230, 216, 0.35);
+    color: var(--canvas-ink);
   }
 
   .chip.off {
-    color: #6c655b;
-    opacity: 0.55;
-  }
-
-  .chip.off .dot {
-    background: transparent !important;
-    border: 1px solid #6c655b;
+    color: var(--canvas-ink-faint);
+    opacity: 0.45;
   }
 
   .dot {
-    width: 5px;
-    height: 5px;
+    flex: none;
+    width: 6px;
+    height: 6px;
     border-radius: 50%;
-    transition: background 0.15s ease;
+    transition: background 0.15s ease, border-color 0.15s ease;
+  }
+
+  .chip.off .dot {
+    background: transparent;
+    border: 1px solid var(--canvas-ink-faint);
   }
 
   .count {
     font-family: var(--font-latin);
     font-size: 10px;
     font-style: italic;
-    color: #7e766a;
+    color: var(--canvas-ink-faint);
   }
 
-  .chip.off .count {
-    color: #5c564e;
+  .controls {
+    display: flex;
+    flex: none;
+    gap: 6px;
+    align-items: center;
+    padding-right: 28px;
+    pointer-events: auto;
   }
 
   .reset {
-    flex: none;
-    padding: 5px 9px;
-    pointer-events: auto;
+    padding: 4px 8px;
     font-family: var(--font-sans);
     font-size: 9.5px;
-    letter-spacing: 0.06em;
-    color: #cfc7b9;
-    border: 1px solid rgba(236, 230, 216, 0.24);
+    letter-spacing: 0.05em;
+    color: var(--canvas-ink-soft);
+    border: 1px solid var(--rule);
+    transition: color 0.15s ease, background 0.15s ease, border-color 0.15s ease;
   }
 
   .reset:hover {
-    color: #16130f;
-    background: #ece6d8;
+    color: var(--canvas-ink);
+    border-color: var(--canvas-ink-faint);
+    background: color-mix(in srgb, var(--canvas-ink) 6%, transparent);
   }
 
-  @media (max-width: 1180px) {
-    .count {
-      display: none;
-    }
+  .era-switch {
+    display: grid;
+    place-items: center;
+    width: 34px;
+    height: 34px;
+    padding: 0;
   }
 
-  @media (max-width: 900px) {
+  .track {
+    position: relative;
+    display: block;
+    width: 26px;
+    height: 14px;
+    background: var(--rule);
+    border-radius: 999px;
+    transition: background 0.14s ease;
+  }
+
+  .track.on {
+    background: var(--seal);
+  }
+
+  .thumb {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 10px;
+    height: 10px;
+    background: var(--canvas-ink-faint);
+    border-radius: 50%;
+    transition: transform 0.14s ease, background 0.14s ease;
+  }
+
+  .track.on .thumb {
+    background: #ffffff;
+    transform: translateX(12px);
+  }
+
+  @media (max-width: 959px) {
     .era-filter {
-      top: 58px;
-      right: 8px;
-      left: 8px;
-    }
-
-    .chip {
-      padding-right: 8px;
-      font-size: 9.5px;
-    }
-
-    .filter-label {
-      display: none;
-    }
-
-    .chip:first-child {
-      padding-left: 4px;
+      top: 50px;
+      right: 0;
     }
 
     .scroll {
-      mask-image: linear-gradient(90deg, #000 88%, transparent);
+      padding-left: 10px;
+      mask-image: linear-gradient(90deg, #000 90%, transparent);
+    }
+
+    .filter-label,
+    .count {
+      display: none;
+    }
+
+    .chip {
+      padding: 6px 8px;
+      font-size: 10.5px;
+    }
+
+    .controls {
+      padding-right: 10px;
     }
   }
 </style>
