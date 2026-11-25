@@ -7,10 +7,10 @@
     "dev": "vite",
     "data": "node scripts/build-graph.mjs",
     "check": "svelte-check --tsconfig ./tsconfig.json",
-    "build": "npm run data && vite build",
+    "build": "vite build",
     "preview": "vite preview",
     "verify": "node scripts/verify.mjs",
-    "graph:check": "cargo run --manifest-path engine/Cargo.toml --quiet -- src/lib/data/graph.json"
+    "graph:check": "cargo run --manifest-path engine/Cargo.toml --quiet -- src/lib/data/graph.json && cargo run --manifest-path engine/Cargo.toml --quiet -- src/lib/data/graph.en.json"
   },
   "dependencies": {
     "d3-force": "^3.0.0",
